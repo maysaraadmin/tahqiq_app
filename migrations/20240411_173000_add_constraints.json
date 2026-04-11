@@ -1,0 +1,37 @@
+{
+  "version": "20240411_173000_add_constraints",
+  "description": "Add database constraints and improve data integrity",
+  "created_at": "2024-04-11T17:30:00",
+  "up": [
+    "ALTER TABLE authors ADD CONSTRAINT unique_author_name UNIQUE (name)",
+    "ALTER TABLE authors ADD CONSTRAINT check_birth_year CHECK (birth_year >= 0 AND birth_year <= 3000)",
+    "ALTER TABLE authors ADD CONSTRAINT check_death_year CHECK (death_year >= 0 AND death_year <= 3000)",
+    "ALTER TABLE books ADD CONSTRAINT unique_book_title_author UNIQUE (title, author_id)",
+    "ALTER TABLE books ADD CONSTRAINT check_title_length CHECK (length(title) >= 2)",
+    "ALTER TABLE books ADD CONSTRAINT check_author_not_null CHECK (author_id IS NOT NULL)",
+    "ALTER TABLE manuscripts ADD CONSTRAINT check_library_name CHECK (length(library_name) >= 2 OR library_name IS NULL)",
+    "ALTER TABLE manuscripts ADD CONSTRAINT check_copyist CHECK (length(copyist) >= 2 OR copyist IS NULL)",
+    "ALTER TABLE manuscripts ADD CONSTRAINT check_book_not_null CHECK (book_id IS NOT NULL)",
+    "ALTER TABLE sheikh_relations ADD CONSTRAINT unique_student_sheikh_relation UNIQUE (student_id, sheikh_id)",
+    "ALTER TABLE sheikh_relations ADD CONSTRAINT check_different_authors CHECK (student_id != sheikh_id)",
+    "ALTER TABLE sheikh_relations ADD CONSTRAINT check_relation_type CHECK (length(relation_type) >= 2 OR relation_type IS NULL OR relation_type = '')",
+    "ALTER TABLE sheikh_relations ADD CONSTRAINT check_student_not_null CHECK (student_id IS NOT NULL)",
+    "ALTER TABLE sheikh_relations ADD CONSTRAINT check_sheikh_not_null CHECK (sheikh_id IS NOT NULL)"
+  ],
+  "down": [
+    "ALTER TABLE sheikh_relations DROP CONSTRAINT IF EXISTS check_sheikh_not_null",
+    "ALTER TABLE sheikh_relations DROP CONSTRAINT IF EXISTS check_student_not_null",
+    "ALTER TABLE sheikh_relations DROP CONSTRAINT IF EXISTS check_relation_type",
+    "ALTER TABLE sheikh_relations DROP CONSTRAINT IF EXISTS check_different_authors",
+    "ALTER TABLE sheikh_relations DROP CONSTRAINT IF EXISTS unique_student_sheikh_relation",
+    "ALTER TABLE manuscripts DROP CONSTRAINT IF EXISTS check_book_not_null",
+    "ALTER TABLE manuscripts DROP CONSTRAINT IF EXISTS check_copyist",
+    "ALTER TABLE manuscripts DROP CONSTRAINT IF EXISTS check_library_name",
+    "ALTER TABLE books DROP CONSTRAINT IF EXISTS check_author_not_null",
+    "ALTER TABLE books DROP CONSTRAINT IF EXISTS check_title_length",
+    "ALTER TABLE books DROP CONSTRAINT IF EXISTS unique_book_title_author",
+    "ALTER TABLE authors DROP CONSTRAINT IF EXISTS check_death_year",
+    "ALTER TABLE authors DROP CONSTRAINT IF EXISTS check_birth_year",
+    "ALTER TABLE authors DROP CONSTRAINT IF EXISTS unique_author_name"
+  ]
+}

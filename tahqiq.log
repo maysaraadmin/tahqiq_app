@@ -1,0 +1,198 @@
+2026-04-11 17:55:36,078 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 17:55:36,434 - config - WARNING - Failed to load translation: arguments did not match any overloaded call:
+  load(self, fileName: Optional[str], directory: Optional[str] = '', searchDelimiters: Optional[str] = '', suffix: Optional[str] = ''): argument 2 has unexpected type 'WindowsPath'
+  load(self, locale: QLocale, fileName: Optional[str], prefix: Optional[str] = '', directory: Optional[str] = '', suffix: Optional[str] = ''): argument 1 has unexpected type 'str'
+2026-04-11 17:55:36,448 - config - INFO - Application styles loaded successfully
+2026-04-11 17:55:36,485 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 17:55:36,631 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 17:55:37,234 - config - INFO - Application started successfully
+2026-04-11 17:55:49,826 - config - INFO - Application exited with code: 0
+2026-04-11 17:55:49,921 - database.db_manager - INFO - Database connections closed
+2026-04-11 17:55:49,925 - config - INFO - Database connections closed
+2026-04-11 18:07:46,822 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:07:46,906 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:07:47,097 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:07:47,099 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\main.py", line 65, in run_migrations
+    logger.info("Running database migrations...")
+NameError: name 'logger' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\tahqiq_app\main.py", line 134, in <module>
+    main()
+  File "D:\tahqiq_app\main.py", line 86, in main
+    if not run_migrations():
+  File "D:\tahqiq_app\main.py", line 73, in run_migrations
+    logger.error(f"Migration error: {e}")
+NameError: name 'logger' is not defined
+2026-04-11 18:08:46,812 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:08:46,882 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:08:47,028 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:08:47,029 - config - INFO - Running database migrations...
+2026-04-11 18:08:47,029 - migrations.migration_manager - INFO - Starting migration up
+2026-04-11 18:08:47,115 - migrations.migration_manager - INFO - Migration table schema_migrations ensured
+2026-04-11 18:08:47,122 - migrations.migration_manager - ERROR - Failed to apply migration 20240411_173000_add_constraints: Textual SQL expression 'ALTER TABLE authors ADD C...' should be explicitly declared as text('ALTER TABLE authors ADD C...')
+2026-04-11 18:08:47,124 - migrations.migration_manager - ERROR - Migration failed at version: 20240411_173000_add_constraints
+2026-04-11 18:08:47,125 - config - ERROR - Database migrations failed
+2026-04-11 18:09:52,329 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:09:52,680 - config - INFO - Application styles loaded successfully
+2026-04-11 18:09:52,709 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:09:52,829 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:09:53,435 - config - INFO - Application started successfully
+2026-04-11 18:11:44,434 - controllers.author_controller - INFO - Added author: عبد الله بن أحمد بن محمد بن قدامة بن مقدام بن نصر بن عبد الله المقدسي (ID: 1)
+2026-04-11 18:12:02,911 - config - INFO - Application exited with code: 0
+2026-04-11 18:12:02,917 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:12:02,922 - config - INFO - Database connections closed
+2026-04-11 18:12:02,922 - config - INFO - Application shutdown complete
+2026-04-11 18:12:42,404 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:12:42,504 - config - INFO - Application styles loaded successfully
+2026-04-11 18:12:42,506 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:12:42,554 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:12:42,758 - config - ERROR - Failed to start application: Instance <Author at 0x1a0ea2fe7d0> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-11 18:12:48,334 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:12:48,354 - config - INFO - Database connections closed
+2026-04-11 18:12:48,355 - config - INFO - Application shutdown complete
+2026-04-11 18:14:03,972 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:14:04,219 - config - INFO - Application styles loaded successfully
+2026-04-11 18:14:04,275 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:14:04,333 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:14:04,557 - config - ERROR - Failed to start application: Instance <Author at 0x1f4a258e830> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-11 18:14:51,605 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:14:51,635 - config - INFO - Database connections closed
+2026-04-11 18:14:51,637 - config - INFO - Application shutdown complete
+2026-04-11 18:14:59,590 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:14:59,736 - config - INFO - Application styles loaded successfully
+2026-04-11 18:14:59,742 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:14:59,803 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:15:03,590 - config - ERROR - Failed to start application: Instance <Author at 0x17cf4a75450> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-11 18:15:06,633 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:15:06,653 - config - INFO - Database connections closed
+2026-04-11 18:15:06,654 - config - INFO - Application shutdown complete
+2026-04-11 18:16:22,970 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:16:23,099 - config - INFO - Application styles loaded successfully
+2026-04-11 18:16:23,104 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:16:23,239 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:22:32,450 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:22:32,664 - config - INFO - Application styles loaded successfully
+2026-04-11 18:22:32,667 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:22:32,738 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:22:35,342 - config - ERROR - Failed to start application: Instance <Author at 0x192a68def50> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-11 18:22:36,828 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:22:36,835 - config - INFO - Database connections closed
+2026-04-11 18:22:36,859 - config - INFO - Application shutdown complete
+2026-04-11 18:24:18,704 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:24:18,817 - config - INFO - Application styles loaded successfully
+2026-04-11 18:24:18,821 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:24:18,871 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:24:20,691 - config - ERROR - Failed to start application: Instance <Author at 0x1dccab81540> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+2026-04-11 18:24:22,154 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:24:22,166 - config - INFO - Database connections closed
+2026-04-11 18:24:22,167 - config - INFO - Application shutdown complete
+2026-04-11 18:26:18,330 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:26:19,079 - config - INFO - Application styles loaded successfully
+2026-04-11 18:26:19,109 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:26:19,280 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:26:58,966 - config - INFO - Application started successfully
+2026-04-11 18:27:03,895 - config - INFO - Application exited with code: 0
+2026-04-11 18:27:03,899 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:27:03,900 - config - INFO - Database connections closed
+2026-04-11 18:27:03,900 - config - INFO - Application shutdown complete
+2026-04-11 18:27:21,756 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:27:22,319 - config - INFO - Application styles loaded successfully
+2026-04-11 18:27:22,321 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:27:22,393 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:27:30,565 - config - INFO - Application started successfully
+2026-04-11 18:27:32,486 - config - INFO - Application exited with code: 0
+2026-04-11 18:27:32,489 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:27:32,490 - config - INFO - Database connections closed
+2026-04-11 18:27:32,491 - config - INFO - Application shutdown complete
+2026-04-11 18:27:38,247 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:27:38,346 - config - INFO - Application styles loaded successfully
+2026-04-11 18:27:38,348 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:27:38,393 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:28:09,232 - config - INFO - Application started successfully
+2026-04-11 18:28:12,790 - config - INFO - Application exited with code: 0
+2026-04-11 18:28:12,796 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:28:12,799 - config - INFO - Database connections closed
+2026-04-11 18:28:12,804 - config - INFO - Application shutdown complete
+2026-04-11 18:32:25,317 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:32:26,200 - config - INFO - Application styles loaded successfully
+2026-04-11 18:32:26,275 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:32:26,387 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:38:19,827 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:38:19,967 - config - INFO - Application styles loaded successfully
+2026-04-11 18:38:19,969 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:38:20,036 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:38:22,259 - config - INFO - Application started successfully
+2026-04-11 18:38:24,879 - config - INFO - Application exited with code: 0
+2026-04-11 18:38:24,888 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:38:24,890 - config - INFO - Database connections closed
+2026-04-11 18:38:24,895 - config - INFO - Application shutdown complete
+2026-04-11 18:38:28,909 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:38:29,004 - config - INFO - Application styles loaded successfully
+2026-04-11 18:38:29,009 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:38:29,053 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:38:34,803 - config - INFO - Application started successfully
+2026-04-11 18:38:36,402 - config - INFO - Application exited with code: 0
+2026-04-11 18:38:36,412 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:38:36,422 - config - INFO - Database connections closed
+2026-04-11 18:38:36,422 - config - INFO - Application shutdown complete
+2026-04-11 18:39:47,143 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:39:47,603 - config - INFO - Application styles loaded successfully
+2026-04-11 18:39:47,648 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:39:47,799 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:39:48,798 - config - INFO - Application started successfully
+2026-04-11 18:39:53,951 - config - INFO - Application exited with code: 0
+2026-04-11 18:39:53,968 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:39:53,971 - config - INFO - Database connections closed
+2026-04-11 18:39:53,974 - config - INFO - Application shutdown complete
+2026-04-11 18:40:12,167 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:40:12,456 - config - INFO - Application styles loaded successfully
+2026-04-11 18:40:12,460 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:40:12,662 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:40:13,099 - config - INFO - Application started successfully
+2026-04-11 18:41:27,134 - controllers.base_controller - ERROR - Transaction failed: المؤلف موجود مسبقاً
+2026-04-11 18:42:15,109 - config - INFO - Application exited with code: 0
+2026-04-11 18:42:15,136 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:42:15,136 - config - INFO - Database connections closed
+2026-04-11 18:42:15,137 - config - INFO - Application shutdown complete
+2026-04-11 18:44:05,327 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:44:05,767 - config - INFO - Application styles loaded successfully
+2026-04-11 18:44:05,799 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:44:05,966 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:44:11,378 - config - INFO - Application started successfully
+2026-04-11 18:44:22,477 - config - INFO - Application exited with code: 0
+2026-04-11 18:44:22,482 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:44:22,486 - config - INFO - Database connections closed
+2026-04-11 18:44:22,488 - config - INFO - Application shutdown complete
+2026-04-11 18:45:05,890 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:45:06,131 - config - INFO - Application styles loaded successfully
+2026-04-11 18:45:06,135 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:45:06,226 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:45:09,389 - config - INFO - Application started successfully
+2026-04-11 18:45:20,826 - config - INFO - Application exited with code: 0
+2026-04-11 18:45:20,831 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:45:20,832 - config - INFO - Database connections closed
+2026-04-11 18:45:20,833 - config - INFO - Application shutdown complete
+2026-04-11 18:45:37,914 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:45:38,309 - config - INFO - Application styles loaded successfully
+2026-04-11 18:45:38,333 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:45:38,442 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:45:39,077 - config - INFO - Application started successfully
+2026-04-11 18:45:46,230 - controllers.author_controller - INFO - Deleted author: عبد الله بن أحمد بن محمد بن قدامة بن مقدام بن نصر بن عبد الله المقدسي (ID: 1)
+2026-04-11 18:45:50,780 - config - INFO - Application exited with code: 0
+2026-04-11 18:45:50,787 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:45:50,794 - config - INFO - Database connections closed
+2026-04-11 18:45:50,797 - config - INFO - Application shutdown complete
+2026-04-11 18:47:54,020 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 18:47:54,387 - config - INFO - Application styles loaded successfully
+2026-04-11 18:47:54,415 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 18:47:54,568 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 18:47:55,277 - config - INFO - Application started successfully
+2026-04-11 18:48:01,890 - config - INFO - Application exited with code: 0
+2026-04-11 18:48:01,892 - database.db_manager - INFO - Database connections closed
+2026-04-11 18:48:01,892 - config - INFO - Database connections closed
+2026-04-11 18:48:01,892 - config - INFO - Application shutdown complete
