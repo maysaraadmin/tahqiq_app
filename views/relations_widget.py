@@ -5,6 +5,9 @@ from PyQt6.QtCore import Qt
 from database.models import Author
 from views.sheikh_student_dialog import SheikhStudentDialog
 from controllers.relation_controller import RelationController
+import logging
+
+logger = logging.getLogger(__name__)
 
 class RelationsWidget(QWidget):
     def __init__(self, author_controller):
@@ -21,7 +24,7 @@ class RelationsWidget(QWidget):
         select_layout = QHBoxLayout()
         select_layout.addWidget(QLabel("اختر المؤلف:"))
         self.author_combo = QComboBox()
-        # self.load_authors_combo()  # Commented out to prevent session binding issues
+        self.load_authors_combo()  # Load authors on initialization
         self.author_combo.currentIndexChanged.connect(self.load_relations)
         select_layout.addWidget(self.author_combo)
         select_layout.addStretch()
@@ -40,10 +43,24 @@ class RelationsWidget(QWidget):
         layout.addWidget(self.relations_table)
 
     def load_authors_combo(self):
-        self.author_combo.clear()
-        authors = self.author_controller.get_all_authors()
-        for author in authors:
-            self.author_combo.addItem(author['name'], author['id'])
+        """Load authors into combo box with error handling"""
+        try:
+            self.author_combo.clear()
+            authors = self.author_controller.get_all_authors()
+            
+            if not authors:
+                self.author_combo.addItem("No authors available", None)
+                return
+            
+            # Add authors sorted by name
+            for author in sorted(authors, key=lambda x: x['name']):
+                self.author_combo.addItem(author['name'], author['id'])
+                
+        except Exception as e:
+            logger.error(f"Failed to load authors combo: {e}")
+            self.author_combo.clear()
+            self.author_combo.addItem("Error loading authors", None)
+            self.author_combo.setEnabled(False)
 
     def load_relations(self):
         try:
