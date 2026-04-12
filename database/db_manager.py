@@ -29,17 +29,27 @@ class DatabaseManager:
                     if db_url is None:
                         db_url = config.DATABASE_URL
                     
+                    # Create engine with optimized settings for faster startup
+                    # Optimize for SQLite
+                    sqlite_args = {"check_same_thread": False, "timeout": 20} if "sqlite" in db_url else {"check_same_thread": False}
+                    
                     self._engine = create_engine(
-                        db_url, 
-                        echo=False, 
-                        pool_pre_ping=True,
-                        pool_size=10,
-                        max_overflow=20,
-                        pool_timeout=30
+                        db_url,
+                        echo=False,  # Disable SQL logging for performance
+                        pool_pre_ping=True,  # Verify connections
+                        pool_recycle=3600,  # Recycle connections every hour
+                        connect_args=sqlite_args
                     )
+                    
+                    # Create session factory
                     self._session_factory = sessionmaker(bind=self._engine)
-                    Base.metadata.create_all(self._engine)
-                    logger.info(f"Database initialized successfully with URL: {db_url}")
+                    
+                    # Create tables asynchronously if needed (faster startup)
+                    if not hasattr(self, '_tables_created'):
+                        Base.metadata.create_all(self._engine)
+                        self._tables_created = True
+                        logger.info("Database initialized successfully")
+                    
                 except Exception as e:
                     logger.error(f"Failed to initialize database: {e}")
                     raise

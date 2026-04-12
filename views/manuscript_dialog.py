@@ -1,10 +1,10 @@
 from PyQt6.QtWidgets import (QDialog, QFormLayout, QLineEdit, QTextEdit,
-                             QDialogButtonBox, QVBoxLayout, QComboBox)
+                             QDialogButtonBox, QVBoxLayout, QComboBox, QMessageBox)
 
 class ManuscriptDialog(QDialog):
-    def __init__(self, books, parent=None):
+    def __init__(self, books, parent=None, manuscript_data=None):
         super().__init__(parent)
-        self.setWindowTitle("مخطوط جديد")
+        self.setWindowTitle("مخطوط جديد" if not manuscript_data else "تعديل مخطوط")
         self.setMinimumWidth(400)
         layout = QVBoxLayout(self)
 
@@ -18,7 +18,7 @@ class ManuscriptDialog(QDialog):
 
         # ملء قائمة الكتب
         for book in books:
-            self.book_combo.addItem(book.title, book.id)
+            self.book_combo.addItem(book['title'], book['id'])
 
         form.addRow("الكتاب:", self.book_combo)
         form.addRow("اسم المكتبة:", self.library_edit)
@@ -32,3 +32,51 @@ class ManuscriptDialog(QDialog):
         buttons.accepted.connect(self.accept)
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
+
+        # Pre-fill data if editing
+        if manuscript_data:
+            self.set_manuscript_data(manuscript_data)
+
+    def set_manuscript_data(self, data):
+        """Pre-fill form with existing manuscript data"""
+        # Set book selection
+        for i in range(self.book_combo.count()):
+            if self.book_combo.itemData(i) == data['book_id']:
+                self.book_combo.setCurrentIndex(i)
+                break
+        
+        self.library_edit.setText(data.get('library_name', ''))
+        self.shelf_edit.setText(data.get('shelf_number', ''))
+        self.copyist_edit.setText(data.get('copyist', ''))
+        self.copy_date_edit.setText(data.get('copy_date', ''))
+        self.notes_edit.setText(data.get('notes', ''))
+
+    def get_data(self):
+        """Get form data as dictionary"""
+        return {
+            'book_id': self.book_combo.currentData(),
+            'library_name': self.library_edit.text().strip(),
+            'shelf_number': self.shelf_edit.text().strip(),
+            'copyist': self.copyist_edit.text().strip() or None,
+            'copy_date': self.copy_date_edit.text().strip() or None,
+            'notes': self.notes_edit.toPlainText().strip() or None
+        }
+
+    def accept(self):
+        """Validate and accept the dialog"""
+        data = self.get_data()
+        
+        # Validate required fields
+        if not data['library_name']:
+            QMessageBox.warning(self, "خطأ في التحقق", "اسم المكتبة مطلوب")
+            return
+        
+        if not data['shelf_number']:
+            QMessageBox.warning(self, "خطأ في التحقق", "رقم الرف مطلوب")
+            return
+        
+        if not data['book_id']:
+            QMessageBox.warning(self, "خطأ في التحقق", "الرجاء اختيار كتاب")
+            return
+        
+        super().accept()

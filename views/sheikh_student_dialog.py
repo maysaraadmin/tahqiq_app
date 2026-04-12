@@ -42,15 +42,35 @@ class SheikhStudentDialog(QDialog):
         layout.addWidget(buttons)
 
     def load_persons(self):
-        authors = self.controller.get_all_authors()
-        for author in authors:
-            if author.id != self.current_author_id:
-                self.person_combo.addItem(author.name, author.id)
+        try:
+            authors = self.controller.get_all_authors()
+            
+            self.person_combo.clear()
+            
+            # Filter out current author
+            other_authors = [author for author in authors if author['id'] != self.current_author_id]
+            
+            if not other_authors:
+                # No other authors available
+                self.person_combo.addItem("No other authors available", None)
+                self.person_combo.setEnabled(False)
+            else:
+                # Add other authors to combo
+                for author in other_authors:
+                    self.person_combo.addItem(author['name'], author['id'])
+                self.person_combo.setEnabled(True)
+                
+        except Exception as e:
+            self.person_combo.addItem("Error loading authors", None)
+            self.person_combo.setEnabled(False)
 
     def accept(self):
         other_id = self.person_combo.currentData()
         if not other_id:
-            QMessageBox.warning(self, "Error", "Please select a person")
+            if self.person_combo.count() == 1 and "No other authors" in self.person_combo.itemText(0):
+                QMessageBox.information(self, "Info", "You need at least 2 authors to create relations.\nPlease add another author first.")
+            else:
+                QMessageBox.warning(self, "Error", "Please select a person")
             return  # Don't call super().accept()
         
         rel_type = self.relation_type_edit.text().strip()

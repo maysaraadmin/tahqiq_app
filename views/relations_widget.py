@@ -4,14 +4,15 @@ from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
 from PyQt6.QtCore import Qt
 from database.models import Author
 from views.sheikh_student_dialog import SheikhStudentDialog
+from controllers.relation_controller import RelationController
 
 class RelationsWidget(QWidget):
     def __init__(self, author_controller):
         super().__init__()
-        self.controller = author_controller
+        self.author_controller = author_controller
+        self.relation_controller = RelationController()
         self.setup_ui()
-        # Don't load authors combo during initialization
-        # self.load_authors_combo()  # Commented out to prevent session binding issues
+        self.load_authors_combo()
 
     def setup_ui(self):
         layout = QVBoxLayout(self)
@@ -40,9 +41,9 @@ class RelationsWidget(QWidget):
 
     def load_authors_combo(self):
         self.author_combo.clear()
-        authors = self.controller.get_all_authors()
+        authors = self.author_controller.get_all_authors()
         for author in authors:
-            self.author_combo.addItem(author.name, author.id)
+            self.author_combo.addItem(author['name'], author['id'])
 
     def load_relations(self):
         try:
@@ -50,35 +51,21 @@ class RelationsWidget(QWidget):
             if not author_id:
                 return
             
-            # Validate author_id
-            try:
-                author_id = int(author_id)
-                if author_id <= 0:
-                    return
-            except (ValueError, TypeError):
-                return
+            # Use relation controller to get relations (handles validation internally)
+            relations = self.relation_controller.get_author_relations(author_id)
             
-            session = self.controller.db.get_session()
-            try:
-                author = session.query(Author).get(author_id)
-                if not author:
-                    return
-
-                rows = []
-                # الشيوخ (من تتلمذ عليهم)
-                for rel in author.sheikhs:
-                    rows.append(("شيخ", rel.sheikh.name, rel.relation_type or ''))
-                # الطلاب (من تتلمذوا عليه)
-                for rel in author.students:
-                    rows.append(("طالب", rel.student.name, rel.relation_type or ''))
-
-                self.relations_table.setRowCount(len(rows))
-                for i, (typ, name, rel_type) in enumerate(rows):
-                    self.relations_table.setItem(i, 0, QTableWidgetItem(typ))
-                    self.relations_table.setItem(i, 1, QTableWidgetItem(name))
+            self.relations_table.setRowCount(len(relations))
+            for i, relation in enumerate(relations):
+                rel_type = relation['relation_type'] or ''
+                if relation['type'] == 'sheikh':
+                    self.relations_table.setItem(i, 0, QTableWidgetItem("شيخ"))
+                    self.relations_table.setItem(i, 1, QTableWidgetItem(relation['name']))
                     self.relations_table.setItem(i, 2, QTableWidgetItem(rel_type))
-            finally:
-                self.controller.db.close_session()
+                else:  # student
+                    self.relations_table.setItem(i, 0, QTableWidgetItem("طالب"))
+                    self.relations_table.setItem(i, 1, QTableWidgetItem(relation['name']))
+                    self.relations_table.setItem(i, 2, QTableWidgetItem(rel_type))
+                    
         except Exception as e:
             QMessageBox.critical(self, "خطأ", f"فشل تحميل العلاقات: {e}")
 
@@ -86,21 +73,19 @@ class RelationsWidget(QWidget):
         try:
             current_author_id = self.author_combo.currentData()
             if not current_author_id:
-                QMessageBox.warning(self, "تنبيه", "الرجاء اختيار مؤلف أولاً")
+                QMessageBox.warning(self, "Warning", "Please select an author first")
                 return
             
             # Validate author_id
             try:
                 current_author_id = int(current_author_id)
                 if current_author_id <= 0:
-                    QMessageBox.warning(self, "تنبيه", "معرف المؤلف غير صالح")
                     return
             except (ValueError, TypeError):
-                QMessageBox.warning(self, "تنبيه", "معرف المؤلف غير صالح")
                 return
             
-            dialog = SheikhStudentDialog(self.controller, current_author_id, self)
+            dialog = SheikhStudentDialog(self.author_controller, current_author_id, self)
             if dialog.exec():
                 self.load_relations()
         except Exception as e:
-            QMessageBox.critical(self, "خطأ", f"فشل إضافة العلاقة: {e}")
+            QMessageBox.critical(self, "Error", f"Failed to add relation: {e}")
