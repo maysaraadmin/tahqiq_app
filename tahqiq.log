@@ -781,3 +781,57 @@ AttributeError: 'MainWindow' object has no attribute 'update_relations_widget'
 2026-04-12 17:30:05,603 - database.db_manager - INFO - Database connections closed
 2026-04-12 17:30:05,665 - config - INFO - Database connections closed
 2026-04-12 17:30:05,687 - config - INFO - Application shutdown complete
+2026-04-12 17:32:46,276 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:32:46,668 - config - INFO - Application styles loaded successfully
+2026-04-12 17:32:46,711 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:32:46,796 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:32:47,327 - config - INFO - Application started successfully
+2026-04-12 17:32:53,122 - config - INFO - Application exited with code: 0
+2026-04-12 17:32:53,141 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:32:53,190 - config - INFO - Database connections closed
+2026-04-12 17:32:53,206 - config - INFO - Application shutdown complete
+2026-04-12 17:46:26,263 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:46:26,786 - config - INFO - Application styles loaded successfully
+2026-04-12 17:46:26,820 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:46:26,930 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:46:27,607 - config - INFO - Application started successfully
+2026-04-12 18:00:59,586 - config - INFO - Application exited with code: 0
+2026-04-12 18:00:59,608 - database.db_manager - INFO - Database connections closed
+2026-04-12 18:00:59,652 - config - INFO - Database connections closed
+2026-04-12 18:00:59,654 - config - INFO - Application shutdown complete
+2026-04-12 19:34:07,243 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 19:34:07,904 - config - INFO - Application styles loaded successfully
+2026-04-12 19:34:07,955 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 19:34:08,066 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 19:34:09,258 - config - INFO - Application started successfully
+2026-04-12 19:34:13,606 - config - INFO - Application exited with code: 0
+2026-04-12 19:34:13,608 - database.db_manager - INFO - Database connections closed
+2026-04-12 19:34:13,609 - config - INFO - Database connections closed
+2026-04-12 19:34:13,609 - config - INFO - Application shutdown complete
+2026-04-12 19:36:48,245 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 19:36:49,235 - config - INFO - Application styles loaded successfully
+2026-04-12 19:36:49,279 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 19:36:49,635 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 19:36:51,869 - config - INFO - Application started successfully
+2026-04-12 19:37:08,865 - config - INFO - Application exited with code: 0
+2026-04-12 19:37:08,934 - database.db_manager - INFO - Database connections closed
+2026-04-12 19:37:08,935 - config - INFO - Database connections closed
+2026-04-12 19:37:08,946 - config - INFO - Application shutdown complete
+2026-04-12 19:39:38,687 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 19:39:42,629 - config - INFO - Application styles loaded successfully
+2026-04-12 19:39:42,671 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 19:39:42,772 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 19:39:44,027 - config - INFO - Application started successfully
+2026-04-12 19:40:27,611 - config - INFO - Application exited with code: 0
+2026-04-12 19:40:27,631 - database.db_manager - INFO - Database connections closed
+2026-04-12 19:40:27,632 - config - INFO - Database connections closed
+2026-04-12 19:40:27,634 - config - INFO - Application shutdown complete
+2026-04-12 19:43:15,260 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 19:43:15,966 - config - INFO - Application styles loaded successfully
+2026-04-12 19:43:15,998 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 19:43:16,038 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 19:43:16,791 - config - INFO - Application started successfully
+2026-04-12 19:43:27,914 - config - INFO - Application exited with code: 0
+2026-04-12 19:43:27,934 - database.db_manager - INFO - Database connections closed
+2026-04-12 19:43:27,935 - config - INFO - Database connections closed
+2026-04-12 19:43:27,940 - config - INFO - Application shutdown complete
