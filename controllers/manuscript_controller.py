@@ -156,9 +156,23 @@ class ManuscriptController(BaseController):
         return self.execute_in_transaction(count_manuscripts_transaction)
     
     def search_manuscripts(self, query, limit=50):
-        """Search manuscripts by library name, shelf number, or book title"""
+        """Search manuscripts by library name, shelf number, or book title with proper sanitization"""
+        # Sanitize search query to prevent SQL injection
+        if not query or not isinstance(query, str):
+            return []
+        
+        query = query.strip()
+        if len(query) < 1:
+            return []
+        
+        # Remove dangerous characters
+        dangerous_chars = ['<', '>', '&', '"', "'", ';', '--', '/*', '*/']
+        for char in dangerous_chars:
+            query = query.replace(char, '')
+        
         def search_manuscripts_transaction(session):
             search_term = f"%{query}%"
+            # Use parameterized query to prevent SQL injection
             manuscripts = session.query(Manuscript, Book).join(Book).filter(
                 (Manuscript.library_name.ilike(search_term)) |
                 (Manuscript.shelf_number.ilike(search_term)) |

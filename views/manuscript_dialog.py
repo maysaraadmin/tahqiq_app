@@ -61,6 +61,19 @@ class ManuscriptDialog(QDialog):
             'copy_date': self.copy_date_edit.text().strip() or None,
             'notes': self.notes_edit.toPlainText().strip() or None
         }
+    
+    def cleanup(self):
+        """Clean up dialog resources"""
+        self.book_combo.clear()
+        self.library_edit.clear()
+        self.shelf_edit.clear()
+        self.copyist_edit.clear()
+        self.copy_date_edit.clear()
+        self.notes_edit.clear()
+    
+    def __del__(self):
+        """Destructor to ensure cleanup"""
+        self.cleanup()
 
     def accept(self):
         """Validate and accept the dialog"""

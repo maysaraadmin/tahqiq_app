@@ -35,6 +35,12 @@ class Config:
         self.DEFAULT_QUERY_LIMIT = self._validate_positive_int(os.getenv('TAHQIQ_DEFAULT_QUERY_LIMIT', '100'), 'DEFAULT_QUERY_LIMIT', 1000)
         self.MAX_QUERY_LIMIT = self._validate_positive_int(os.getenv('TAHQIQ_MAX_QUERY_LIMIT', '1000'), 'MAX_QUERY_LIMIT', 10000)
         
+        # Database connection pooling
+        self.DB_POOL_SIZE = self._validate_positive_int(os.getenv('TAHQIQ_DB_POOL_SIZE', '20'), 'DB_POOL_SIZE', 50)
+        self.DB_POOL_MAX_OVERFLOW = self._validate_positive_int(os.getenv('TAHQIQ_DB_POOL_MAX_OVERFLOW', '30'), 'DB_POOL_MAX_OVERFLOW', 100)
+        self.DB_POOL_TIMEOUT = self._validate_positive_int(os.getenv('TAHQIQ_DB_POOL_TIMEOUT', '30'), 'DB_POOL_TIMEOUT', 100)
+        self.DB_POOL_RECYCLE = self._validate_positive_int(os.getenv('TAHQIQ_DB_POOL_RECYCLE', '3600'), 'DB_POOL_RECYCLE', 10000)
+        
         # Paths
         self.BASE_DIR = Path(__file__).parent
         self.RESOURCES_DIR = self.BASE_DIR / 'views' / 'resources'

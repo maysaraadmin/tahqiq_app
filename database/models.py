@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint, DateTime, Boolean
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint, DateTime, Boolean, Index
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 import logging
+from .constants import *
 
 logger = logging.getLogger(__name__)
 
@@ -11,12 +12,13 @@ class Author(Base):
     __tablename__ = 'authors'
     __table_args__ = (
         UniqueConstraint('name', name='unique_author_name'),
-        CheckConstraint('birth_year >= 0 AND birth_year <= 3000', name='check_birth_year'),
-        CheckConstraint('death_year >= 0 AND death_year <= 3000', name='check_death_year'),
+        CheckConstraint(f'birth_year >= {MIN_YEAR} AND birth_year <= {MAX_YEAR}', name='check_birth_year'),
+        CheckConstraint(f'death_year >= {MIN_YEAR} AND death_year <= {MAX_YEAR}', name='check_death_year'),
+        Index('idx_author_name', 'name'),
     )
     
     id = Column(Integer, primary_key=True)
-    name = Column(String(200), nullable=False, unique=True)
+    name = Column(String(MAX_AUTHOR_NAME_LENGTH), nullable=False, unique=True)
     birth_year = Column(Integer)
     death_year = Column(Integer)
     bio = Column(Text)
@@ -31,12 +33,15 @@ class Book(Base):
     __tablename__ = 'books'
     __table_args__ = (
         UniqueConstraint('title', 'author_id', name='unique_book_title_author'),
-        CheckConstraint('length(title) >= 2', name='check_title_length'),
-        CheckConstraint("verification_status IN ('not_started', 'in_progress', 'verified', 'completed')", name='check_verification_status'),
+        CheckConstraint(f'length(title) >= 2', name='check_title_length'),
+        CheckConstraint(f"verification_status IN {VERIFICATION_STATUSES}", name='check_verification_status'),
+        Index('idx_book_title', 'title'),
+        Index('idx_book_author', 'author_id'),
+        Index('idx_book_title_author', 'title', 'author_id'),
     )
     
     id = Column(Integer, primary_key=True)
-    title = Column(String(300), nullable=False)
+    title = Column(String(MAX_BOOK_TITLE_LENGTH), nullable=False)
     author_id = Column(Integer, ForeignKey('authors.id'), nullable=False)
     description = Column(Text)
     verification_status = Column(String(20), default='not_started')  # not_started, in_progress, verified, completed
@@ -52,15 +57,18 @@ class Book(Base):
 class Manuscript(Base):
     __tablename__ = 'manuscripts'
     __table_args__ = (
-        CheckConstraint('length(library_name) >= 2 OR library_name IS NULL', name='check_library_name'),
-        CheckConstraint('length(copyist) >= 2 OR copyist IS NULL', name='check_copyist'),
+        CheckConstraint(f'length(library_name) >= {MIN_YEAR} OR library_name IS NULL', name='check_library_name'),
+        CheckConstraint(f'length(copyist) >= {MIN_YEAR} OR copyist IS NULL', name='check_copyist'),
+        Index('idx_manuscript_book', 'book_id'),
+        Index('idx_manuscript_library', 'library_name'),
+        Index('idx_manuscript_shelf', 'shelf_number'),
     )
     
     id = Column(Integer, primary_key=True)
     book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
-    library_name = Column(String(200))
-    shelf_number = Column(String(100))
-    copyist = Column(String(200))
+    library_name = Column(String(MAX_LIBRARY_NAME_LENGTH))
+    shelf_number = Column(String(MAX_SHELF_NUMBER_LENGTH))
+    copyist = Column(String(MAX_COPYIST_LENGTH))
     copy_date = Column(String(100))
     notes = Column(Text)
 
@@ -71,14 +79,17 @@ class SheikhRelation(Base):
     __table_args__ = (
         UniqueConstraint('student_id', 'sheikh_id', name='unique_student_sheikh_relation'),
         CheckConstraint('student_id != sheikh_id', name='check_different_authors'),
-        CheckConstraint('length(relation_type) >= 2 OR relation_type IS NULL OR relation_type = ""', name='check_relation_type'),
+        CheckConstraint(f'length(relation_type) >= {MIN_YEAR} OR relation_type IS NULL OR relation_type = ""', name='check_relation_type'),
+        Index('idx_sheikh_relation_student', 'student_id'),
+        Index('idx_sheikh_relation_sheikh', 'sheikh_id'),
+        Index('idx_sheikh_relation_type', 'relation_type'),
     )
     
     id = Column(Integer, primary_key=True)
     student_id = Column(Integer, ForeignKey('authors.id'), nullable=False)
     sheikh_id = Column(Integer, ForeignKey('authors.id'), nullable=False)
     relation_type = Column(String(50))  # سماع، إجازة، قراءة، ...
-
+    
     student = relationship('Author', foreign_keys=[student_id], back_populates='sheikhs')
     sheikh = relationship('Author', foreign_keys=[sheikh_id], back_populates='students')
 
@@ -87,6 +98,8 @@ class StudySession(Base):
     __table_args__ = (
         CheckConstraint('session_date <= datetime(\'now\')', name='check_session_date'),
         CheckConstraint('duration_minutes > 0', name='check_duration'),
+        Index('idx_study_session_book', 'book_id'),
+        Index('idx_study_session_date', 'session_date'),
     )
     
     id = Column(Integer, primary_key=True)

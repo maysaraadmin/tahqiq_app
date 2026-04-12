@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QTableWidget, QTableWidgetItem,
                              QMessageBox, QTabWidget, QHeaderView, QSpinBox,
                              QLabel, QLineEdit, QMenuBar, QMenu)
-from PyQt6.QtCore import Qt, pyqtSignal
+from PyQt6.QtCore import Qt, pyqtSignal, QThread
 from datetime import datetime
 from views.author_dialog import AuthorDialog
 from views.book_dialog import BookDialog
@@ -10,6 +10,7 @@ from views.relations_widget import RelationsWidget
 from controllers.author_controller import AuthorController
 from controllers.book_controller import BookController
 from controllers.manuscript_controller import ManuscriptController
+from utils.async_worker import LoadDataWorker, DatabaseOperationWorker
 import logging
 
 logger = logging.getLogger(__name__)
@@ -26,6 +27,9 @@ class MainWindow(QMainWindow):
         # Pagination state
         self.current_author_page = 0
         self.page_size = 50
+        
+        # Async worker tracking
+        self._current_worker = None
         
         self.setup_ui()
         self.setup_menu()
@@ -267,25 +271,52 @@ class MainWindow(QMainWindow):
                          " Arabic RTL support")
 
     def load_authors_table(self):
-        try:
-            offset = self.current_author_page * self.page_size
-            authors = self.author_controller.get_all_authors(limit=self.page_size, offset=offset)
-            
-            self.author_table.setRowCount(len(authors))
-            for row, author in enumerate(authors):
-                self.author_table.setItem(row, 0, QTableWidgetItem(str(author['id'])))
-                self.author_table.setItem(row, 1, QTableWidgetItem(author['name']))
-                self.author_table.setItem(row, 2, QTableWidgetItem(str(author['birth_year'] or '')))
-                self.author_table.setItem(row, 3, QTableWidgetItem(str(author['death_year'] or '')))
-                
-                # Add Edit, Delete, and Profile buttons
-                btn_widget = QWidget()
-                btn_layout = QHBoxLayout(btn_widget)
-                btn_layout.setContentsMargins(2, 2, 2, 2)
-                
-                profile_btn = QPushButton("Profile")
-                profile_btn.clicked.connect(lambda checked, r=row: self.view_author_profile(r))
-                profile_btn.setMaximumWidth(60)
+        """Load authors into table asynchronously"""
+        self._set_table_loading(self.author_table, True)
+        
+        # Create worker for async loading
+        worker = LoadDataWorker(self.author_controller, 'get_all_authors')
+        worker.finished.connect(self._on_authors_loaded)
+        worker.error.connect(self._on_authors_load_error)
+        
+        # Start worker in background thread
+        self._current_worker = worker
+        thread = QThread()
+        worker.moveToThread(thread)
+        thread.start()
+    
+    def _on_authors_loaded(self, authors):
+        """Handle successful author loading"""
+        self._set_table_loading(self.author_table, False)
+        
+        self.author_table.setRowCount(len(authors))
+        for row, author in enumerate(authors):
+            self.author_table.setItem(row, 0, QTableWidgetItem(str(author['id'])))
+            self.author_table.setItem(row, 1, QTableWidgetItem(author['name']))
+            self.author_table.setItem(row, 2, QTableWidgetItem(str(author['birth_year'] or '')))
+            self.author_table.setItem(row, 3, QTableWidgetItem(str(author['death_year'] or '')))
+            self.author_table.setItem(row, 4, QTableWidgetItem(author['bio'] or '')))
+        
+        self._current_worker = None
+        logger.info(f"Loaded {len(authors)} authors asynchronously")
+    
+    def _on_authors_load_error(self, error_message):
+        """Handle author loading error"""
+        self._set_table_loading(self.author_table, False)
+        self._current_worker = None
+        QMessageBox.critical(self, "Error", f"Failed to load authors: {error_message}")
+    
+    def _set_table_loading(self, table, loading):
+        """Set table loading state"""
+        if loading:
+            table.setRowCount(0)
+            table.setItem(0, 0, QTableWidgetItem("Loading..."))
+            table.setSpan(0, 0, 1, table.columnCount() - 1)
+        else:
+            # Clear loading indicator
+            if table.item(0, 0) and table.item(0, 0).text() == "Loading...":
+                table.setRowCount(0)
+                table.clearContents()
                 profile_btn.setStyleSheet("QPushButton { background-color: #3498db; }")
                 
                 edit_btn = QPushButton("Edit")

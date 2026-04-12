@@ -168,10 +168,24 @@ class AuthorDialog(QDialog):
         super().accept()
     
     def get_data(self):
-        """Get validated form data"""
+        """Get form data as dictionary"""
         return {
             'name': self.name_edit.text().strip(),
             'birth_year': self.birth_edit.text().strip() or None,
             'death_year': self.death_edit.text().strip() or None,
             'bio': self.bio_edit.toPlainText().strip()
         }
+    
+    def cleanup(self):
+        """Clean up dialog resources"""
+        self.name_edit.clear()
+        self.birth_edit.clear()
+        self.death_edit.clear()
+        self.bio_edit.clear()
+        self.name_error.clear()
+        self.birth_error.clear()
+        self.death_error.clear()
+    
+    def __del__(self):
+        """Destructor to ensure cleanup"""
+        self.cleanup()
