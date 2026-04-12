@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import (QDialog, QFormLayout, QLineEdit, QTextEdit,
                              QDialogButtonBox, QVBoxLayout)
+from PyQt6.QtCore import Qt
 
 class AuthorDialog(QDialog):
     def __init__(self, parent=None):
@@ -13,6 +14,10 @@ class AuthorDialog(QDialog):
         self.birth_edit = QLineEdit()
         self.death_edit = QLineEdit()
         self.bio_edit = QTextEdit()
+
+        # Set RTL alignment for Arabic text fields
+        self.name_edit.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.bio_edit.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         form.addRow("الاسم:", self.name_edit)
         form.addRow("سنة الميلاد:", self.birth_edit)

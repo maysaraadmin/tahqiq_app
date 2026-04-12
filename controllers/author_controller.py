@@ -23,15 +23,15 @@ class AuthorController(BaseController):
         if len(name) > config.MAX_NAME_LENGTH:
             raise ValueError("الاسم طويل جداً")
         
-        # Enhanced security: HTML escape and check for dangerous characters
-        # First HTML escape to prevent XSS
-        escaped_name = html.escape(name)
-        if escaped_name != name:
-            raise ValueError("الاسم يحتوي على أحرف HTML غير مسموحة")
+        # Enhanced security: Check for dangerous HTML characters (allow quotes)
+        dangerous_html_chars = ['<', '>', '&']
+        for char in dangerous_html_chars:
+            if char in name:
+                raise ValueError("The name contains invalid HTML characters")
         
         # Check for control characters and other dangerous patterns
         dangerous_patterns = [
-            r'[<>&"\'\x00-\x1f\x7f-\x9f]',  # Control chars and HTML
+            r'[\x00-\x1f\x7f-\x9f]',  # Control chars
             r'[\x00\x0a\x0d]',  # Null and line breaks
             r'[\uffff\ufffe]',  # Invalid Unicode
             r'[\x0b\x0c\x0e-\x1f]',  # More control chars
@@ -39,7 +39,16 @@ class AuthorController(BaseController):
         
         for pattern in dangerous_patterns:
             if re.search(pattern, name):
-                raise ValueError("الاسم يحتوي على أحرف غير مسموحة")
+                raise ValueError("The name contains invalid characters")
+        
+        # Additional validation: Check for problematic Unicode characters
+        try:
+            # Test if the name can be safely encoded/decoded
+            name.encode('utf-8').decode('utf-8')
+            # Also test Windows compatibility
+            name.encode('cp1252', errors='strict')
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            raise ValueError("The name contains invalid Unicode characters")
         
         return name
     
@@ -85,10 +94,10 @@ class AuthorController(BaseController):
             raise ValueError("سنة الميلاد لا يمكن أن تكون بعد سنة الوفاة")
         
         def add_author_transaction(session):
-            # Check for duplicate names
-            existing = session.query(Author).filter(Author.name == validated_name).first()
+            # Check for duplicate names (case-insensitive)
+            existing = session.query(Author).filter(Author.name.ilike(validated_name)).first()
             if existing:
-                raise ValueError("المؤلف موجود مسبقاً")
+                raise ValueError("Author already exists")
             
             author = Author(name=validated_name, birth_year=validated_birth, 
                           death_year=validated_death, bio=validated_bio)
@@ -102,20 +111,25 @@ class AuthorController(BaseController):
 
     def get_all_authors(self, limit=100, offset=0):
         def get_authors_transaction(session):
-            # Make a copy of author data to avoid session binding issues
-            authors = session.query(Author).order_by(Author.name).offset(offset).limit(limit).all()
-            # Convert to simple dictionaries to avoid session binding
-            author_list = []
-            for author in authors:
-                author_dict = {
+            # Use more efficient query with only needed fields
+            authors = session.query(
+                Author.id, 
+                Author.name, 
+                Author.birth_year, 
+                Author.death_year
+            ).order_by(Author.name).offset(offset).limit(limit).all()
+            
+            # Convert to dictionaries efficiently
+            return [
+                {
                     'id': author.id,
                     'name': author.name,
                     'birth_year': author.birth_year,
                     'death_year': author.death_year,
-                    'bio': author.bio
+                    'bio': None  # Skip bio for list view to improve performance
                 }
-                author_list.append(author_dict)
-            return author_list
+                for author in authors
+            ]
         
         try:
             return self.execute_in_transaction(get_authors_transaction)
@@ -134,9 +148,9 @@ class AuthorController(BaseController):
             logger.error(f"Failed to get author count: {e}")
             raise e
 
-    def delete_author(self, author_id):
+    def delete_author(self, author_id, cascade_delete=False):
         # Validate author_id
-        validated_id = self.validate_id(author_id, "معرف المؤلف")
+        validated_id = self.validate_id(author_id, "Author ID")
         
         def delete_author_transaction(session):
             author = session.query(Author).get(validated_id)
@@ -144,6 +158,52 @@ class AuthorController(BaseController):
                 raise ValueError("Author not found")
             
             author_name = author.name
+            
+            # Check for linked books
+            book_count = session.query(Book).filter(Book.author_id == validated_id).count()
+            
+            # Check for linked relations (as sheikh or student)
+            sheikh_relations = session.query(SheikhRelation).filter(SheikhRelation.sheikh_id == validated_id).count()
+            student_relations = session.query(SheikhRelation).filter(SheikhRelation.student_id == validated_id).count()
+            
+            total_relations = sheikh_relations + student_relations
+            
+            # If cascade_delete is False and there are dependencies, raise error
+            if not cascade_delete and (book_count > 0 or total_relations > 0):
+                dependencies = []
+                if book_count > 0:
+                    dependencies.append(f"{book_count} book(s)")
+                if sheikh_relations > 0:
+                    dependencies.append(f"{sheikh_relations} student relation(s)")
+                if student_relations > 0:
+                    dependencies.append(f"{student_relations} teacher relation(s)")
+                
+                raise ValueError(f"Cannot delete author '{author_name}' - linked to: {', '.join(dependencies)}. Use cascade delete to remove all linked data.")
+            
+            # If cascade_delete is True, delete all dependencies first
+            if cascade_delete:
+                # Delete linked books
+                if book_count > 0:
+                    books = session.query(Book).filter(Book.author_id == validated_id).all()
+                    for book in books:
+                        session.delete(book)
+                    logger.info(f"Deleted {book_count} books linked to author '{author_name}'")
+                
+                # Delete linked relations
+                if total_relations > 0:
+                    # Delete as sheikh
+                    sheikh_rels = session.query(SheikhRelation).filter(SheikhRelation.sheikh_id == validated_id).all()
+                    for rel in sheikh_rels:
+                        session.delete(rel)
+                    
+                    # Delete as student
+                    student_rels = session.query(SheikhRelation).filter(SheikhRelation.student_id == validated_id).all()
+                    for rel in student_rels:
+                        session.delete(rel)
+                    
+                    logger.info(f"Deleted {total_relations} relations linked to author '{author_name}'")
+            
+            # Finally delete the author
             session.delete(author)
             session.flush()
             logger.info(f"Deleted author: {author_name} (ID: {validated_id})")
@@ -153,6 +213,55 @@ class AuthorController(BaseController):
             return self.execute_in_transaction(delete_author_transaction)
         except Exception as e:
             logger.error(f"Failed to delete author {author_id}: {e}")
+            raise e
+
+    def update_author(self, author_id, name=None, birth_year=None, death_year=None, bio=None):
+        """Update an existing author with validation"""
+        # Validate author_id
+        validated_id = self.validate_id(author_id, "Author ID")
+        
+        def update_author_transaction(session):
+            # Get the existing author
+            author = session.query(Author).get(validated_id)
+            if not author:
+                raise ValueError("Author not found")
+            
+            # Update fields only if they are provided
+            if name is not None:
+                validated_name = self._validate_name(name)
+                # Check for duplicate names (case-insensitive, excluding current author)
+                existing = session.query(Author).filter(
+                    Author.name.ilike(validated_name),
+                    Author.id != validated_id
+                ).first()
+                if existing:
+                    raise ValueError("Author with this name already exists")
+                author.name = validated_name
+            
+            if birth_year is not None:
+                validated_birth = self._validate_year(birth_year, "Birth Year")
+                author.birth_year = validated_birth
+            
+            if death_year is not None:
+                validated_death = self._validate_year(death_year, "Death Year")
+                author.death_year = validated_death
+            
+            if bio is not None:
+                validated_bio = self._validate_bio(bio)
+                author.bio = validated_bio
+            
+            # Check logical consistency
+            if author.birth_year and author.death_year and author.birth_year > author.death_year:
+                raise ValueError("Birth year cannot be after death year")
+            
+            session.flush()
+            logger.info(f"Updated author: {author.name} (ID: {author.id})")
+            return True
+        
+        try:
+            return self.execute_in_transaction(update_author_transaction)
+        except Exception as e:
+            logger.error(f"Failed to update author {author_id}: {e}")
             raise e
 
     def add_sheikh_relation(self, student_id, sheikh_id, relation_type=''):

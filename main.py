@@ -2,13 +2,16 @@ import sys
 import os
 from pathlib import Path
 from PyQt6.QtWidgets import QApplication, QMessageBox
-from PyQt6.QtCore import QTranslator, QLocale
+from PyQt6.QtCore import QTranslator, QLocale, Qt
 from views.main_window import MainWindow
 from config import config
 
 def setup_application_style(app):
     """Safely load application styles with path validation"""
     try:
+        # Set RTL layout for Arabic support
+        app.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        
         # Validate path to prevent path traversal
         styles_file = config.STYLES_FILE
         if not styles_file.exists():

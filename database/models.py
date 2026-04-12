@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint, DateTime, Boolean
 from sqlalchemy.orm import relationship, declarative_base
+from datetime import datetime
 import logging
 
 logger = logging.getLogger(__name__)
@@ -31,15 +32,22 @@ class Book(Base):
     __table_args__ = (
         UniqueConstraint('title', 'author_id', name='unique_book_title_author'),
         CheckConstraint('length(title) >= 2', name='check_title_length'),
+        CheckConstraint("verification_status IN ('not_started', 'in_progress', 'verified', 'completed')", name='check_verification_status'),
     )
     
     id = Column(Integer, primary_key=True)
     title = Column(String(300), nullable=False)
     author_id = Column(Integer, ForeignKey('authors.id'), nullable=False)
     description = Column(Text)
+    verification_status = Column(String(20), default='not_started')  # not_started, in_progress, verified, completed
+    verification_notes = Column(Text)
+    verification_date = Column(DateTime)
+    is_studied = Column(Boolean, default=False)
+    study_notes = Column(Text)
 
     author = relationship('Author', back_populates='books')
     manuscripts = relationship('Manuscript', back_populates='book', cascade='all, delete-orphan')
+    study_sessions = relationship('StudySession', back_populates='book', cascade='all, delete-orphan')
 
 class Manuscript(Base):
     __tablename__ = 'manuscripts'
@@ -73,3 +81,22 @@ class SheikhRelation(Base):
 
     student = relationship('Author', foreign_keys=[student_id], back_populates='sheikhs')
     sheikh = relationship('Author', foreign_keys=[sheikh_id], back_populates='students')
+
+class StudySession(Base):
+    __tablename__ = 'study_sessions'
+    __table_args__ = (
+        CheckConstraint('session_date <= datetime(\'now\')', name='check_session_date'),
+        CheckConstraint('duration_minutes > 0', name='check_duration'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
+    session_date = Column(DateTime, default=datetime.utcnow)
+    duration_minutes = Column(Integer, default=60)
+    pages_studied = Column(Integer)
+    notes = Column(Text)
+    key_findings = Column(Text)
+    questions = Column(Text)
+    next_steps = Column(Text)
+
+    book = relationship('Book', back_populates='study_sessions')
