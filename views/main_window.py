@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         self.load_authors_table()
         
         # Connect popup signal to show messages
-        # self.popup_signal.connect(self.show_popup)
+        self.popup_signal.connect(self.show_popup)
 
     def setup_ui(self):
         self.setWindowTitle("Tahqiq App - Authors and Books Management")
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         # Create tabs
         tabs = QTabWidget()
         tabs.addTab(self.setup_author_tab(), "Authors")
-        # tabs.addTab(self.setup_book_tab(), "Books")
+        tabs.addTab(self.setup_book_tab(), "Books")
         # tabs.addTab(self.setup_manuscript_tab(), "Manuscripts")
         self.relations_widget = self.setup_relations_tab()
         tabs.addTab(self.relations_widget, "Relations")
@@ -128,7 +128,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout(tab)
         btn_layout = QHBoxLayout()
         add_btn = QPushButton("Add Book")
-        # add_btn.clicked.connect(self.add_book)
+        add_btn.clicked.connect(self.add_book)
         btn_layout.addWidget(add_btn)
         export_btn = QPushButton("Export")
         # export_btn.clicked.connect(self.export_books)
@@ -142,7 +142,7 @@ class MainWindow(QMainWindow):
         search_layout.addWidget(QLabel("Search:"))
         self.book_search = QLineEdit()
         self.book_search.setPlaceholderText("Search books...")
-        # self.book_search.textChanged.connect(self.filter_books)
+        self.book_search.textChanged.connect(self.filter_books)
         self.book_search.setAlignment(Qt.AlignmentFlag.AlignRight)
         search_layout.addWidget(self.book_search)
         search_layout.addStretch()
