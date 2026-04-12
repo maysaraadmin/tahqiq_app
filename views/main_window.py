@@ -295,7 +295,7 @@ class MainWindow(QMainWindow):
             self.author_table.setItem(row, 1, QTableWidgetItem(author['name']))
             self.author_table.setItem(row, 2, QTableWidgetItem(str(author['birth_year'] or '')))
             self.author_table.setItem(row, 3, QTableWidgetItem(str(author['death_year'] or '')))
-            self.author_table.setItem(row, 4, QTableWidgetItem(author['bio'] or '')))
+            self.author_table.setItem(row, 4, QTableWidgetItem(author['bio'] or ''))
         
         self._current_worker = None
         logger.info(f"Loaded {len(authors)} authors asynchronously")
@@ -317,29 +317,6 @@ class MainWindow(QMainWindow):
             if table.item(0, 0) and table.item(0, 0).text() == "Loading...":
                 table.setRowCount(0)
                 table.clearContents()
-                profile_btn.setStyleSheet("QPushButton { background-color: #3498db; }")
-                
-                edit_btn = QPushButton("Edit")
-                edit_btn.clicked.connect(lambda checked, r=row: self.edit_author(r))
-                edit_btn.setMaximumWidth(50)
-                
-                delete_btn = QPushButton("Delete")
-                delete_btn.clicked.connect(lambda checked, r=row: self.delete_author(r))
-                delete_btn.setMaximumWidth(50)
-                delete_btn.setStyleSheet("QPushButton { background-color: #ff4444; }")
-                
-                btn_layout.addWidget(profile_btn)
-                btn_layout.addWidget(edit_btn)
-                btn_layout.addWidget(delete_btn)
-                btn_layout.addStretch()
-                
-                self.author_table.setCellWidget(row, 4, btn_widget)
-            
-            # Update pagination controls
-            self.update_author_pagination()
-        except Exception as e:
-            logger.error(f"Failed to load authors: {e}")
-            QMessageBox.critical(self, "Error", f"Failed to load authors: {e}")
 
     def update_author_pagination(self):
         """Update author pagination controls"""

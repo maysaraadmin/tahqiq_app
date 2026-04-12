@@ -38,11 +38,11 @@ class DatabaseManager:
                         sqlite_args = {"check_same_thread": False, "timeout": 20} if "sqlite" in db_url else {"check_same_thread": False}
                         
                         # Enhanced connection pooling
-                        pool_size = 20,  # Limit number of connections
-                        max_overflow = 30,  # Allow some overflow
-                        pool_timeout = 30,  # Connection timeout
-                        pool_recycle=3600,  # Recycle connections every hour
-                        pool_pre_ping=True,  # Verify connections before use
+                        pool_size = 20  # Limit number of connections
+                        max_overflow = 30  # Allow some overflow
+                        pool_timeout = 30  # Connection timeout
+                        pool_recycle = 3600  # Recycle connections every hour
+                        pool_pre_ping = True  # Verify connections before use
                         
                         self._engine = create_engine(
                             db_url,

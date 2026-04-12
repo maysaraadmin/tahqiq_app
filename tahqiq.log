@@ -835,3 +835,25 @@ AttributeError: 'MainWindow' object has no attribute 'update_relations_widget'
 2026-04-12 19:43:27,934 - database.db_manager - INFO - Database connections closed
 2026-04-12 19:43:27,935 - config - INFO - Database connections closed
 2026-04-12 19:43:27,940 - config - INFO - Application shutdown complete
+2026-04-12 21:05:02,608 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:05:03,219 - config - INFO - Application styles loaded successfully
+2026-04-12 21:05:03,270 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:05:03,426 - database.db_manager - ERROR - Failed to initialize database: unsupported operand type(s) for -: 'int' and 'tuple'
+2026-04-12 21:05:03,428 - config - ERROR - Failed to start application: unsupported operand type(s) for -: 'int' and 'tuple'
+2026-04-12 21:05:07,731 - config - INFO - Database connections closed
+2026-04-12 21:05:07,845 - config - INFO - Application shutdown complete
+2026-04-12 21:05:28,858 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:05:29,060 - config - INFO - Application styles loaded successfully
+2026-04-12 21:05:29,063 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:05:29,086 - database.db_manager - ERROR - Failed to initialize database: unsupported operand type(s) for -: 'int' and 'tuple'
+2026-04-12 21:05:29,087 - config - ERROR - Failed to start application: unsupported operand type(s) for -: 'int' and 'tuple'
+2026-04-12 21:05:32,333 - config - INFO - Database connections closed
+2026-04-12 21:05:32,346 - config - INFO - Application shutdown complete
+2026-04-12 21:05:49,964 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:05:50,134 - config - INFO - Application styles loaded successfully
+2026-04-12 21:05:50,139 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:05:50,199 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:07:24,922 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:07:25,130 - config - INFO - Application styles loaded successfully
+2026-04-12 21:07:25,133 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:07:25,157 - database.db_manager - INFO - Database initialized successfully

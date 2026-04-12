@@ -28,7 +28,7 @@ class Config:
         self.MAX_PAGE_SIZE = self._validate_positive_int(os.getenv('TAHQIQ_MAX_PAGE_SIZE', '1000'), 'MAX_PAGE_SIZE', 10000)
         
         # Year validation settings
-        self.MIN_YEAR = self._validate_positive_int(os.getenv('TAHQIQ_MIN_YEAR', '0'), 'MIN_YEAR', 0)
+        self.MIN_YEAR = self._validate_non_negative_int(os.getenv('TAHQIQ_MIN_YEAR', '0'), 'MIN_YEAR', 0)
         self.MAX_YEAR = self._validate_positive_int(os.getenv('TAHQIQ_MAX_YEAR', '3000'), 'MAX_YEAR', 10000)
         
         # Database query limits
@@ -128,6 +128,18 @@ class Config:
             int_value = int(value)
             if int_value <= 0:
                 raise ValueError(f"{name} must be a positive integer")
+            if max_value and int_value > max_value:
+                raise ValueError(f"{name} cannot exceed {max_value}")
+            return int_value
+        except (ValueError, TypeError):
+            raise ValueError(f"{name} must be a valid integer")
+    
+    def _validate_non_negative_int(self, value, name, max_value=None):
+        """Validate non-negative integer configuration value"""
+        try:
+            int_value = int(value)
+            if int_value < 0:
+                raise ValueError(f"{name} must be a non-negative integer")
             if max_value and int_value > max_value:
                 raise ValueError(f"{name} cannot exceed {max_value}")
             return int_value

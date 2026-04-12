@@ -1,7 +1,6 @@
 """
 Database constants for model constraints
 """
-from config import config
 
 # Year constraints
 MIN_YEAR = 0
