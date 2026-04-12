@@ -15,7 +15,7 @@ class BookDialog(QDialog):
 
         # ملء قائمة المؤلفين
         for author in authors:
-            self.author_combo.addItem(author.name, author.id)
+            self.author_combo.addItem(author['name'], author['id'])
 
         form.addRow("العنوان:", self.title_edit)
         form.addRow("المؤلف:", self.author_combo)
