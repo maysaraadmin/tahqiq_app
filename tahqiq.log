@@ -196,3 +196,588 @@ NameError: name 'logger' is not defined
 2026-04-11 18:48:01,892 - database.db_manager - INFO - Database connections closed
 2026-04-11 18:48:01,892 - config - INFO - Database connections closed
 2026-04-11 18:48:01,892 - config - INFO - Application shutdown complete
+2026-04-11 20:49:52,509 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 20:49:54,024 - config - INFO - Application styles loaded successfully
+2026-04-11 20:49:54,227 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 20:49:54,623 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 20:49:57,485 - config - INFO - Application started successfully
+2026-04-11 20:50:31,080 - config - INFO - Application exited with code: 0
+2026-04-11 20:50:31,271 - database.db_manager - INFO - Database connections closed
+2026-04-11 20:50:31,349 - config - INFO - Database connections closed
+2026-04-11 20:50:31,417 - config - INFO - Application shutdown complete
+2026-04-11 20:57:20,336 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 20:57:21,164 - config - INFO - Application styles loaded successfully
+2026-04-11 20:57:21,254 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 20:57:21,706 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 20:57:23,369 - config - INFO - Application started successfully
+2026-04-11 20:58:53,113 - controllers.author_controller - INFO - Added author: عبد الله بن أحمد بن محمد بن قدامة بن مقدام بن نصر بن عبد الله المقدسي (ID: 1)
+2026-04-11 21:27:48,733 - config - INFO - Application exited with code: 0
+2026-04-11 21:27:52,858 - database.db_manager - INFO - Database connections closed
+2026-04-11 21:27:52,872 - config - INFO - Database connections closed
+2026-04-11 21:27:52,879 - config - INFO - Application shutdown complete
+2026-04-11 21:55:22,854 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 21:55:24,023 - config - INFO - Application styles loaded successfully
+2026-04-11 21:55:24,129 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 21:55:24,518 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 21:55:56,033 - config - INFO - Application started successfully
+2026-04-11 21:56:32,218 - config - INFO - Application exited with code: 0
+2026-04-11 21:56:32,320 - database.db_manager - INFO - Database connections closed
+2026-04-11 21:56:32,324 - config - INFO - Database connections closed
+2026-04-11 21:56:32,338 - config - INFO - Application shutdown complete
+2026-04-11 21:56:48,272 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 21:56:49,203 - config - INFO - Application styles loaded successfully
+2026-04-11 21:56:49,280 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 21:56:49,473 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 21:56:56,612 - config - INFO - Application started successfully
+2026-04-11 21:56:59,080 - config - INFO - Application exited with code: 0
+2026-04-11 21:56:59,190 - database.db_manager - INFO - Database connections closed
+2026-04-11 21:56:59,199 - config - INFO - Database connections closed
+2026-04-11 21:56:59,207 - config - INFO - Application shutdown complete
+2026-04-11 22:22:48,560 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:23:17,387 - config - INFO - Application styles loaded successfully
+2026-04-11 22:23:17,695 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:23:46,351 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:23:51,066 - config - INFO - Application started successfully
+2026-04-11 22:24:10,718 - controllers.author_controller - INFO - Deleted author: Test Author (ID: 2)
+2026-04-11 22:24:24,026 - config - INFO - Application exited with code: 0
+2026-04-11 22:24:24,153 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:24:24,157 - config - INFO - Database connections closed
+2026-04-11 22:24:24,161 - config - INFO - Application shutdown complete
+2026-04-11 22:33:07,780 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:33:08,383 - config - INFO - Application styles loaded successfully
+2026-04-11 22:33:08,423 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:33:08,555 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:33:09,339 - config - INFO - Application started successfully
+2026-04-11 22:40:07,253 - config - INFO - Application exited with code: 0
+2026-04-11 22:40:07,459 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:40:07,459 - config - INFO - Database connections closed
+2026-04-11 22:40:07,460 - config - INFO - Application shutdown complete
+2026-04-11 22:41:05,509 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:41:06,152 - config - INFO - Application styles loaded successfully
+2026-04-11 22:41:06,191 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:41:06,435 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:41:07,316 - config - INFO - Application started successfully
+2026-04-11 22:41:23,623 - config - INFO - Application exited with code: 0
+2026-04-11 22:41:23,718 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:41:23,738 - config - INFO - Database connections closed
+2026-04-11 22:41:23,741 - config - INFO - Application shutdown complete
+2026-04-11 22:42:14,901 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:42:38,488 - config - INFO - Application styles loaded successfully
+2026-04-11 22:42:38,684 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:42:38,979 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:42:40,521 - config - INFO - Application started successfully
+2026-04-11 22:43:06,855 - config - INFO - Application exited with code: 0
+2026-04-11 22:43:06,869 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:43:06,875 - config - INFO - Database connections closed
+2026-04-11 22:43:06,876 - config - INFO - Application shutdown complete
+2026-04-11 22:44:46,267 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:44:46,763 - config - INFO - Application styles loaded successfully
+2026-04-11 22:44:46,796 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:44:47,118 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:44:48,374 - config - INFO - Application started successfully
+2026-04-11 22:45:32,018 - config - INFO - Application exited with code: 0
+2026-04-11 22:45:32,022 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:45:32,023 - config - INFO - Database connections closed
+2026-04-11 22:45:32,028 - config - INFO - Application shutdown complete
+2026-04-11 22:46:35,451 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:46:36,495 - config - INFO - Application styles loaded successfully
+2026-04-11 22:46:36,538 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:46:36,738 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:46:37,826 - config - INFO - Application started successfully
+2026-04-11 22:47:01,143 - config - INFO - Application exited with code: 0
+2026-04-11 22:47:01,150 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:47:01,151 - config - INFO - Database connections closed
+2026-04-11 22:47:01,154 - config - INFO - Application shutdown complete
+2026-04-11 22:48:00,000 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:48:00,401 - config - INFO - Application styles loaded successfully
+2026-04-11 22:48:00,432 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:48:00,760 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:48:05,648 - config - INFO - Application started successfully
+2026-04-11 22:48:08,043 - config - INFO - Application exited with code: 0
+2026-04-11 22:48:08,064 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:48:08,066 - config - INFO - Database connections closed
+2026-04-11 22:48:08,073 - config - INFO - Application shutdown complete
+2026-04-11 22:53:51,644 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 22:53:52,667 - config - INFO - Application styles loaded successfully
+2026-04-11 22:53:52,706 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 22:53:52,820 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 22:54:00,951 - config - INFO - Application started successfully
+2026-04-11 22:54:16,778 - config - INFO - Application exited with code: 0
+2026-04-11 22:54:16,873 - database.db_manager - INFO - Database connections closed
+2026-04-11 22:54:16,876 - config - INFO - Database connections closed
+2026-04-11 22:54:16,878 - config - INFO - Application shutdown complete
+2026-04-11 23:02:07,880 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:02:08,552 - config - INFO - Application styles loaded successfully
+2026-04-11 23:02:08,691 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:02:08,878 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:02:08,910 - config - ERROR - Failed to start application: MainWindow.setup_author_tab() missing 1 required positional argument: 'tab'
+2026-04-11 23:02:22,722 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:02:22,726 - config - INFO - Database connections closed
+2026-04-11 23:02:22,730 - config - INFO - Application shutdown complete
+2026-04-11 23:03:03,589 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:03:03,696 - config - INFO - Application styles loaded successfully
+2026-04-11 23:03:03,716 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:03:03,750 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:03:03,753 - config - ERROR - Failed to start application: MainWindow.setup_author_tab() missing 1 required positional argument: 'tab'
+2026-04-11 23:03:07,381 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:03:07,386 - config - INFO - Database connections closed
+2026-04-11 23:03:07,396 - config - INFO - Application shutdown complete
+2026-04-11 23:05:35,350 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:05:35,868 - config - INFO - Application styles loaded successfully
+2026-04-11 23:05:35,947 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:05:36,041 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:09:27,847 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:09:28,046 - config - INFO - Application styles loaded successfully
+2026-04-11 23:09:28,065 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:09:28,103 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:09:40,065 - config - INFO - Application started successfully
+2026-04-11 23:09:43,280 - config - INFO - Application exited with code: 0
+2026-04-11 23:09:43,347 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:09:43,351 - config - INFO - Database connections closed
+2026-04-11 23:09:43,354 - config - INFO - Application shutdown complete
+2026-04-11 23:12:01,999 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:12:02,136 - config - INFO - Application styles loaded successfully
+2026-04-11 23:12:02,173 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:12:02,211 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:12:04,365 - config - ERROR - Failed to start application: 'PyQt6.QtCore.pyqtSignal' object has no attribute 'connect'
+2026-04-11 23:12:06,157 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:12:06,171 - config - INFO - Database connections closed
+2026-04-11 23:12:06,189 - config - INFO - Application shutdown complete
+2026-04-11 23:14:23,039 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:14:23,469 - config - INFO - Application styles loaded successfully
+2026-04-11 23:14:23,536 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:14:23,655 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:17:15,545 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:17:15,928 - config - INFO - Application styles loaded successfully
+2026-04-11 23:17:15,947 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:17:16,110 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:21:35,619 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:21:35,932 - config - INFO - Application styles loaded successfully
+2026-04-11 23:21:35,955 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:21:36,031 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:23:28,669 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:23:29,143 - config - INFO - Application styles loaded successfully
+2026-04-11 23:23:29,169 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:23:29,344 - database.db_manager - INFO - Database initialized successfully with URL: sqlite:///tahqiq_data.db
+2026-04-11 23:44:08,009 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:44:08,369 - config - INFO - Application styles loaded successfully
+2026-04-11 23:44:08,415 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:44:08,498 - database.db_manager - INFO - Database initialized successfully
+2026-04-11 23:44:10,917 - config - INFO - Application started successfully
+2026-04-11 23:44:14,940 - config - INFO - Application exited with code: 0
+2026-04-11 23:44:14,950 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:44:14,960 - config - INFO - Database connections closed
+2026-04-11 23:44:14,960 - config - INFO - Application shutdown complete
+2026-04-11 23:51:17,120 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:51:17,938 - config - INFO - Application styles loaded successfully
+2026-04-11 23:51:18,056 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:51:18,236 - database.db_manager - INFO - Database initialized successfully
+2026-04-11 23:51:18,949 - config - INFO - Application started successfully
+2026-04-11 23:51:32,586 - controllers.book_controller - INFO - Deleted book: Test Book (ID: 1)
+2026-04-11 23:51:37,810 - controllers.book_controller - INFO - Deleted book: Test Book from Script (ID: 2)
+2026-04-11 23:51:49,481 - controllers.author_controller - INFO - Deleted author: Test Student (ID: 3)
+2026-04-11 23:51:53,259 - controllers.author_controller - INFO - Deleted author: Test Sheikh (ID: 2)
+2026-04-11 23:51:58,253 - controllers.author_controller - INFO - Updated author: Author_1 (ID: 1)
+2026-04-11 23:52:01,636 - controllers.author_controller - INFO - Deleted author: Author_1 (ID: 1)
+2026-04-11 23:52:13,514 - controllers.book_controller - ERROR - Failed to delete book 2: الكتاب غير موجود
+2026-04-11 23:53:50,065 - controllers.book_controller - ERROR - Failed to delete book 2: الكتاب غير موجود
+2026-04-11 23:53:59,471 - controllers.relation_controller - ERROR - Failed to get relations for author 2: Author not found
+2026-04-11 23:54:16,704 - config - INFO - Application exited with code: 0
+2026-04-11 23:54:16,865 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:54:16,866 - config - INFO - Database connections closed
+2026-04-11 23:54:16,867 - config - INFO - Application shutdown complete
+2026-04-11 23:57:05,377 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-11 23:57:05,759 - config - INFO - Application styles loaded successfully
+2026-04-11 23:57:05,830 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-11 23:57:05,974 - database.db_manager - INFO - Database initialized successfully
+2026-04-11 23:57:06,835 - config - INFO - Application started successfully
+2026-04-11 23:57:24,478 - controllers.author_controller - INFO - Added author: ahmed (ID: 1)
+2026-04-11 23:57:36,011 - controllers.book_controller - INFO - Added book: book by ahmed (ID: 1)
+2026-04-11 23:57:55,284 - config - INFO - Application exited with code: 0
+2026-04-11 23:57:55,319 - database.db_manager - INFO - Database connections closed
+2026-04-11 23:57:55,331 - config - INFO - Database connections closed
+2026-04-11 23:57:55,342 - config - INFO - Application shutdown complete
+2026-04-12 00:01:15,762 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:01:16,262 - config - INFO - Application styles loaded successfully
+2026-04-12 00:01:16,366 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:01:16,466 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:01:17,669 - config - INFO - Application started successfully
+2026-04-12 00:02:01,605 - controllers.book_controller - INFO - Updated book: book (ID: 1)
+2026-04-12 00:02:11,510 - controllers.author_controller - INFO - Updated author: ahmed (ID: 1)
+2026-04-12 00:02:21,057 - config - INFO - Application exited with code: 0
+2026-04-12 00:02:21,061 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:02:21,062 - config - INFO - Database connections closed
+2026-04-12 00:02:21,063 - config - INFO - Application shutdown complete
+2026-04-12 00:05:45,288 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:05:46,116 - config - INFO - Application styles loaded successfully
+2026-04-12 00:05:46,186 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:05:46,583 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:05:47,784 - config - INFO - Application started successfully
+2026-04-12 00:06:23,282 - config - INFO - Application exited with code: 0
+2026-04-12 00:06:23,302 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:06:23,306 - config - INFO - Database connections closed
+2026-04-12 00:06:23,308 - config - INFO - Application shutdown complete
+2026-04-12 00:07:06,453 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:07:06,712 - config - INFO - Application styles loaded successfully
+2026-04-12 00:07:06,735 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:07:07,018 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:07:07,567 - config - INFO - Application started successfully
+2026-04-12 00:07:22,381 - config - INFO - Application exited with code: 0
+2026-04-12 00:07:22,394 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:07:22,396 - config - INFO - Database connections closed
+2026-04-12 00:07:22,396 - config - INFO - Application shutdown complete
+2026-04-12 00:07:48,260 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:07:48,379 - config - INFO - Application styles loaded successfully
+2026-04-12 00:07:48,402 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:07:48,435 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:07:49,129 - config - INFO - Application started successfully
+2026-04-12 00:08:07,676 - controllers.author_controller - INFO - Added relation: Test Author 2 -> ahmed (ss)
+2026-04-12 00:08:13,169 - config - INFO - Application exited with code: 0
+2026-04-12 00:08:13,172 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:08:13,173 - config - INFO - Database connections closed
+2026-04-12 00:08:13,174 - config - INFO - Application shutdown complete
+2026-04-12 00:18:08,105 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:18:09,110 - config - INFO - Application styles loaded successfully
+2026-04-12 00:18:09,261 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:18:09,675 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:18:10,300 - controllers.base_controller - ERROR - Transaction failed: (sqlite3.OperationalError) no such column: books.verification_status
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author_id AS books_author_id, books.description AS books_description, books.verification_status AS books_verification_status, books.verification_notes AS books_verification_notes, books.verification_date AS books_verification_date, books.is_studied AS books_is_studied, books.study_notes AS books_study_notes 
+FROM books ORDER BY books.title
+ LIMIT ? OFFSET ?]
+[parameters: (100, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 00:18:10,308 - controllers.book_controller - ERROR - Failed to get books: (sqlite3.OperationalError) no such column: books.verification_status
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author_id AS books_author_id, books.description AS books_description, books.verification_status AS books_verification_status, books.verification_notes AS books_verification_notes, books.verification_date AS books_verification_date, books.is_studied AS books_is_studied, books.study_notes AS books_study_notes 
+FROM books ORDER BY books.title
+ LIMIT ? OFFSET ?]
+[parameters: (100, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 00:18:13,476 - config - INFO - Application started successfully
+2026-04-12 00:18:25,706 - config - INFO - Application exited with code: 0
+2026-04-12 00:18:25,727 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:18:25,774 - config - INFO - Database connections closed
+2026-04-12 00:18:25,798 - config - INFO - Application shutdown complete
+2026-04-12 00:18:43,469 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:18:43,625 - config - INFO - Application styles loaded successfully
+2026-04-12 00:18:43,628 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:18:43,679 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:18:43,778 - controllers.base_controller - ERROR - Transaction failed: (sqlite3.OperationalError) no such column: books.verification_status
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author_id AS books_author_id, books.description AS books_description, books.verification_status AS books_verification_status, books.verification_notes AS books_verification_notes, books.verification_date AS books_verification_date, books.is_studied AS books_is_studied, books.study_notes AS books_study_notes 
+FROM books ORDER BY books.title
+ LIMIT ? OFFSET ?]
+[parameters: (100, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 00:18:43,782 - controllers.book_controller - ERROR - Failed to get books: (sqlite3.OperationalError) no such column: books.verification_status
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author_id AS books_author_id, books.description AS books_description, books.verification_status AS books_verification_status, books.verification_notes AS books_verification_notes, books.verification_date AS books_verification_date, books.is_studied AS books_is_studied, books.study_notes AS books_study_notes 
+FROM books ORDER BY books.title
+ LIMIT ? OFFSET ?]
+[parameters: (100, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 00:18:46,063 - config - INFO - Application started successfully
+2026-04-12 00:18:47,706 - config - INFO - Application exited with code: 0
+2026-04-12 00:18:47,727 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:18:47,753 - config - INFO - Database connections closed
+2026-04-12 00:18:47,758 - config - INFO - Application shutdown complete
+2026-04-12 00:19:07,917 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:19:08,075 - config - INFO - Application styles loaded successfully
+2026-04-12 00:19:08,078 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:19:08,112 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:19:08,369 - config - INFO - Application started successfully
+2026-04-12 00:19:55,095 - config - INFO - Application exited with code: 0
+2026-04-12 00:19:55,100 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:19:55,102 - config - INFO - Database connections closed
+2026-04-12 00:19:55,115 - config - INFO - Application shutdown complete
+2026-04-12 00:23:19,110 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:23:19,309 - config - INFO - Application styles loaded successfully
+2026-04-12 00:23:19,312 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:23:19,357 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:23:19,361 - config - ERROR - Failed to start application: name 'QLineEdit' is not defined
+2026-04-12 00:23:21,504 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:23:21,514 - config - INFO - Database connections closed
+2026-04-12 00:23:21,535 - config - INFO - Application shutdown complete
+2026-04-12 00:23:34,876 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:23:35,022 - config - INFO - Application styles loaded successfully
+2026-04-12 00:23:35,027 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:23:35,073 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:23:35,440 - config - INFO - Application started successfully
+2026-04-12 00:24:03,596 - config - INFO - Application exited with code: 0
+2026-04-12 00:24:03,604 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:24:03,613 - config - INFO - Database connections closed
+2026-04-12 00:24:03,629 - config - INFO - Application shutdown complete
+2026-04-12 00:26:31,925 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:26:32,346 - config - INFO - Application styles loaded successfully
+2026-04-12 00:26:32,382 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:26:32,464 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:26:33,873 - config - INFO - Application started successfully
+2026-04-12 00:26:42,910 - config - INFO - Application exited with code: 0
+2026-04-12 00:26:42,930 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:26:42,951 - config - INFO - Database connections closed
+2026-04-12 00:26:43,027 - config - INFO - Application shutdown complete
+2026-04-12 00:30:23,214 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:30:24,112 - config - INFO - Application styles loaded successfully
+2026-04-12 00:30:24,169 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:30:24,413 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:30:25,683 - config - INFO - Application started successfully
+2026-04-12 00:30:43,907 - config - INFO - Application exited with code: 0
+2026-04-12 00:30:43,926 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:30:43,929 - config - INFO - Database connections closed
+2026-04-12 00:30:43,938 - config - INFO - Application shutdown complete
+2026-04-12 00:36:36,508 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 00:36:37,079 - config - INFO - Application styles loaded successfully
+2026-04-12 00:36:37,110 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 00:36:37,320 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 00:36:38,481 - config - INFO - Application started successfully
+2026-04-12 00:36:52,942 - config - INFO - Application exited with code: 0
+2026-04-12 00:36:52,958 - database.db_manager - INFO - Database connections closed
+2026-04-12 00:36:52,960 - config - INFO - Database connections closed
+2026-04-12 00:36:52,962 - config - INFO - Application shutdown complete
+2026-04-12 02:26:07,832 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 02:26:08,831 - config - INFO - Application styles loaded successfully
+2026-04-12 02:26:08,907 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 02:26:09,156 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 02:26:09,213 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 02:26:13,491 - database.db_manager - INFO - Database connections closed
+2026-04-12 02:26:13,498 - config - INFO - Database connections closed
+2026-04-12 02:26:13,500 - config - INFO - Application shutdown complete
+2026-04-12 02:29:34,632 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 02:29:35,583 - config - INFO - Application styles loaded successfully
+2026-04-12 02:29:35,617 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 02:29:35,717 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 02:29:35,852 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 02:29:40,067 - database.db_manager - INFO - Database connections closed
+2026-04-12 02:29:40,089 - config - INFO - Database connections closed
+2026-04-12 02:29:40,099 - config - INFO - Application shutdown complete
+2026-04-12 02:36:22,028 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 02:36:23,468 - config - INFO - Application styles loaded successfully
+2026-04-12 02:36:23,498 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 02:36:23,596 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 02:36:23,662 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 02:36:28,140 - database.db_manager - INFO - Database connections closed
+2026-04-12 02:36:28,207 - config - INFO - Database connections closed
+2026-04-12 02:36:28,254 - config - INFO - Application shutdown complete
+2026-04-12 03:29:46,967 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 03:29:49,214 - config - INFO - Application styles loaded successfully
+2026-04-12 03:29:49,265 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 03:29:49,849 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 03:29:49,926 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 03:34:48,410 - database.db_manager - INFO - Database connections closed
+2026-04-12 03:34:48,445 - config - INFO - Database connections closed
+2026-04-12 03:34:48,446 - config - INFO - Application shutdown complete
+2026-04-12 03:42:59,996 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 03:43:01,159 - config - INFO - Application styles loaded successfully
+2026-04-12 03:43:01,200 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 03:43:01,451 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 03:43:01,496 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 03:43:08,296 - database.db_manager - INFO - Database connections closed
+2026-04-12 03:43:08,297 - config - INFO - Database connections closed
+2026-04-12 03:43:08,298 - config - INFO - Application shutdown complete
+2026-04-12 13:40:28,092 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 13:40:28,624 - config - INFO - Application styles loaded successfully
+2026-04-12 13:40:28,666 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 13:40:28,764 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 13:40:28,798 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 13:40:31,615 - database.db_manager - INFO - Database connections closed
+2026-04-12 13:40:31,624 - config - INFO - Database connections closed
+2026-04-12 13:40:31,625 - config - INFO - Application shutdown complete
+2026-04-12 14:38:11,760 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 14:38:12,429 - config - INFO - Application styles loaded successfully
+2026-04-12 14:38:12,475 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 14:38:12,622 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 14:38:12,679 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 14:38:16,679 - database.db_manager - INFO - Database connections closed
+2026-04-12 14:38:16,691 - config - INFO - Database connections closed
+2026-04-12 14:38:16,692 - config - INFO - Application shutdown complete
+2026-04-12 14:46:00,805 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 14:46:02,128 - config - INFO - Application styles loaded successfully
+2026-04-12 14:46:02,171 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 14:46:02,376 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 14:46:02,439 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 14:46:11,980 - database.db_manager - INFO - Database connections closed
+2026-04-12 14:46:11,982 - config - INFO - Database connections closed
+2026-04-12 14:46:11,983 - config - INFO - Application shutdown complete
+2026-04-12 14:47:27,412 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 14:47:27,769 - config - INFO - Application styles loaded successfully
+2026-04-12 14:47:27,772 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 14:47:27,904 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 14:47:27,918 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 14:47:30,470 - database.db_manager - INFO - Database connections closed
+2026-04-12 14:47:30,478 - config - INFO - Database connections closed
+2026-04-12 14:47:30,524 - config - INFO - Application shutdown complete
+2026-04-12 14:56:37,359 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 14:56:38,008 - config - INFO - Application styles loaded successfully
+2026-04-12 14:56:38,043 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 14:56:38,132 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 14:56:38,167 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 14:57:02,370 - database.db_manager - INFO - Database connections closed
+2026-04-12 14:57:02,391 - config - INFO - Database connections closed
+2026-04-12 14:57:02,393 - config - INFO - Application shutdown complete
+2026-04-12 15:16:52,894 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 15:16:53,412 - config - INFO - Application styles loaded successfully
+2026-04-12 15:16:53,440 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 15:16:53,708 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 15:16:53,760 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 15:21:29,745 - database.db_manager - INFO - Database connections closed
+2026-04-12 15:21:29,751 - config - INFO - Database connections closed
+2026-04-12 15:21:29,752 - config - INFO - Application shutdown complete
+2026-04-12 15:26:53,881 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 15:26:54,635 - config - INFO - Application styles loaded successfully
+2026-04-12 15:26:54,669 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 15:26:54,776 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 15:26:54,812 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 15:27:00,712 - database.db_manager - INFO - Database connections closed
+2026-04-12 15:27:00,744 - config - INFO - Database connections closed
+2026-04-12 15:27:00,745 - config - INFO - Application shutdown complete
+2026-04-12 16:24:37,841 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:24:38,472 - config - INFO - Application styles loaded successfully
+2026-04-12 16:24:38,512 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:24:38,633 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:24:38,786 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'filter_authors'
+2026-04-12 16:24:42,153 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:24:42,171 - config - INFO - Database connections closed
+2026-04-12 16:24:42,174 - config - INFO - Application shutdown complete
+2026-04-12 16:27:42,017 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:27:42,752 - config - INFO - Application styles loaded successfully
+2026-04-12 16:27:42,783 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:27:43,076 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:27:43,108 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 16:27:45,779 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:27:45,807 - config - INFO - Database connections closed
+2026-04-12 16:27:45,808 - config - INFO - Application shutdown complete
+2026-04-12 16:32:43,669 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:32:45,611 - config - INFO - Application styles loaded successfully
+2026-04-12 16:32:45,832 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:32:46,106 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:32:46,144 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 16:33:58,066 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:33:58,082 - config - INFO - Database connections closed
+2026-04-12 16:33:58,083 - config - INFO - Application shutdown complete
+2026-04-12 16:38:01,659 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:38:02,413 - config - INFO - Application styles loaded successfully
+2026-04-12 16:38:02,446 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:38:02,739 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:38:02,778 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 16:42:09,646 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:42:09,650 - config - INFO - Database connections closed
+2026-04-12 16:42:09,651 - config - INFO - Application shutdown complete
+2026-04-12 16:46:28,512 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:46:29,156 - config - INFO - Application styles loaded successfully
+2026-04-12 16:46:29,186 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:46:29,359 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:46:29,468 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'filter_authors'
+2026-04-12 16:46:32,275 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:46:32,294 - config - INFO - Database connections closed
+2026-04-12 16:46:32,312 - config - INFO - Application shutdown complete
+2026-04-12 16:47:36,113 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:47:36,713 - config - INFO - Application styles loaded successfully
+2026-04-12 16:47:36,720 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:47:36,883 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:47:37,139 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'add_book'
+2026-04-12 16:47:40,037 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:47:40,058 - config - INFO - Database connections closed
+2026-04-12 16:47:40,074 - config - INFO - Application shutdown complete
+2026-04-12 16:50:26,576 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:50:27,664 - config - INFO - Application styles loaded successfully
+2026-04-12 16:50:27,760 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:50:27,925 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:50:28,312 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'load_books_table'
+2026-04-12 16:50:30,828 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:50:30,832 - config - INFO - Database connections closed
+2026-04-12 16:50:30,832 - config - INFO - Application shutdown complete
+2026-04-12 16:53:24,486 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:53:24,991 - config - INFO - Application styles loaded successfully
+2026-04-12 16:53:25,019 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:53:25,251 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:53:25,283 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 16:53:28,172 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:53:28,173 - config - INFO - Database connections closed
+2026-04-12 16:53:28,180 - config - INFO - Application shutdown complete
+2026-04-12 16:54:22,874 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:54:23,407 - config - INFO - Application styles loaded successfully
+2026-04-12 16:54:23,411 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:54:23,564 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:54:23,568 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'export_authors'
+2026-04-12 16:54:25,801 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:54:25,848 - config - INFO - Database connections closed
+2026-04-12 16:54:25,849 - config - INFO - Application shutdown complete
+2026-04-12 16:55:11,005 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:55:11,956 - config - INFO - Application styles loaded successfully
+2026-04-12 16:55:11,991 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:55:12,221 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:55:12,309 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'filter_authors'
+2026-04-12 16:55:14,785 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:55:14,791 - config - INFO - Database connections closed
+2026-04-12 16:55:14,799 - config - INFO - Application shutdown complete
+2026-04-12 16:55:45,405 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:55:45,675 - config - INFO - Application styles loaded successfully
+2026-04-12 16:55:45,678 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:55:45,703 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:55:46,167 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'add_book'
+2026-04-12 16:55:49,105 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:55:49,106 - config - INFO - Database connections closed
+2026-04-12 16:55:49,107 - config - INFO - Application shutdown complete
+2026-04-12 16:56:21,804 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 16:56:23,025 - config - INFO - Application styles loaded successfully
+2026-04-12 16:56:23,139 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 16:56:23,331 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 16:56:24,018 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'load_books_table'
+2026-04-12 16:56:26,386 - database.db_manager - INFO - Database connections closed
+2026-04-12 16:56:26,388 - config - INFO - Database connections closed
+2026-04-12 16:56:26,388 - config - INFO - Application shutdown complete
+2026-04-12 17:07:04,654 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:07:05,297 - config - INFO - Application styles loaded successfully
+2026-04-12 17:07:05,328 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:07:05,423 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:07:05,832 - config - ERROR - Failed to start application: 'MainWindow' object has no attribute 'show_popup'
+2026-04-12 17:07:08,507 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:07:08,525 - config - INFO - Database connections closed
+2026-04-12 17:07:08,528 - config - INFO - Application shutdown complete
+2026-04-12 17:20:50,930 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:20:51,547 - config - INFO - Application styles loaded successfully
+2026-04-12 17:20:51,623 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:20:51,877 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:20:52,750 - config - INFO - Application started successfully
+2026-04-12 17:20:58,132 - config - INFO - Application exited with code: 0
+2026-04-12 17:20:58,147 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:20:58,212 - config - INFO - Database connections closed
+2026-04-12 17:20:58,232 - config - INFO - Application shutdown complete
+2026-04-12 17:27:25,265 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:27:25,792 - config - INFO - Application styles loaded successfully
+2026-04-12 17:27:25,820 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:27:25,898 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:27:26,904 - config - INFO - Application started successfully
+2026-04-12 17:27:30,928 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\main_window.py", line 507, in refresh_authors
+    self.update_relations_widget()  # Update relations widget
+AttributeError: 'MainWindow' object has no attribute 'update_relations_widget'
+2026-04-12 17:27:35,117 - controllers.base_controller - ERROR - Transaction failed: name 'Book' is not defined
+2026-04-12 17:27:35,117 - controllers.author_controller - ERROR - Failed to delete author 2: name 'Book' is not defined
+2026-04-12 17:27:55,083 - config - INFO - Application exited with code: 0
+2026-04-12 17:27:55,164 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:27:55,176 - config - INFO - Database connections closed
+2026-04-12 17:27:55,184 - config - INFO - Application shutdown complete
+2026-04-12 17:28:10,329 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:28:10,499 - config - INFO - Application styles loaded successfully
+2026-04-12 17:28:10,502 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:28:10,573 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:28:10,754 - config - INFO - Application started successfully
+2026-04-12 17:28:18,585 - controllers.base_controller - ERROR - Transaction failed: name 'Book' is not defined
+2026-04-12 17:28:18,586 - controllers.author_controller - ERROR - Failed to delete author 2: name 'Book' is not defined
+2026-04-12 17:28:23,198 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\main_window.py", line 507, in refresh_authors
+    self.update_relations_widget()  # Update relations widget
+AttributeError: 'MainWindow' object has no attribute 'update_relations_widget'
+2026-04-12 17:28:34,494 - config - INFO - Application exited with code: 0
+2026-04-12 17:28:34,497 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:28:34,497 - config - INFO - Database connections closed
+2026-04-12 17:28:34,498 - config - INFO - Application shutdown complete
+2026-04-12 17:29:42,205 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 17:29:42,456 - config - INFO - Application styles loaded successfully
+2026-04-12 17:29:42,459 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 17:29:42,505 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 17:29:42,840 - config - INFO - Application started successfully
+2026-04-12 17:30:05,521 - config - INFO - Application exited with code: 0
+2026-04-12 17:30:05,603 - database.db_manager - INFO - Database connections closed
+2026-04-12 17:30:05,665 - config - INFO - Database connections closed
+2026-04-12 17:30:05,687 - config - INFO - Application shutdown complete

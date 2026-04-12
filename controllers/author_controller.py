@@ -1,5 +1,5 @@
 from database.db_manager import DatabaseManager
-from database.models import Author, SheikhRelation
+from database.models import Author, SheikhRelation, Book
 from config import config
 from controllers.base_controller import BaseController
 import logging
