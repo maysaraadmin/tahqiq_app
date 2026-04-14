@@ -219,3 +219,34 @@ class BookController(BaseController):
         except Exception as e:
             logger.error(f"Failed to update book {book_id}: {e}")
             raise e
+
+    def get_author_books(self, author_id):
+        """Get all books for a specific author"""
+        def get_books_transaction(session):
+            # Validate author exists
+            author = session.query(Author).get(author_id)
+            if not author:
+                raise ValueError("Author not found")
+            
+            books = session.query(Book).filter(Book.author_id == author_id).all()
+            
+            result = []
+            for book in books:
+                result.append({
+                    'id': book.id,
+                    'title': book.title,
+                    'author_id': book.author_id,
+                    'author_name': author.name,
+                    'description': book.description,
+                    'verification_status': book.verification_status,
+                    'is_studied': book.is_studied,
+                    'study_notes': book.study_notes
+                })
+            
+            return result
+        
+        try:
+            return self.execute_in_transaction(get_books_transaction)
+        except Exception as e:
+            logger.error(f"Failed to get author books: {e}")
+            raise e

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint, DateTime, Boolean, Index
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueConstraint, CheckConstraint, DateTime, Boolean, Index, Float
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 import logging
@@ -52,6 +52,7 @@ class Book(Base):
     author = relationship('Author', back_populates='books')
     manuscripts = relationship('Manuscript', back_populates='book', cascade='all, delete-orphan')
     study_sessions = relationship('StudySession', back_populates='book', cascade='all, delete-orphan')
+    isnads = relationship('BookIsnad', back_populates='book', cascade='all, delete-orphan')
 
 class Manuscript(Base):
     __tablename__ = 'manuscripts'
@@ -114,6 +115,149 @@ class StudySession(Base):
 
     book = relationship('Book', back_populates='study_sessions')
     user = relationship('User', back_populates='study_sessions')
+
+class BookInvestigation(Base):
+    __tablename__ = 'book_investigations'
+    __table_args__ = (
+        Index('idx_investigation_book', 'book_id'),
+        Index('idx_investigation_user', 'user_id'),
+        Index('idx_investigation_status', 'status'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    title = Column(String(500))  # Investigation title
+    description = Column(Text)  # Investigation description
+    methodology = Column(Text)  # Research methodology
+    objectives = Column(Text)  # Research objectives
+    status = Column(String(50), default='in_progress')  # in_progress, completed, paused
+    start_date = Column(DateTime, default=datetime.utcnow)
+    completion_date = Column(DateTime)
+    notes = Column(Text)
+    
+    # Relationships
+    book = relationship('Book')
+    user = relationship('User')
+    uploaded_files = relationship('InvestigationFile', back_populates='investigation', cascade='all, delete-orphan')
+    comparisons = relationship('ManuscriptComparison', back_populates='investigation', cascade='all, delete-orphan')
+
+class InvestigationFile(Base):
+    __tablename__ = 'investigation_files'
+    __table_args__ = (
+        Index('idx_file_investigation', 'investigation_id'),
+        Index('idx_file_type', 'file_type'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    investigation_id = Column(Integer, ForeignKey('book_investigations.id'), nullable=False)
+    manuscript_id = Column(Integer, ForeignKey('manuscripts.id'))  # Link to manuscript if applicable
+    filename = Column(String(500), nullable=False)
+    original_filename = Column(String(500))
+    file_path = Column(String(1000), nullable=False)
+    file_type = Column(String(50))  # pdf, docx, txt, etc.
+    file_size = Column(Integer)
+    mime_type = Column(String(100))
+    upload_date = Column(DateTime, default=datetime.utcnow)
+    description = Column(Text)
+    is_primary = Column(Boolean, default=False)  # Primary source document
+    
+    # Relationships
+    investigation = relationship('BookInvestigation', back_populates='uploaded_files')
+    manuscript = relationship('Manuscript')
+
+class ManuscriptComparison(Base):
+    __tablename__ = 'manuscript_comparisons'
+    __table_args__ = (
+        Index('idx_comparison_investigation', 'investigation_id'),
+        Index('idx_comparison_manuscripts', 'manuscript1_id', 'manuscript2_id'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    investigation_id = Column(Integer, ForeignKey('book_investigations.id'), nullable=False)
+    manuscript1_id = Column(Integer, ForeignKey('manuscripts.id'), nullable=False)
+    manuscript2_id = Column(Integer, ForeignKey('manuscripts.id'), nullable=False)
+    comparison_date = Column(DateTime, default=datetime.utcnow)
+    similarity_score = Column(Float)  # 0.0 to 1.0
+    differences_count = Column(Integer, default=0)
+    similarities_count = Column(Integer, default=0)
+    total_words = Column(Integer, default=0)
+    comparison_method = Column(String(100))  # text_similarity, structural, etc.
+    detailed_analysis = Column(Text)  # JSON or detailed text analysis
+    key_differences = Column(Text)  # Summary of main differences
+    key_similarities = Column(Text)  # Summary of main similarities
+    notes = Column(Text)
+    
+    # Relationships
+    investigation = relationship('BookInvestigation', back_populates='comparisons')
+    manuscript1 = relationship('Manuscript', foreign_keys=[manuscript1_id])
+    manuscript2 = relationship('Manuscript', foreign_keys=[manuscript2_id])
+
+class ComparisonDetail(Base):
+    __tablename__ = 'comparison_details'
+    __table_args__ = (
+        Index('idx_detail_comparison', 'comparison_id'),
+        Index('idx_detail_type', 'detail_type'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    comparison_id = Column(Integer, ForeignKey('manuscript_comparisons.id'), nullable=False)
+    detail_type = Column(String(50))  # addition, deletion, modification, structure
+    manuscript1_text = Column(Text)
+    manuscript2_text = Column(Text)
+    position_chapter = Column(String(200))
+    position_page = Column(Integer)
+    position_line = Column(Integer)
+    confidence_score = Column(Float)
+    notes = Column(Text)
+    
+    # Relationship
+    comparison = relationship('ManuscriptComparison')
+
+class BookIsnad(Base):
+    __tablename__ = 'book_isnads'
+    
+    id = Column(Integer, primary_key=True)
+    book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
+    file_path = Column(String(500), nullable=False)
+    original_filename = Column(String(255), nullable=False)
+    upload_date = Column(DateTime, default=datetime.utcnow)
+    status = Column(String(20), default='active')  # 'active', 'archived', 'deleted'
+    notes = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    # Relationships
+    book = relationship("Book", back_populates="isnads")
+    chain_members = relationship("IsnadChain", back_populates="isnad", cascade="all, delete-orphan")
+    
+    # Constraints
+    __table_args__ = (
+        Index('idx_isnad_book', 'book_id'),
+        Index('idx_isnad_status', 'status'),
+        Index('idx_isnad_upload_date', 'upload_date'),
+    )
+
+class IsnadChain(Base):
+    __tablename__ = 'isnad_chains'
+    
+    id = Column(Integer, primary_key=True)
+    isnad_id = Column(Integer, ForeignKey('book_isnads.id'), nullable=False)
+    sheikh_name = Column(String(255), nullable=False)
+    sheikh_description = Column(Text)
+    chain_order = Column(Integer, nullable=False)
+    notes = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Relationships
+    isnad = relationship("BookIsnad", back_populates="chain_members")
+    
+    # Constraints
+    __table_args__ = (
+        Index('idx_chain_isnad', 'isnad_id'),
+        Index('idx_chain_order', 'chain_order'),
+        UniqueConstraint('isnad_id', 'chain_order', name='uq_isnad_chain_order'),
+    )
 
 class User(Base):
     __tablename__ = 'users'

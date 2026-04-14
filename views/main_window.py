@@ -72,6 +72,10 @@ class MainWindow(QMainWindow):
         tabs.addTab(self.setup_manuscript_tab(), "Manuscripts")
         self.relations_widget = self.setup_relations_tab()
         tabs.addTab(self.relations_widget, "Relations")
+        self.investigation_widget = self.setup_investigation_tab()
+        tabs.addTab(self.investigation_widget, "Investigation")
+        self.isnad_widget = self.setup_isnad_tab()
+        tabs.addTab(self.isnad_widget, "Isnad")
         layout.addWidget(tabs)
 
     def setup_author_tab(self):
@@ -1136,3 +1140,32 @@ class MainWindow(QMainWindow):
             except Exception as e:
                 logger.error(f"Logout error: {e}")
                 QMessageBox.critical(self, "Error", "An unexpected error occurred")
+
+    def setup_investigation_tab(self):
+        """Setup investigation tab for book research and manuscript comparison"""
+        from views.investigation_list_widget import InvestigationListWidget
+        widget = InvestigationListWidget(self)
+        return widget
+
+    def show_investigation_dialog(self):
+        """Show investigation dialog for selected book"""
+        from views.book_selection_dialog import BookSelectionDialog
+        
+        dialog = BookSelectionDialog(self)
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            investigation_data = dialog.get_investigation_data()
+            if investigation_data:
+                self.open_investigation(investigation_data)
+
+    def open_investigation(self, investigation_data):
+        """Open investigation dialog with provided data"""
+        from views.investigation_dialog import InvestigationDialog
+        
+        dialog = InvestigationDialog(investigation_data, self)
+        dialog.exec()
+
+    def setup_isnad_tab(self):
+        """Setup isnad tab for book transmission chains"""
+        from views.isnad_list_widget import IsnadListWidget
+        widget = IsnadListWidget(self)
+        return widget

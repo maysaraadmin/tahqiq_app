@@ -857,3 +857,673 @@ AttributeError: 'MainWindow' object has no attribute 'update_relations_widget'
 2026-04-12 21:07:25,130 - config - INFO - Application styles loaded successfully
 2026-04-12 21:07:25,133 - database.db_manager - INFO - Creating new DatabaseManager instance
 2026-04-12 21:07:25,157 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:08:39,084 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:08:39,277 - config - INFO - Application styles loaded successfully
+2026-04-12 21:08:39,284 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:08:39,315 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:12:12,183 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:12:12,751 - config - INFO - Application styles loaded successfully
+2026-04-12 21:12:12,811 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:12:12,930 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:13:40,669 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:13:40,991 - config - INFO - Application styles loaded successfully
+2026-04-12 21:13:40,994 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:13:41,108 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:13:41,866 - config - INFO - Application started successfully
+2026-04-12 21:13:41,929 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:13:57,561 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:13:57,893 - config - INFO - Application exited with code: 0
+2026-04-12 21:13:57,895 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:13:57,897 - config - INFO - Database connections closed
+2026-04-12 21:13:57,904 - config - INFO - Application shutdown complete
+2026-04-12 21:14:13,062 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:14:13,227 - config - INFO - Application styles loaded successfully
+2026-04-12 21:14:13,239 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:14:13,363 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:14:14,158 - config - INFO - Application started successfully
+2026-04-12 21:14:14,166 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:14:21,221 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:14:21,244 - config - INFO - Application exited with code: 0
+2026-04-12 21:14:21,251 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:14:21,251 - config - INFO - Database connections closed
+2026-04-12 21:14:21,252 - config - INFO - Application shutdown complete
+2026-04-12 21:17:46,140 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:17:47,301 - config - INFO - Application styles loaded successfully
+2026-04-12 21:17:47,407 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:17:47,664 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:17:49,513 - config - INFO - Application started successfully
+2026-04-12 21:17:49,537 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:18:05,791 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:18:05,883 - config - INFO - Application exited with code: 0
+2026-04-12 21:18:05,891 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:18:05,892 - config - INFO - Database connections closed
+2026-04-12 21:18:05,893 - config - INFO - Application shutdown complete
+2026-04-12 21:19:12,599 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:19:12,766 - config - INFO - Application styles loaded successfully
+2026-04-12 21:19:12,770 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:19:12,808 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:19:13,288 - config - INFO - Application started successfully
+2026-04-12 21:19:13,330 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:19:38,025 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:19:38,055 - config - INFO - Application exited with code: 0
+2026-04-12 21:19:38,076 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:19:38,077 - config - INFO - Database connections closed
+2026-04-12 21:19:38,081 - config - INFO - Application shutdown complete
+2026-04-12 21:20:50,321 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:20:51,025 - config - INFO - Application styles loaded successfully
+2026-04-12 21:20:51,055 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:20:51,257 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:20:52,570 - config - INFO - Application started successfully
+2026-04-12 21:20:52,597 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:20:57,154 - views.main_window - INFO - Study button clicked for row 0
+2026-04-12 21:20:57,229 - views.main_window - INFO - Starting study session for book ID: 1, Title: book
+2026-04-12 21:21:01,171 - views.main_window - INFO - Verify button clicked for row 0
+2026-04-12 21:21:01,172 - views.main_window - INFO - Verifying book ID: 1, Title: book
+2026-04-12 21:21:14,832 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:21:14,936 - config - INFO - Application exited with code: 0
+2026-04-12 21:21:14,952 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:21:14,966 - config - INFO - Database connections closed
+2026-04-12 21:21:14,972 - config - INFO - Application shutdown complete
+2026-04-12 21:21:44,747 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:21:44,854 - config - INFO - Application styles loaded successfully
+2026-04-12 21:21:44,877 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:21:44,963 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:21:46,271 - config - INFO - Application started successfully
+2026-04-12 21:21:46,285 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:22:07,973 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:22:08,014 - config - INFO - Application exited with code: 0
+2026-04-12 21:22:08,037 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:22:08,103 - config - INFO - Database connections closed
+2026-04-12 21:22:08,132 - config - INFO - Application shutdown complete
+2026-04-12 21:27:28,829 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:27:29,449 - config - INFO - Application styles loaded successfully
+2026-04-12 21:27:29,493 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:27:29,763 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:27:31,061 - config - INFO - Application started successfully
+2026-04-12 21:27:31,090 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:27:35,572 - views.main_window - ERROR - POPUP_ERROR: Failed to start study session: 'DatabaseManager' object has no attribute 'execute_in_transaction'
+2026-04-12 21:27:39,313 - views.main_window - ERROR - POPUP_ERROR: Failed to verify book: 'DatabaseManager' object has no attribute 'execute_in_transaction'
+2026-04-12 21:27:46,864 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:27:46,938 - config - INFO - Application exited with code: 0
+2026-04-12 21:27:46,947 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:27:46,949 - config - INFO - Database connections closed
+2026-04-12 21:27:46,967 - config - INFO - Application shutdown complete
+2026-04-12 21:31:56,962 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:31:57,675 - config - INFO - Application styles loaded successfully
+2026-04-12 21:31:57,720 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:31:58,113 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:31:58,984 - config - INFO - Application started successfully
+2026-04-12 21:31:59,064 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-12 21:38:50,013 - database.db_manager - ERROR - Transaction failed: (sqlite3.OperationalError) non-deterministic use of datetime() in a CHECK constraint
+[SQL: INSERT INTO study_sessions (book_id, session_date, duration_minutes, pages_studied, notes, key_findings, questions, next_steps) VALUES (?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: (1, '2026-04-12 17:38:50.008078', 60, None, 'Study session started for book', None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 21:38:50,015 - views.main_window - ERROR - POPUP_ERROR: Failed to start study session: (sqlite3.OperationalError) non-deterministic use of datetime() in a CHECK constraint
+[SQL: INSERT INTO study_sessions (book_id, session_date, duration_minutes, pages_studied, notes, key_findings, questions, next_steps) VALUES (?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: (1, '2026-04-12 17:38:50.008078', 60, None, 'Study session started for book', None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 21:38:55,036 - controllers.study_controller - INFO - Updated book 'book' verification status to 'verified'
+2026-04-12 21:38:55,065 - views.main_window - INFO - POPUP: Book 'book' marked as verified
+2026-04-12 21:38:59,223 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:38:59,308 - config - INFO - Application exited with code: 0
+2026-04-12 21:38:59,353 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:38:59,357 - config - INFO - Database connections closed
+2026-04-12 21:38:59,357 - config - INFO - Application shutdown complete
+2026-04-12 21:42:45,558 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:42:46,543 - config - INFO - Application styles loaded successfully
+2026-04-12 21:42:46,579 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:42:46,801 - database.db_manager - ERROR - Failed to initialize database: (sqlite3.OperationalError) no such table: 'not_started', 'in_progress', 'verified', 'completed'
+[SQL: 
+CREATE TABLE books (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300) NOT NULL, 
+	author_id INTEGER NOT NULL, 
+	description TEXT, 
+	verification_status VARCHAR(20), 
+	verification_notes TEXT, 
+	verification_date DATETIME, 
+	is_studied BOOLEAN, 
+	study_notes TEXT, 
+	PRIMARY KEY (id), 
+	CONSTRAINT unique_book_title_author UNIQUE (title, author_id), 
+	CONSTRAINT check_title_length CHECK (length(title) >= 2), 
+	CONSTRAINT check_verification_status CHECK (verification_status IN ['not_started', 'in_progress', 'verified', 'completed']), 
+	FOREIGN KEY(author_id) REFERENCES authors (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 21:42:46,810 - config - ERROR - Failed to start application: (sqlite3.OperationalError) no such table: 'not_started', 'in_progress', 'verified', 'completed'
+[SQL: 
+CREATE TABLE books (
+	id INTEGER NOT NULL, 
+	title VARCHAR(300) NOT NULL, 
+	author_id INTEGER NOT NULL, 
+	description TEXT, 
+	verification_status VARCHAR(20), 
+	verification_notes TEXT, 
+	verification_date DATETIME, 
+	is_studied BOOLEAN, 
+	study_notes TEXT, 
+	PRIMARY KEY (id), 
+	CONSTRAINT unique_book_title_author UNIQUE (title, author_id), 
+	CONSTRAINT check_title_length CHECK (length(title) >= 2), 
+	CONSTRAINT check_verification_status CHECK (verification_status IN ['not_started', 'in_progress', 'verified', 'completed']), 
+	FOREIGN KEY(author_id) REFERENCES authors (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-12 21:42:49,322 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:42:49,324 - config - INFO - Database connections closed
+2026-04-12 21:42:49,325 - config - INFO - Application shutdown complete
+2026-04-12 21:53:32,327 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 21:53:32,819 - config - INFO - Application styles loaded successfully
+2026-04-12 21:53:32,848 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 21:53:33,293 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 21:53:33,984 - config - INFO - Application started successfully
+2026-04-12 21:53:34,010 - views.main_window - INFO - Loaded 0 authors asynchronously
+2026-04-12 21:53:46,543 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 21:53:46,583 - config - INFO - Application exited with code: 0
+2026-04-12 21:53:46,599 - database.db_manager - INFO - Database connections closed
+2026-04-12 21:53:46,645 - config - INFO - Database connections closed
+2026-04-12 21:53:46,646 - config - INFO - Application shutdown complete
+2026-04-12 23:12:04,636 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-12 23:12:05,469 - config - INFO - Application styles loaded successfully
+2026-04-12 23:12:05,597 - database.db_manager - INFO - Creating new DatabaseManager instance
+2026-04-12 23:12:05,803 - database.db_manager - INFO - Database initialized successfully
+2026-04-12 23:12:09,085 - config - INFO - Application started successfully
+2026-04-12 23:12:09,148 - views.main_window - INFO - Loaded 0 authors asynchronously
+2026-04-12 23:16:48,456 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-12 23:16:49,196 - config - INFO - Application exited with code: 0
+2026-04-12 23:16:49,866 - database.db_manager - INFO - Database connections closed
+2026-04-12 23:16:49,870 - config - INFO - Database connections closed
+2026-04-12 23:16:49,874 - config - INFO - Application shutdown complete
+2026-04-14 12:21:23,092 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 12:21:24,631 - config - INFO - Application styles loaded successfully
+2026-04-14 12:21:34,376 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\login_dialog.py", line 157, in show_signup
+    signup_dialog = SignupDialog(self.parent())
+  File "D:\tahqiq_app\views\signup_dialog.py", line 26, in __init__
+    self.setup_validators()
+  File "D:\tahqiq_app\views\signup_dialog.py", line 107, in setup_validators
+    username_validator = QRegularExpressionValidator(r"[a-zA-Z0-9_]+")
+TypeError: arguments did not match any overloaded call:
+  QRegularExpressionValidator(parent: Optional[QObject] = None): argument 1 has unexpected type 'str'
+  QRegularExpressionValidator(re: QRegularExpression, parent: Optional[QObject] = None): argument 1 has unexpected type 'str'
+2026-04-14 12:21:46,748 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 12:22:02,779 - config - INFO - Application started successfully
+2026-04-14 12:22:17,508 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 12:22:17,525 - config - INFO - Application exited with code: 0
+2026-04-14 12:22:17,648 - database.db_manager - INFO - Database connections closed
+2026-04-14 12:22:17,657 - config - INFO - Database connections closed
+2026-04-14 12:22:17,660 - config - INFO - Application shutdown complete
+2026-04-14 12:23:07,569 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 12:23:07,943 - config - INFO - Application styles loaded successfully
+2026-04-14 12:27:44,752 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 12:27:44,873 - config - INFO - Application styles loaded successfully
+2026-04-14 12:28:40,348 - controllers.auth_controller - INFO - New user registered: maysara
+2026-04-14 12:28:45,652 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 12:28:45,825 - config - INFO - Application started successfully
+2026-04-14 12:29:04,492 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 12:29:04,525 - config - INFO - Application exited with code: 0
+2026-04-14 12:29:04,547 - database.db_manager - INFO - Database connections closed
+2026-04-14 12:29:04,595 - config - INFO - Database connections closed
+2026-04-14 12:29:04,607 - config - INFO - Application shutdown complete
+2026-04-14 12:30:03,613 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 12:30:04,020 - config - INFO - Application styles loaded successfully
+2026-04-14 12:30:40,433 - controllers.auth_controller - INFO - New user registered: mohamed
+2026-04-14 12:31:01,417 - utils.auth_utils - INFO - User mohamed logged in
+2026-04-14 12:31:01,419 - controllers.auth_controller - INFO - User logged in: mohamed
+2026-04-14 12:31:03,458 - views.main_window - INFO - User mohamed logged in successfully
+2026-04-14 12:31:04,632 - config - INFO - Application started successfully
+2026-04-14 12:31:04,642 - views.main_window - INFO - Loaded 1 authors asynchronously
+2026-04-14 12:31:11,482 - views.profile_dialog - ERROR - Error loading user statistics: (sqlite3.OperationalError) no such column: study_sessions.user_id
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT study_sessions.id AS study_sessions_id, study_sessions.book_id AS study_sessions_book_id, study_sessions.user_id AS study_sessions_user_id, study_sessions.session_date AS study_sessions_session_date, study_sessions.duration_minutes AS study_sessions_duration_minutes, study_sessions.pages_studied AS study_sessions_pages_studied, study_sessions.notes AS study_sessions_notes, study_sessions.key_findings AS study_sessions_key_findings, study_sessions.questions AS study_sessions_questions, study_sessions.next_steps AS study_sessions_next_steps 
+FROM study_sessions 
+WHERE study_sessions.user_id = ?) AS anon_1]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-04-14 12:31:32,159 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 12:31:32,375 - config - INFO - Application exited with code: 0
+2026-04-14 12:31:32,377 - database.db_manager - INFO - Database connections closed
+2026-04-14 12:31:32,397 - config - INFO - Database connections closed
+2026-04-14 12:31:32,397 - config - INFO - Application shutdown complete
+2026-04-14 13:12:04,246 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 13:12:04,633 - config - INFO - Application styles loaded successfully
+2026-04-14 13:12:26,921 - utils.auth_utils - INFO - User mohamed logged in
+2026-04-14 13:12:26,923 - controllers.auth_controller - INFO - User logged in: mohamed
+2026-04-14 13:12:32,465 - views.main_window - INFO - User mohamed logged in successfully
+2026-04-14 13:12:33,142 - config - INFO - Application started successfully
+2026-04-14 13:12:33,161 - views.main_window - INFO - Loaded 1 authors asynchronously
+2026-04-14 13:13:05,930 - controllers.author_controller - INFO - Added author: mohamed (ID: 2)
+2026-04-14 13:13:07,343 - views.main_window - INFO - POPUP_SUCCESS: Author 'mohamed' added successfully
+2026-04-14 13:13:07,344 - views.main_window - INFO - POPUP: Author 'mohamed' added successfully
+2026-04-14 13:13:07,408 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 13:13:39,012 - controllers.manuscript_controller - INFO - Added manuscript for book 'Test Book' at test (ID: 1)
+2026-04-14 13:13:39,032 - views.main_window - INFO - POPUP: Manuscript added successfully
+2026-04-14 13:13:48,714 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 13:13:48,899 - config - INFO - Application exited with code: 0
+2026-04-14 13:13:48,906 - database.db_manager - INFO - Database connections closed
+2026-04-14 13:13:48,907 - config - INFO - Database connections closed
+2026-04-14 13:13:48,909 - config - INFO - Application shutdown complete
+2026-04-14 13:14:55,419 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 13:14:56,423 - config - INFO - Application styles loaded successfully
+2026-04-14 13:15:10,201 - utils.auth_utils - INFO - User mohamed logged in
+2026-04-14 13:15:10,202 - controllers.auth_controller - INFO - User logged in: mohamed
+2026-04-14 13:15:13,103 - views.main_window - INFO - User mohamed logged in successfully
+2026-04-14 13:15:13,911 - config - INFO - Application started successfully
+2026-04-14 13:15:13,946 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 13:15:31,324 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 13:15:31,824 - config - INFO - Application exited with code: 0
+2026-04-14 13:15:32,018 - database.db_manager - INFO - Database connections closed
+2026-04-14 13:15:32,033 - config - INFO - Database connections closed
+2026-04-14 13:15:32,044 - config - INFO - Application shutdown complete
+2026-04-14 13:22:10,069 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 13:22:10,451 - config - INFO - Application styles loaded successfully
+2026-04-14 13:23:08,830 - utils.auth_utils - INFO - User mohamed logged in
+2026-04-14 13:23:08,831 - controllers.auth_controller - INFO - User logged in: mohamed
+2026-04-14 13:23:12,775 - views.main_window - INFO - User mohamed logged in successfully
+2026-04-14 13:23:13,883 - config - INFO - Application started successfully
+2026-04-14 13:23:13,914 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 13:23:35,994 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 13:23:36,123 - config - INFO - Application exited with code: 0
+2026-04-14 13:23:36,177 - database.db_manager - INFO - Database connections closed
+2026-04-14 13:23:36,197 - config - INFO - Database connections closed
+2026-04-14 13:23:36,198 - config - INFO - Application shutdown complete
+2026-04-14 14:10:18,629 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 14:10:19,318 - config - INFO - Application styles loaded successfully
+2026-04-14 14:10:33,483 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 14:10:33,483 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 14:10:35,640 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 14:10:36,260 - config - INFO - Application started successfully
+2026-04-14 14:10:36,348 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 14:10:52,151 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 14:10:52,261 - config - INFO - Application exited with code: 0
+2026-04-14 14:10:52,320 - database.db_manager - INFO - Database connections closed
+2026-04-14 14:10:52,335 - config - INFO - Database connections closed
+2026-04-14 14:10:52,337 - config - INFO - Application shutdown complete
+2026-04-14 14:47:40,514 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 14:47:41,252 - config - INFO - Application styles loaded successfully
+2026-04-14 14:47:57,886 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 14:47:57,886 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 14:48:00,604 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 14:48:01,680 - config - INFO - Application started successfully
+2026-04-14 14:48:01,702 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 14:48:10,835 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\main_window.py", line 1152, in show_investigation_dialog
+    dialog = BookSelectionDialog(self)
+  File "D:\tahqiq_app\views\book_selection_dialog.py", line 21, in __init__
+    self.setup_ui()
+  File "D:\tahqiq_app\views\book_selection_dialog.py", line 29, in setup_ui
+    scroll_widget = QWidget()
+NameError: name 'QWidget' is not defined
+2026-04-14 14:49:07,523 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 14:49:07,669 - config - INFO - Application exited with code: 0
+2026-04-14 14:49:07,702 - database.db_manager - INFO - Database connections closed
+2026-04-14 14:49:07,707 - config - INFO - Database connections closed
+2026-04-14 14:49:07,708 - config - INFO - Application shutdown complete
+2026-04-14 14:53:14,584 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 14:53:15,057 - config - INFO - Application styles loaded successfully
+2026-04-14 14:53:26,861 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 14:53:26,864 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 14:53:29,033 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 14:53:29,591 - config - INFO - Application started successfully
+2026-04-14 14:53:29,623 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 14:53:33,409 - views.book_selection_dialog - ERROR - Failed to load books: 'BookController' object has no attribute 'get_author_books'
+2026-04-14 14:54:01,301 - views.book_selection_dialog - ERROR - Failed to load books: 'BookController' object has no attribute 'get_author_books'
+2026-04-14 14:54:14,587 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 14:54:14,615 - config - INFO - Application exited with code: 0
+2026-04-14 14:54:14,770 - database.db_manager - INFO - Database connections closed
+2026-04-14 14:54:14,784 - config - INFO - Database connections closed
+2026-04-14 14:54:14,785 - config - INFO - Application shutdown complete
+2026-04-14 14:58:19,843 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 14:58:20,597 - config - INFO - Application styles loaded successfully
+2026-04-14 14:58:31,481 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 14:58:31,488 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 14:58:34,433 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 14:58:35,199 - config - INFO - Application started successfully
+2026-04-14 14:58:35,219 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 14:59:45,193 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\main_window.py", line 1156, in show_investigation_dialog
+    self.open_investigation(investigation_data)
+  File "D:\tahqiq_app\views\main_window.py", line 1162, in open_investigation
+    dialog = InvestigationDialog(investigation_data, self)
+  File "D:\tahqiq_app\views\investigation_dialog.py", line 71, in __init__
+    self.setup_ui()
+  File "D:\tahqiq_app\views\investigation_dialog.py", line 81, in setup_ui
+    left_panel = QWidget()
+NameError: name 'QWidget' is not defined
+2026-04-14 14:59:55,895 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 14:59:56,168 - config - INFO - Application exited with code: 0
+2026-04-14 14:59:56,176 - database.db_manager - INFO - Database connections closed
+2026-04-14 14:59:56,183 - config - INFO - Database connections closed
+2026-04-14 14:59:56,199 - config - INFO - Application shutdown complete
+2026-04-14 15:09:49,195 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 15:09:49,594 - config - INFO - Application styles loaded successfully
+2026-04-14 15:10:09,236 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 15:10:09,236 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 15:10:11,290 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 15:10:14,650 - config - INFO - Application started successfully
+2026-04-14 15:10:15,033 - views.main_window - INFO - Loaded 2 authors asynchronously
+2026-04-14 15:11:05,536 - controllers.author_controller - INFO - Added author: علمة بن مرثد (ID: 3)
+2026-04-14 15:11:05,568 - views.main_window - INFO - POPUP_SUCCESS: Author 'علمة بن مرثد' added successfully
+2026-04-14 15:11:05,568 - views.main_window - INFO - POPUP: Author 'علمة بن مرثد' added successfully
+2026-04-14 15:11:05,656 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 15:11:29,625 - views.main_window - WARNING - POPUP_WARNING: The title contains invalid Unicode characters
+2026-04-14 15:11:50,662 - views.main_window - WARNING - POPUP_WARNING: The title contains invalid Unicode characters
+2026-04-14 15:12:08,985 - controllers.investigation_controller - INFO - Created investigation: يي (ID: 1)
+2026-04-14 15:12:09,029 - views.investigation_dialog - INFO - Created investigation: 1
+2026-04-14 15:12:38,005 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\investigation_dialog.py", line 355, in upload_file
+    description, ok = QMessageBox.getText(self, "File Description", "Enter file description (optional):")
+AttributeError: type object 'QMessageBox' has no attribute 'getText'
+2026-04-14 15:12:50,578 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\investigation_dialog.py", line 355, in upload_file
+    description, ok = QMessageBox.getText(self, "File Description", "Enter file description (optional):")
+AttributeError: type object 'QMessageBox' has no attribute 'getText'
+2026-04-14 15:13:04,683 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 15:13:09,760 - config - INFO - Application exited with code: 0
+2026-04-14 15:13:09,770 - database.db_manager - INFO - Database connections closed
+2026-04-14 15:13:09,771 - config - INFO - Database connections closed
+2026-04-14 15:13:09,771 - config - INFO - Application shutdown complete
+2026-04-14 15:17:38,570 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 15:17:38,954 - config - INFO - Application styles loaded successfully
+2026-04-14 15:17:54,204 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 15:17:54,206 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 15:17:56,595 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 15:17:57,316 - views.investigation_list_widget - ERROR - Failed to load investigations: 'QTableWidgetItem' object has no attribute 'setStyleSheet'
+2026-04-14 15:18:00,573 - config - INFO - Application started successfully
+2026-04-14 15:18:00,596 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 15:18:21,226 - controllers.investigation_controller - INFO - Created investigation: يي (ID: 2)
+2026-04-14 15:18:21,256 - views.investigation_dialog - INFO - Created investigation: 2
+2026-04-14 15:18:36,425 - controllers.investigation_controller - INFO - Uploaded file: الجامعة الإسلامي.pdf to investigation 2
+2026-04-14 15:19:23,800 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 15:19:24,102 - config - INFO - Application exited with code: 0
+2026-04-14 15:19:24,107 - database.db_manager - INFO - Database connections closed
+2026-04-14 15:19:24,107 - config - INFO - Database connections closed
+2026-04-14 15:19:24,109 - config - INFO - Application shutdown complete
+2026-04-14 15:22:23,348 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 15:22:24,598 - config - INFO - Application styles loaded successfully
+2026-04-14 15:22:37,698 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 15:22:37,699 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 15:22:45,190 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 15:23:16,294 - config - INFO - Application started successfully
+2026-04-14 15:23:16,335 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 15:23:26,343 - controllers.investigation_controller - INFO - Created investigation: يي (ID: 3)
+2026-04-14 15:23:26,409 - views.investigation_dialog - INFO - Created investigation: 3
+2026-04-14 15:23:46,627 - controllers.investigation_controller - INFO - Uploaded file: tarbyah02556.pdf to investigation 3
+2026-04-14 15:24:09,338 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 15:24:09,479 - config - INFO - Application exited with code: 0
+2026-04-14 15:24:09,492 - database.db_manager - INFO - Database connections closed
+2026-04-14 15:24:09,497 - config - INFO - Database connections closed
+2026-04-14 15:24:09,504 - config - INFO - Application shutdown complete
+2026-04-14 15:29:26,408 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 15:29:27,615 - config - INFO - Application styles loaded successfully
+2026-04-14 15:29:42,357 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 15:29:42,378 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 15:29:44,517 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 15:29:45,751 - config - INFO - Application started successfully
+2026-04-14 15:29:45,813 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 15:29:52,177 - controllers.investigation_controller - INFO - Created investigation: يي (ID: 4)
+2026-04-14 15:29:52,256 - views.investigation_dialog - INFO - Created investigation: 4
+2026-04-14 15:29:59,968 - controllers.investigation_controller - INFO - Created investigation: يي (ID: 5)
+2026-04-14 15:30:00,032 - views.investigation_dialog - INFO - Created investigation: 5
+2026-04-14 15:30:21,347 - controllers.investigation_controller - INFO - Uploaded file: المتحابين في الله.pdf to investigation 5
+2026-04-14 15:30:54,263 - views.investigation_dialog - INFO - Opened PDF file: المتحابين في الله.pdf
+2026-04-14 15:30:54,990 - views.investigation_dialog - INFO - Opened PDF file: المتحابين في الله.pdf
+2026-04-14 15:31:10,686 - views.investigation_dialog - INFO - Opened PDF file: المتحابين في الله.pdf
+2026-04-14 15:31:17,086 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 15:31:17,151 - config - INFO - Application exited with code: 0
+2026-04-14 15:31:17,157 - database.db_manager - INFO - Database connections closed
+2026-04-14 15:31:17,158 - config - INFO - Database connections closed
+2026-04-14 15:31:17,159 - config - INFO - Application shutdown complete
+2026-04-14 15:54:03,404 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 15:54:34,748 - config - INFO - Application styles loaded successfully
+2026-04-14 16:01:41,941 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:01:42,258 - config - INFO - Application styles loaded successfully
+2026-04-14 16:01:58,176 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 16:01:58,176 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 16:02:00,624 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 16:02:01,867 - config - INFO - Application started successfully
+2026-04-14 16:02:01,992 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 16:02:09,964 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 241, in add_new_book
+    dialog = BookDialog(self)
+  File "D:\tahqiq_app\views\book_dialog.py", line 17, in __init__
+    for author in authors:
+TypeError: 'IsnadDialog' object is not iterable
+2026-04-14 16:02:30,027 - views.isnad_dialog - INFO - Selected book file: tarbyah02556.pdf
+2026-04-14 16:04:17,218 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 16:04:17,335 - config - INFO - Application exited with code: 0
+2026-04-14 16:04:17,394 - database.db_manager - INFO - Database connections closed
+2026-04-14 16:04:17,398 - config - INFO - Database connections closed
+2026-04-14 16:04:17,407 - config - INFO - Application shutdown complete
+2026-04-14 16:09:17,023 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:09:17,765 - config - INFO - Application styles loaded successfully
+2026-04-14 16:09:33,329 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 16:09:33,329 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 16:09:36,737 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 16:09:42,687 - config - INFO - Application started successfully
+2026-04-14 16:09:42,733 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 16:10:34,106 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 16:10:34,242 - config - INFO - Application exited with code: 0
+2026-04-14 16:10:34,285 - database.db_manager - INFO - Database connections closed
+2026-04-14 16:10:34,408 - config - INFO - Database connections closed
+2026-04-14 16:10:34,409 - config - INFO - Application shutdown complete
+2026-04-14 16:15:03,035 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:15:04,445 - config - INFO - Application styles loaded successfully
+2026-04-14 16:15:24,142 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:15:24,458 - config - INFO - Application styles loaded successfully
+2026-04-14 16:15:42,556 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 16:15:42,557 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 16:15:44,941 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 16:15:45,798 - config - INFO - Application started successfully
+2026-04-14 16:15:45,843 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 16:15:49,784 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 48
+    def get_isnad_data(self):
+                             ^
+IndentationError: unindent does not match any outer indentation level
+2026-04-14 16:15:55,604 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 16:15:55,785 - config - INFO - Application exited with code: 0
+2026-04-14 16:15:55,913 - database.db_manager - INFO - Database connections closed
+2026-04-14 16:15:55,928 - config - INFO - Database connections closed
+2026-04-14 16:15:55,935 - config - INFO - Application shutdown complete
+2026-04-14 16:16:55,166 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:16:55,318 - config - INFO - Application styles loaded successfully
+2026-04-14 16:17:07,792 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 16:17:07,794 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 16:17:09,978 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 16:17:10,377 - config - INFO - Application started successfully
+2026-04-14 16:17:10,404 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 16:17:13,891 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 48
+    def get_isnad_data(self):
+                             ^
+IndentationError: unindent does not match any outer indentation level
+2026-04-14 16:17:19,625 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 16:17:19,659 - config - INFO - Application exited with code: 0
+2026-04-14 16:17:19,797 - database.db_manager - INFO - Database connections closed
+2026-04-14 16:17:19,799 - config - INFO - Database connections closed
+2026-04-14 16:17:19,800 - config - INFO - Application shutdown complete
+2026-04-14 16:17:33,350 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:17:33,468 - config - INFO - Application styles loaded successfully
+2026-04-14 16:17:45,029 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 16:17:45,029 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 16:17:47,156 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 16:17:47,658 - config - INFO - Application started successfully
+2026-04-14 16:17:47,716 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 16:17:51,442 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 48
+    def get_isnad_data(self):
+                             ^
+IndentationError: unindent does not match any outer indentation level
+2026-04-14 16:17:55,356 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 16:17:55,385 - config - INFO - Application exited with code: 0
+2026-04-14 16:17:55,387 - database.db_manager - INFO - Database connections closed
+2026-04-14 16:17:55,388 - config - INFO - Database connections closed
+2026-04-14 16:17:55,389 - config - INFO - Application shutdown complete
+2026-04-14 16:20:18,275 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 16:20:18,528 - config - INFO - Application styles loaded successfully
+2026-04-14 17:09:08,031 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:09:08,468 - config - INFO - Application styles loaded successfully
+2026-04-14 17:09:51,341 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:09:51,343 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:09:54,820 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:09:55,712 - config - INFO - Application started successfully
+2026-04-14 17:09:55,771 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:09:59,951 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 48
+    def get_isnad_data(self):
+                             ^
+IndentationError: unindent does not match any outer indentation level
+2026-04-14 17:10:05,287 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:10:05,468 - config - INFO - Application exited with code: 0
+2026-04-14 17:10:05,485 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:10:05,489 - config - INFO - Database connections closed
+2026-04-14 17:10:05,493 - config - INFO - Application shutdown complete
+2026-04-14 17:15:24,905 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:15:25,581 - config - INFO - Application styles loaded successfully
+2026-04-14 17:15:38,717 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:15:38,717 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:15:40,729 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:15:41,849 - config - INFO - Application started successfully
+2026-04-14 17:15:41,910 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:15:45,486 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+  File "D:\tahqiq_app\views\isnad_dialog.py", line 48
+    def get_isnad_data(self):
+                             ^
+IndentationError: unindent does not match any outer indentation level
+2026-04-14 17:15:53,782 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:15:54,030 - config - INFO - Application exited with code: 0
+2026-04-14 17:15:54,065 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:15:54,080 - config - INFO - Database connections closed
+2026-04-14 17:15:54,081 - config - INFO - Application shutdown complete
+2026-04-14 17:18:19,806 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:18:20,637 - config - INFO - Application styles loaded successfully
+2026-04-14 17:18:33,171 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:18:33,171 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:18:35,126 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:18:35,990 - config - INFO - Application started successfully
+2026-04-14 17:18:36,030 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:18:39,656 - config - CRITICAL - Uncaught exception
+Traceback (most recent call last):
+  File "D:\tahqiq_app\views\isnad_list_widget.py", line 122, in add_isnad
+    from views.isnad_dialog import IsnadDialog
+ImportError: cannot import name 'IsnadDialog' from 'views.isnad_dialog' (D:\tahqiq_app\views\isnad_dialog.py)
+2026-04-14 17:18:45,669 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:18:45,800 - config - INFO - Application exited with code: 0
+2026-04-14 17:18:45,855 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:18:45,870 - config - INFO - Database connections closed
+2026-04-14 17:18:45,873 - config - INFO - Application shutdown complete
+2026-04-14 17:20:37,838 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:20:38,094 - config - INFO - Application styles loaded successfully
+2026-04-14 17:20:51,468 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:20:51,468 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:20:53,281 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:20:53,683 - config - INFO - Application started successfully
+2026-04-14 17:20:53,716 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:21:11,847 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:21:11,898 - config - INFO - Application exited with code: 0
+2026-04-14 17:21:11,943 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:21:11,945 - config - INFO - Database connections closed
+2026-04-14 17:21:11,946 - config - INFO - Application shutdown complete
+2026-04-14 17:30:30,926 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:30:32,099 - config - INFO - Application styles loaded successfully
+2026-04-14 17:31:19,570 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:31:19,570 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:31:27,114 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:31:28,887 - config - INFO - Application started successfully
+2026-04-14 17:31:28,932 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:31:33,057 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:33:06,890 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:33:06,928 - config - INFO - Application exited with code: 0
+2026-04-14 17:33:06,989 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:33:07,000 - config - INFO - Database connections closed
+2026-04-14 17:33:07,007 - config - INFO - Application shutdown complete
+2026-04-14 17:34:24,074 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:34:24,621 - config - INFO - Application styles loaded successfully
+2026-04-14 17:34:36,799 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:34:36,799 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:34:38,404 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:34:40,057 - config - INFO - Application started successfully
+2026-04-14 17:34:40,276 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:34:43,511 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:34:50,534 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:34:50,698 - config - INFO - Application exited with code: 0
+2026-04-14 17:34:50,748 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:34:50,765 - config - INFO - Database connections closed
+2026-04-14 17:34:50,767 - config - INFO - Application shutdown complete
+2026-04-14 17:36:41,322 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:36:41,508 - config - INFO - Application styles loaded successfully
+2026-04-14 17:36:51,148 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:36:51,149 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:36:54,661 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:36:55,118 - config - INFO - Application started successfully
+2026-04-14 17:36:55,138 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:36:57,753 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:37:02,815 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:37:02,839 - config - INFO - Application exited with code: 0
+2026-04-14 17:37:02,874 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:37:02,877 - config - INFO - Database connections closed
+2026-04-14 17:37:02,924 - config - INFO - Application shutdown complete
+2026-04-14 17:40:18,797 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:40:18,944 - config - INFO - Application styles loaded successfully
+2026-04-14 17:40:28,718 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:40:28,727 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:40:30,678 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:40:31,079 - config - INFO - Application started successfully
+2026-04-14 17:40:31,108 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:40:33,223 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:40:40,548 - views.isnad_dialog - INFO - Save button check - has_book: True, has_isnad: False
+2026-04-14 17:40:40,548 - views.isnad_dialog - INFO - Selected book: True, New book: 
+2026-04-14 17:40:40,550 - views.isnad_dialog - INFO - Chain length: 0
+2026-04-14 17:40:52,629 - views.isnad_dialog - INFO - Save button check - has_book: True, has_isnad: True
+2026-04-14 17:40:52,629 - views.isnad_dialog - INFO - Selected book: True, New book: None
+2026-04-14 17:40:52,629 - views.isnad_dialog - INFO - Chain length: 1
+2026-04-14 17:41:02,168 - views.isnad_dialog - INFO - Selected book file: المتحابين في الله.pdf
+2026-04-14 17:41:02,168 - views.isnad_dialog - INFO - Save button check - has_book: True, has_isnad: True
+2026-04-14 17:41:02,168 - views.isnad_dialog - INFO - Selected book: True, New book: C:/Users/T/Downloads/المتحابين في الله.pdf
+2026-04-14 17:41:02,170 - views.isnad_dialog - INFO - Chain length: 1
+2026-04-14 17:41:25,817 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:41:26,034 - config - INFO - Application exited with code: 0
+2026-04-14 17:41:26,059 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:41:26,062 - config - INFO - Database connections closed
+2026-04-14 17:41:26,063 - config - INFO - Application shutdown complete
+2026-04-14 17:42:29,731 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 17:42:30,046 - config - INFO - Application styles loaded successfully
+2026-04-14 17:42:40,611 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 17:42:40,611 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 17:42:41,894 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 17:42:42,307 - config - INFO - Application started successfully
+2026-04-14 17:42:42,338 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 17:42:44,962 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:42:57,957 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 17:43:04,356 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:43:04,474 - config - INFO - Application exited with code: 0
+2026-04-14 17:43:04,502 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:43:04,504 - config - INFO - Database connections closed
+2026-04-14 17:43:04,505 - config - INFO - Application shutdown complete
