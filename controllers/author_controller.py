@@ -3,6 +3,7 @@ from database.models import Author, SheikhRelation, Book
 from config import config
 from controllers.base_controller import BaseController
 from utils.exception_handler import handle_exceptions, ValidationError, DatabaseError, SecurityError
+from utils.cache_manager import cache_manager, AUTHORS_CACHE, cached
 import logging
 import re
 import html
@@ -149,19 +150,39 @@ class AuthorController(BaseController):
             return author.id
         
         # Execute in transaction with isolation
-        return self.execute_in_transaction(add_author_transaction)
+        result = self.execute_in_transaction(add_author_transaction)
+        
+        # Clear cache after adding author
+        cache_manager.clear(AUTHORS_CACHE)
+        logger.debug("Cleared authors cache after adding author")
+        
+        return result
 
+    @handle_exceptions(
+        default_return=[],
+        error_message="Failed to get authors",
+        show_user_message=False
+    )
     def get_all_authors(self, limit=None, offset=0):
-        """Get all authors with pagination support"""
+        """Get all authors with pagination support and caching"""
         if limit is None:
             limit = config.DEFAULT_QUERY_LIMIT
         if limit > config.MAX_QUERY_LIMIT:
             limit = config.MAX_QUERY_LIMIT
-            
+        
+        # Generate cache key
+        cache_key = f"authors_{limit}_{offset}"
+        
+        # Try to get from cache first
+        cached_result = cache_manager.get(AUTHORS_CACHE, cache_key)
+        if cached_result is not None:
+            logger.debug(f"Cache hit for authors: {cache_key}")
+            return cached_result
+        
         def get_authors_transaction(session):
             query = session.query(Author).offset(offset).limit(limit)
             authors = query.all()
-            return [
+            result = [
                 {
                     'id': author.id,
                     'name': author.name,
@@ -171,9 +192,14 @@ class AuthorController(BaseController):
                 }
                 for author in authors
             ]
+            return result
         
         try:
-            return self.execute_in_transaction(get_authors_transaction)
+            result = self.execute_in_transaction(get_authors_transaction)
+            # Cache the result
+            cache_manager.put(AUTHORS_CACHE, cache_key, result, ttl=300)  # 5 minutes
+            logger.debug(f"Cached authors: {cache_key}")
+            return result
         except Exception as e:
             logger.error(f"Failed to get authors: {e}")
             raise

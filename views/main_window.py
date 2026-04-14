@@ -660,7 +660,7 @@ class MainWindow(QMainWindow):
             # Open edit dialog
             from views.book_edit_dialog import BookEditDialog
             dialog = BookEditDialog(book_data, authors, self)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 data = dialog.get_data()
                 self.book_controller.update_book(book_id, **data)
                 self.load_books_table()
@@ -896,7 +896,7 @@ class MainWindow(QMainWindow):
             
             from views.manuscript_dialog import ManuscriptDialog
             dialog = ManuscriptDialog(books, self)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 data = dialog.get_data()
                 self.manuscript_controller.add_manuscript(**data)
                 self.load_manuscripts_table()
@@ -931,7 +931,7 @@ class MainWindow(QMainWindow):
             books = self.book_controller.get_all_books()
             from views.manuscript_dialog import ManuscriptDialog
             dialog = ManuscriptDialog(books, self, manuscript_data)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 data = dialog.get_data()
                 self.manuscript_controller.update_manuscript(manuscript_id, **data)
                 self.load_manuscripts_table()

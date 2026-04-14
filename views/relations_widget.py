@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
                              QTableWidget, QTableWidgetItem, QComboBox,
-                             QLabel, QHeaderView, QMessageBox)
+                             QLabel, QHeaderView, QMessageBox, QDialog)
 from PyQt6.QtCore import Qt
 from database.models import Author
 from views.sheikh_student_dialog import SheikhStudentDialog
@@ -102,7 +102,7 @@ class RelationsWidget(QWidget):
                 return
             
             dialog = SheikhStudentDialog(self.author_controller, current_author_id, self)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 self.load_relations()
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to add relation: {e}")
