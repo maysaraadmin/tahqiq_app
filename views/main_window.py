@@ -1,15 +1,19 @@
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QTableWidget, QTableWidgetItem,
                              QMessageBox, QTabWidget, QHeaderView, QSpinBox,
-                             QLabel, QLineEdit, QMenuBar, QMenu)
+                             QLabel, QLineEdit, QMenuBar, QMenu, QDialog)
 from PyQt6.QtCore import Qt, pyqtSignal, QThread
 from datetime import datetime
 from views.author_dialog import AuthorDialog
 from views.book_dialog import BookDialog
 from views.relations_widget import RelationsWidget
+from views.login_dialog import LoginDialog
+from views.signup_dialog import SignupDialog
+from views.profile_dialog import ProfileDialog
 from controllers.author_controller import AuthorController
 from controllers.book_controller import BookController
 from controllers.manuscript_controller import ManuscriptController
+from controllers.auth_controller import auth_controller
 from utils.async_worker import LoadDataWorker, DatabaseOperationWorker
 import logging
 
@@ -28,15 +32,30 @@ class MainWindow(QMainWindow):
         self.current_author_page = 0
         self.page_size = 50
         
-        # Async worker tracking
+        # Async worker and thread tracking
         self._current_worker = None
+        self._current_thread = None
         
+        # Hide main window initially
+        self.hide()
+        
+        # Check authentication first
+        if not self.check_authentication():
+            return
+        
+        # Only setup UI after successful authentication
         self.setup_ui()
         self.setup_menu()
         self.load_authors_table()
         
         # Connect popup signal to show messages
         self.popup_signal.connect(self.show_popup)
+        
+        # Show main window after everything is ready
+        self.show()
+        
+        # Cleanup on close
+        self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
 
     def setup_ui(self):
         self.setWindowTitle("Tahqiq App - Authors and Books Management")
@@ -68,10 +87,6 @@ class MainWindow(QMainWindow):
         btn_layout.addWidget(add_btn)
         btn_layout.addWidget(delete_btn)
         btn_layout.addWidget(refresh_btn)
-        export_btn = QPushButton("Export")
-        # export_btn.clicked.connect(self.export_authors)
-        export_btn.setStyleSheet("QPushButton { background-color: #27ae60; }")
-        btn_layout.addWidget(export_btn)
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
@@ -134,10 +149,6 @@ class MainWindow(QMainWindow):
         add_btn = QPushButton("Add Book")
         add_btn.clicked.connect(self.add_book)
         btn_layout.addWidget(add_btn)
-        export_btn = QPushButton("Export")
-        # export_btn.clicked.connect(self.export_books)
-        export_btn.setStyleSheet("QPushButton { background-color: #27ae60; }")
-        btn_layout.addWidget(export_btn)
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
@@ -169,10 +180,6 @@ class MainWindow(QMainWindow):
         add_btn = QPushButton("Add Manuscript")
         add_btn.clicked.connect(self.add_manuscript)
         btn_layout.addWidget(add_btn)
-        export_btn = QPushButton("Export")
-        export_btn.clicked.connect(self.export_manuscripts)
-        export_btn.setStyleSheet("QPushButton { background-color: #27ae60; }")
-        btn_layout.addWidget(export_btn)
         btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
@@ -207,6 +214,27 @@ class MainWindow(QMainWindow):
         """Setup application menu bar"""
         menubar = self.menuBar()
         
+        # User menu (authentication)
+        user_menu = menubar.addMenu("User")
+        
+        current_user = auth_controller.get_current_user()
+        if current_user:
+            # Profile action
+            profile_action = user_menu.addAction("Profile")
+            profile_action.triggered.connect(self.show_profile_dialog)
+            
+            # Logout action
+            logout_action = user_menu.addAction("Logout")
+            logout_action.triggered.connect(self.handle_logout)
+        else:
+            # Login action
+            login_action = user_menu.addAction("Login")
+            login_action.triggered.connect(self.show_login_dialog)
+            
+            # Signup action
+            signup_action = user_menu.addAction("Create Account")
+            signup_action.triggered.connect(self.show_signup_dialog)
+        
         # File menu
         file_menu = menubar.addMenu("File")
         
@@ -216,18 +244,6 @@ class MainWindow(QMainWindow):
         
         restore_action = file_menu.addAction("Restore Backup")
         restore_action.triggered.connect(self.restore_backup)
-        
-        file_menu.addSeparator()
-        
-        # Export actions
-        export_authors_action = file_menu.addAction("Export Authors")
-        # export_authors_action.triggered.connect(self.export_authors)
-        
-        export_books_action = file_menu.addAction("Export Books")
-        # export_books_action.triggered.connect(self.export_books)
-        
-        export_manuscripts_action = file_menu.addAction("Export Manuscripts")
-        # export_manuscripts_action.triggered.connect(self.export_manuscripts)
         
         file_menu.addSeparator()
         
@@ -258,15 +274,13 @@ class MainWindow(QMainWindow):
 
     def show_about(self):
         """Show about dialog"""
-        QMessageBox.about(self, "About Tahqiq App", 
-                         "Tahqiq & Asanid Tracker v1.0\n\n"
-                         "A comprehensive tool for managing Islamic manuscripts, "
-                         "books, authors, and chains of transmission.\n\n"
+        QMessageBox.about(self, "About Tahqiq App",
+                         "Tahqiq App - Research Management System\n\n"
+                         "Version 1.0.0\n\n"
                          "Features:\n"
                          " Author, Book, and Manuscript management\n"
                          " Sheikh-Student relationship tracking\n"
                          " Study session management\n"
-                         " CSV export functionality\n"
                          " Database backup and restore\n"
                          " Arabic RTL support")
 
@@ -281,9 +295,16 @@ class MainWindow(QMainWindow):
         
         # Start worker in background thread
         self._current_worker = worker
-        thread = QThread()
-        worker.moveToThread(thread)
-        thread.start()
+        self._current_thread = QThread()
+        worker.moveToThread(self._current_thread)
+        
+        # Connect thread started signal to start work
+        self._current_thread.started.connect(worker.start_work)
+        # Connect thread finished signal to cleanup
+        self._current_thread.finished.connect(self._on_thread_finished)
+        
+        # Start the thread
+        self._current_thread.start()
     
     def _on_authors_loaded(self, authors):
         """Handle successful author loading"""
@@ -298,13 +319,22 @@ class MainWindow(QMainWindow):
             self.author_table.setItem(row, 4, QTableWidgetItem(author['bio'] or ''))
         
         self._current_worker = None
+        if self._current_thread:
+            self._current_thread.quit()
+            self._current_thread.wait()
+            self._current_thread = None
         logger.info(f"Loaded {len(authors)} authors asynchronously")
     
     def _on_authors_load_error(self, error_message):
         """Handle author loading error"""
         self._set_table_loading(self.author_table, False)
         self._current_worker = None
-        QMessageBox.critical(self, "Error", f"Failed to load authors: {error_message}")
+        if self._current_thread:
+            self._current_thread.quit()
+            self._current_thread.wait()
+            self._current_thread = None
+        logger.error(f"POPUP_ERROR: Failed to load authors: {error_message}")
+        self.show_error(f"Failed to load authors: {error_message}")
     
     def _set_table_loading(self, table, loading):
         """Set table loading state"""
@@ -361,7 +391,8 @@ class MainWindow(QMainWindow):
         if dialog.exec():
             name = dialog.name_edit.text().strip()
             if not name:
-                QMessageBox.warning(self, "Warning", "Name is required")
+                logger.warning("POPUP_WARNING: Name is required")
+                self.show_warning("Name is required")
                 return
             
             birth = dialog.birth_edit.text().strip()
@@ -378,11 +409,14 @@ class MainWindow(QMainWindow):
                 self.current_author_page = 0  # Reset to first page
                 self.load_authors_table()
                 self.update_relations_widget()  # Update relations widget
+                logger.info(f"POPUP_SUCCESS: Author '{name}' added successfully")
                 self.popup_signal.emit(f"Author '{name}' added successfully")
             except ValueError as e:
-                QMessageBox.warning(self, "Warning", str(e))
+                logger.warning(f"POPUP_WARNING: {str(e)}")
+                self.show_warning(str(e))
             except Exception as e:
-                QMessageBox.critical(self, "Error", f"Add failed: {e}")
+                logger.error(f"POPUP_ERROR: Add failed: {e}")
+                self.show_error(f"Add failed: {e}")
 
     def edit_author(self, row):
         """Edit an author"""
@@ -390,7 +424,7 @@ class MainWindow(QMainWindow):
             # Get author data
             id_item = self.author_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Author ID not found")
+                self.show_warning("Author ID not found")
                 return
             
             author_id = int(id_item.text())
@@ -404,7 +438,7 @@ class MainWindow(QMainWindow):
                     break
             
             if not author_data:
-                QMessageBox.warning(self, "Error", "Author not found")
+                self.show_warning("Author not found")
                 return
             
             # Open edit dialog
@@ -415,12 +449,13 @@ class MainWindow(QMainWindow):
                 self.author_controller.update_author(author_id, **data)
                 self.load_authors_table()
                 self.update_relations_widget()  # Update relations widget
+                logger.info("POPUP_SUCCESS: Author updated successfully")
                 self.popup_signal.emit("Author updated successfully")
         
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Update failed: {e}")
+            self.show_error(f"Update failed: {e}")
 
     def delete_author(self, row=None):
         """Delete an author"""
@@ -428,13 +463,13 @@ class MainWindow(QMainWindow):
             row = self.author_table.currentRow()
         
         if row < 0:
-            QMessageBox.warning(self, "Warning", "Please select an author to delete")
+            self.show_warning("Please select an author to delete")
             return
         
         # Safe null reference check
         id_item = self.author_table.item(row, 0)
         if not id_item:
-            QMessageBox.warning(self, "Error", "Author ID not found")
+            self.show_warning("Author ID not found")
             return
         
         author_id = int(id_item.text())
@@ -453,12 +488,9 @@ class MainWindow(QMainWindow):
         except ValueError as e:
             # If there are dependencies, show cascade delete warning
             if "linked to:" in str(e):
-                reply = QMessageBox.question(
-                    self,
+                reply = self.show_question(
                     "Cascade Delete Required",
-                    f"{str(e)}\n\nDo you want to delete all linked data (books and relations)?\n\nThis action cannot be undone.",
-                    QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-                    QMessageBox.StandardButton.No
+                    f"{str(e)}\n\nDo you want to delete all linked data (books and relations)?\n\nThis action cannot be undone."
                 )
                 
                 if reply == QMessageBox.StandardButton.Yes:
@@ -469,12 +501,12 @@ class MainWindow(QMainWindow):
                         self.update_relations_widget()
                         self.popup_signal.emit(f"Author '{author_name}' and all linked data deleted successfully")
                     except Exception as cascade_error:
-                        QMessageBox.critical(self, "Error", f"Cascade delete failed: {cascade_error}")
+                        self.show_error(f"Cascade delete failed: {cascade_error}")
             else:
                 # Other validation error
-                QMessageBox.warning(self, "Warning", str(e))
+                self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Delete failed: {e}")
+            self.show_error(f"Delete failed: {e}")
 
     def update_author_pagination(self):
         """Update author pagination controls"""
@@ -535,21 +567,26 @@ class MainWindow(QMainWindow):
                 study_btn = QPushButton("Study")
                 study_btn.clicked.connect(lambda checked, r=row: self.study_book(r))
                 study_btn.setMaximumWidth(50)
-                study_btn.setStyleSheet("QPushButton { background-color: #27ae60; }")
+                study_btn.setStyleSheet("QPushButton { background-color: #27ae60; color: white; padding: 2px; }")
+                study_btn.setCursor(Qt.CursorShape.PointingHandCursor)
                 
                 verify_btn = QPushButton("Verify")
                 verify_btn.clicked.connect(lambda checked, r=row: self.verify_book(r))
                 verify_btn.setMaximumWidth(50)
-                verify_btn.setStyleSheet("QPushButton { background-color: #f39c12; }")
+                verify_btn.setStyleSheet("QPushButton { background-color: #f39c12; color: white; padding: 2px; }")
+                verify_btn.setCursor(Qt.CursorShape.PointingHandCursor)
                 
                 edit_btn = QPushButton("Edit")
                 edit_btn.clicked.connect(lambda checked, r=row: self.edit_book(r))
                 edit_btn.setMaximumWidth(50)
+                edit_btn.setStyleSheet("QPushButton { background-color: #3498db; color: white; padding: 2px; }")
+                edit_btn.setCursor(Qt.CursorShape.PointingHandCursor)
                 
                 delete_btn = QPushButton("Delete")
                 delete_btn.clicked.connect(lambda checked, r=row: self.delete_book(r))
                 delete_btn.setMaximumWidth(50)
-                delete_btn.setStyleSheet("QPushButton { background-color: #ff4444; }")
+                delete_btn.setStyleSheet("QPushButton { background-color: #e74c3c; color: white; padding: 2px; }")
+                delete_btn.setCursor(Qt.CursorShape.PointingHandCursor)
                 
                 btn_layout.addWidget(study_btn)
                 btn_layout.addWidget(verify_btn)
@@ -559,13 +596,13 @@ class MainWindow(QMainWindow):
                 
                 self.book_table.setCellWidget(row, 5, btn_widget)
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to load books: {e}")
+            self.show_error(f"Failed to load books: {e}")
 
     def add_book(self):
         try:
             authors = self.author_controller.get_all_authors()
             if not authors:
-                QMessageBox.warning(self, "Warning", "No authors found. Please add an author first")
+                self.show_warning("No authors found. Please add an author first")
                 return
             
             dialog = BookDialog(authors, self)
@@ -575,20 +612,20 @@ class MainWindow(QMainWindow):
                 desc = dialog.desc_edit.toPlainText().strip()
                 
                 if not title:
-                    QMessageBox.warning(self, "Warning", "Book title is required")
+                    self.show_warning("Book title is required")
                     return
                 
                 if not author_id:
-                    QMessageBox.warning(self, "Warning", "Author selection is required")
+                    self.show_warning("Author selection is required")
                     return
                 
                 self.book_controller.add_book(title, author_id, desc)
                 self.load_books_table()
                 self.popup_signal.emit(f"Book '{title}' added successfully")
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to add book: {e}")
+            self.show_error(f"Failed to add book: {e}")
 
     def edit_book(self, row):
         """Edit a book"""
@@ -596,7 +633,7 @@ class MainWindow(QMainWindow):
             # Get book data
             id_item = self.book_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Book ID not found")
+                self.show_warning("Book ID not found")
                 return
             
             book_id = int(id_item.text())
@@ -610,7 +647,7 @@ class MainWindow(QMainWindow):
                     break
             
             if not book_data:
-                QMessageBox.warning(self, "Error", "Book not found")
+                self.show_warning("Book not found")
                 return
             
             # Get authors for the dialog
@@ -626,13 +663,36 @@ class MainWindow(QMainWindow):
                 self.popup_signal.emit("Book updated successfully")
         
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Update failed: {e}")
+            self.show_error(f"Update failed: {e}")
 
     def show_popup(self, message):
         """Show popup message"""
+        logger.info(f"POPUP: {message}")
         QMessageBox.information(self, "Notification", message)
+    
+    def show_warning(self, message):
+        """Show warning popup with logging"""
+        logger.warning(f"POPUP_WARNING: {message}")
+        QMessageBox.warning(self, "Warning", message)
+    
+    def show_error(self, message):
+        """Show error popup with logging"""
+        logger.error(f"POPUP_ERROR: {message}")
+        QMessageBox.critical(self, "Error", message)
+    
+    def show_question(self, title, message):
+        """Show question popup with logging"""
+        logger.info(f"POPUP_QUESTION: {title} - {message}")
+        reply = QMessageBox.question(
+            self,
+            title,
+            message,
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No
+        )
+        return reply
 
     def update_relations_widget(self):
         """Update the relations widget to refresh authors and relations"""
@@ -697,7 +757,7 @@ class MainWindow(QMainWindow):
             # Get author data
             id_item = self.author_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Author ID not found")
+                self.show_warning("Author ID not found")
                 return
             
             author_id = int(id_item.text())
@@ -713,7 +773,7 @@ class MainWindow(QMainWindow):
                     break
             
             if not author_data:
-                QMessageBox.warning(self, "Error", "Author not found")
+                self.show_warning("Author not found")
                 return
             
             # Open author profile view
@@ -724,7 +784,7 @@ class MainWindow(QMainWindow):
             profile_dialog.exec()
             
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to open author profile: {e}")
+            self.show_error(f"Failed to open author profile: {e}")
 
     def study_book(self, row):
         """Start study session for a book"""
@@ -732,7 +792,7 @@ class MainWindow(QMainWindow):
             # Get book data
             id_item = self.book_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Book ID not found")
+                self.show_warning("Book ID not found")
                 return
             
             book_id = int(id_item.text())
@@ -752,10 +812,10 @@ class MainWindow(QMainWindow):
                 self.popup_signal.emit(f"Study session started for '{book_title}' (Session ID: {session_id})")
                 self.load_books_table()  # Refresh to show updated studied status
             except Exception as e:
-                QMessageBox.critical(self, "Error", f"Failed to start study session: {e}")
+                self.show_error(f"Failed to start study session: {e}")
         
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to study book: {e}")
+            self.show_error(f"Failed to study book: {e}")
 
     def verify_book(self, row):
         """Verify a book"""
@@ -763,7 +823,7 @@ class MainWindow(QMainWindow):
             # Get book data
             id_item = self.book_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Book ID not found")
+                self.show_warning("Book ID not found")
                 return
             
             book_id = int(id_item.text())
@@ -783,10 +843,10 @@ class MainWindow(QMainWindow):
                 self.popup_signal.emit(f"Book '{book_title}' marked as verified")
                 self.load_books_table()  # Refresh to show updated status
             except Exception as e:
-                QMessageBox.critical(self, "Error", f"Failed to verify book: {e}")
+                self.show_error(f"Failed to verify book: {e}")
         
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to verify book: {e}")
+            self.show_error(f"Failed to verify book: {e}")
 
     def load_manuscripts_table(self):
         """Load manuscripts into the table"""
@@ -820,14 +880,14 @@ class MainWindow(QMainWindow):
                 
                 self.manuscript_table.setCellWidget(row, 5, btn_widget)
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Failed to load manuscripts: {e}")
+            self.show_error(f"Failed to load manuscripts: {e}")
 
     def add_manuscript(self):
         """Add a new manuscript"""
         try:
             books = self.book_controller.get_all_books()
             if not books:
-                QMessageBox.warning(self, "Warning", "No books found. Please add a book first")
+                self.show_warning("No books found. Please add a book first")
                 return
             
             from views.manuscript_dialog import ManuscriptDialog
@@ -838,9 +898,9 @@ class MainWindow(QMainWindow):
                 self.load_manuscripts_table()
                 self.popup_signal.emit(f"Manuscript added successfully")
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Add failed: {e}")
+            self.show_error(f"Add failed: {e}")
 
     def edit_manuscript(self, row):
         """Edit a manuscript"""
@@ -848,7 +908,7 @@ class MainWindow(QMainWindow):
             # Get manuscript data
             id_item = self.manuscript_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Manuscript ID not found")
+                self.show_warning("Manuscript ID not found")
                 return
             
             manuscript_id = int(id_item.text())
@@ -860,7 +920,7 @@ class MainWindow(QMainWindow):
                     break
             
             if not manuscript_data:
-                QMessageBox.warning(self, "Error", "Manuscript not found")
+                self.show_warning("Manuscript not found")
                 return
             
             # Open edit dialog
@@ -874,9 +934,9 @@ class MainWindow(QMainWindow):
                 self.popup_signal.emit("Manuscript updated successfully")
         
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Update failed: {e}")
+            self.show_error(f"Update failed: {e}")
 
     def delete_manuscript(self, row):
         """Delete a manuscript"""
@@ -884,19 +944,28 @@ class MainWindow(QMainWindow):
             # Get manuscript data
             id_item = self.manuscript_table.item(row, 0)
             if not id_item:
-                QMessageBox.warning(self, "Error", "Manuscript ID not found")
+                self.show_warning("Manuscript ID not found")
                 return
             
             manuscript_id = int(id_item.text())
+            manuscripts = self.manuscript_controller.get_all_manuscripts()
+            manuscript_data = None
+            for manuscript in manuscripts:
+                if manuscript['id'] == manuscript_id:
+                    manuscript_data = manuscript
+                    break
+            
+            if not manuscript_data:
+                self.show_warning("Manuscript not found")
+                return
+            
+            # Get manuscript details for confirmation
             library_item = self.manuscript_table.item(row, 2)
             library_name = library_item.text() if library_item else "Unknown"
             
-            # Confirm deletion
-            reply = QMessageBox.question(
-                self, 
-                "Confirm Delete", 
-                f"Are you sure you want to delete manuscript from '{library_name}'?",
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+            reply = self.show_question(
+                "Confirm Delete",
+                f"Are you sure you want to delete manuscript from '{library_name}'?"
             )
             
             if reply == QMessageBox.StandardButton.Yes:
@@ -905,9 +974,9 @@ class MainWindow(QMainWindow):
                 self.popup_signal.emit(f"Manuscript from '{library_name}' deleted successfully")
         
         except ValueError as e:
-            QMessageBox.warning(self, "Warning", str(e))
+            self.show_warning(str(e))
         except Exception as e:
-            QMessageBox.critical(self, "Error", f"Delete failed: {e}")
+            self.show_error(f"Delete failed: {e}")
 
     def delete_book(self, row):
         """Delete a book"""
@@ -915,7 +984,7 @@ class MainWindow(QMainWindow):
             # Get book data
             id_item = self.book_table.item(row, 0)
             if not id_item:
-                popup_signal.emit("Book ID not found")
+                self.show_warning("Book ID not found")
                 return
             
             book_id = int(id_item.text())
@@ -924,11 +993,9 @@ class MainWindow(QMainWindow):
             title_item = self.book_table.item(row, 1)
             book_title = title_item.text() if title_item else "Unknown book"
             
-            reply = QMessageBox.question(
-                self, 
-                "Confirm Delete", 
-                f"Are you sure you want to delete book '{book_title}'?",
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+            reply = self.show_question(
+                "Confirm Delete",
+                f"Are you sure you want to delete book '{book_title}'?"
             )
             
             if reply == QMessageBox.StandardButton.Yes:
@@ -952,29 +1019,120 @@ class MainWindow(QMainWindow):
             self.popup_signal.emit(f"Delete failed: {e}")
 
 
-    def export_authors(self):
-        """Export authors to CSV"""
-        try:
-            authors = self.author_controller.get_all_authors(limit=10000, offset=0)
-            from utils.csv_exporter import CSVExporter
-            CSVExporter.export_authors(authors, self)
-        except Exception as e:
-            QMessageBox.critical(self, "Export Error", f"Failed to export authors: {e}")
+    
+    def _on_thread_finished(self):
+        """Handle thread completion"""
+        logger.debug("Background thread finished")
 
-    def export_books(self):
-        """Export books to CSV"""
+    def closeEvent(self, event):
+        """Handle window close event with proper cleanup"""
         try:
-            books = self.book_controller.get_all_books(limit=10000, offset=0)
-            from utils.csv_exporter import CSVExporter
-            CSVExporter.export_books(books, self)
+            # Cancel any running worker
+            if self._current_worker and hasattr(self._current_worker, 'is_running') and self._current_worker.is_running():
+                logger.info("Cancelling running worker...")
+                self._current_worker._is_running = False
+            
+            # Stop and cleanup thread
+            if self._current_thread:
+                if self._current_thread.isRunning():
+                    logger.info("Stopping background thread...")
+                    self._current_thread.quit()
+                    self._current_thread.wait(3000)  # Wait up to 3 seconds
+                self._current_thread = None
+            
+            # Clear worker reference
+            self._current_worker = None
+            
+            logger.info("MainWindow cleanup completed")
+            
         except Exception as e:
-            QMessageBox.critical(self, "Export Error", f"Failed to export books: {e}")
-
-    def export_manuscripts(self):
-        """Export manuscripts to CSV"""
-        try:
-            manuscripts = self.manuscript_controller.get_all_manuscripts(limit=10000, offset=0)
-            from utils.csv_exporter import CSVExporter
-            CSVExporter.export_manuscripts(manuscripts, self)
-        except Exception as e:
-            QMessageBox.critical(self, "Export Error", f"Failed to export manuscripts: {e}")
+            logger.error(f"Error during MainWindow cleanup: {e}")
+        
+        # Accept the close event
+        event.accept()
+    
+    def check_authentication(self):
+        """Check if user is authenticated, show login dialog if not"""
+        if not auth_controller.is_logged_in():
+            # Show login dialog
+            login_dialog = LoginDialog(self)
+            login_dialog.login_successful.connect(self.on_login_successful)
+            
+            result = login_dialog.exec()
+            
+            # If login was cancelled, close the main window
+            if result == QDialog.DialogCode.Rejected:
+                self.close()
+                return False
+            # If login dialog was closed without login, also close main window
+            elif result != QDialog.DialogCode.Accepted or not auth_controller.is_logged_in():
+                self.close()
+                return False
+        
+        return True
+    
+    def on_login_successful(self):
+        """Handle successful login"""
+        current_user = auth_controller.get_current_user()
+        if current_user:
+            logger.info(f"User {current_user.username} logged in successfully")
+            self.update_window_title()
+    
+    def update_window_title(self):
+        """Update window title with current user info"""
+        current_user = auth_controller.get_current_user()
+        if current_user:
+            self.setWindowTitle(f"Tahqiq App - {current_user.username}")
+        else:
+            self.setWindowTitle("Tahqiq App")
+    
+        
+    def show_login_dialog(self):
+        """Show login dialog"""
+        login_dialog = LoginDialog(self)
+        login_dialog.login_successful.connect(self.on_login_successful)
+        login_dialog.exec()
+    
+    def show_signup_dialog(self):
+        """Show signup dialog"""
+        signup_dialog = SignupDialog(self)
+        signup_dialog.signup_successful.connect(self.on_signup_successful)
+        signup_dialog.exec()
+    
+    def on_signup_successful(self):
+        """Handle successful signup"""
+        QMessageBox.information(self, "Success", 
+                              "Account created successfully! Please login to continue.")
+        self.show_login_dialog()
+    
+    def show_profile_dialog(self):
+        """Show user profile dialog"""
+        profile_dialog = ProfileDialog(self)
+        profile_dialog.profile_updated.connect(self.on_profile_updated)
+        profile_dialog.exec()
+    
+    def on_profile_updated(self):
+        """Handle profile update"""
+        self.update_window_title()
+        QMessageBox.information(self, "Success", "Profile updated successfully!")
+    
+    def handle_logout(self):
+        """Handle logout action"""
+        reply = QMessageBox.question(
+            self, "Confirm Logout", 
+            "Are you sure you want to logout?",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        )
+        
+        if reply == QMessageBox.StandardButton.Yes:
+            try:
+                success, message = auth_controller.logout()
+                if success:
+                    QMessageBox.information(self, "Success", message)
+                    # Check authentication again (will show login dialog)
+                    self.check_authentication()
+                else:
+                    QMessageBox.warning(self, "Logout Failed", message)
+            except Exception as e:
+                logger.error(f"Logout error: {e}")
+                QMessageBox.critical(self, "Error", "An unexpected error occurred")
