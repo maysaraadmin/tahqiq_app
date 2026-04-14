@@ -1527,3 +1527,16 @@ ImportError: cannot import name 'IsnadDialog' from 'views.isnad_dialog' (D:\tahq
 2026-04-14 17:43:04,502 - database.db_manager - INFO - Database connections closed
 2026-04-14 17:43:04,504 - config - INFO - Database connections closed
 2026-04-14 17:43:04,505 - config - INFO - Application shutdown complete
+2026-04-14 17:54:05,772 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:54:05,798 - config - INFO - Database connections closed
+2026-04-14 17:54:05,799 - config - INFO - Application shutdown complete
+2026-04-14 17:54:17,676 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:54:18,219 - config - INFO - Application started successfully
+2026-04-14 17:54:23,081 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:54:23,094 - config - INFO - Database connections closed
+2026-04-14 17:54:23,095 - config - INFO - Application shutdown complete
+2026-04-14 17:54:25,454 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 17:54:25,469 - config - INFO - Application exited with code: 0
+2026-04-14 17:54:25,568 - database.db_manager - INFO - Database connections closed
+2026-04-14 17:54:25,573 - config - INFO - Database connections closed
+2026-04-14 17:54:25,573 - config - INFO - Application shutdown complete

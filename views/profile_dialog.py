@@ -261,70 +261,64 @@ class ProfileDialog(QDialog):
             self.last_login_label.setText("Never")
         
         # Load statistics
-        self.load_statistics()
+        self.load_user_statistics()
     
-    def load_statistics(self):
-        """Load user statistics"""
+    def load_user_statistics(self):
+        """Load user statistics from database with proper session management"""
         if not self.current_user:
             return
         
+        from database.db_manager import DatabaseManager
+        from database.models import StudySession
+        from sqlalchemy import func
+        
+        db_manager = DatabaseManager()
+        session = None
+        
         try:
-            from database.db_manager import DatabaseManager
-            from database.models import StudySession
-            from sqlalchemy import func
-            
-            db_manager = DatabaseManager()
             session = db_manager.get_session()
             
-            try:
-                # Count study sessions
-                session_count = session.query(StudySession).filter(
-                    StudySession.user_id == self.current_user.id
-                ).count()
-                self.study_sessions_label.setText(str(session_count))
-                
-                # Count unique books studied
-                books_count = session.query(StudySession.book_id).filter(
-                    StudySession.user_id == self.current_user.id
-                ).distinct().count()
-                self.books_studied_label.setText(str(books_count))
-                
-                # Calculate total study time
-                total_minutes = session.query(func.sum(StudySession.duration_minutes)).filter(
-                    StudySession.user_id == self.current_user.id
-                ).scalar() or 0
-                
+            # Count study sessions
+            session_count = session.query(StudySession).filter(
+                StudySession.user_id == self.current_user.id
+            ).count()
+            self.study_sessions_label.setText(str(session_count))
+            
+            # Count unique books studied
+            books_count = session.query(StudySession.book_id).filter(
+                StudySession.user_id == self.current_user.id
+            ).distinct().count()
+            self.books_studied_label.setText(str(books_count))
+            
+            # Calculate total study time
+            total_minutes = session.query(func.sum(StudySession.duration_minutes)).filter(
+                StudySession.user_id == self.current_user.id
+            ).scalar() or 0
+            
+            if total_minutes > 0:
                 hours = total_minutes // 60
                 minutes = total_minutes % 60
-                if hours > 0:
-                    self.total_time_label.setText(f"{hours}h {minutes}m")
-                else:
-                    self.total_time_label.setText(f"{minutes} minutes")
-                
-                # Recent activity
-                recent_sessions = session.query(StudySession).filter(
-                    StudySession.user_id == self.current_user.id
-                ).order_by(StudySession.session_date.desc()).limit(5).all()
-                
-                if recent_sessions:
-                    activity_text = "Recent study sessions:\n\n"
-                    for session in recent_sessions:
-                        date_str = session.session_date.strftime("%Y-%m-%d %H:%M")
-                        activity_text += f"  {date_str} - {session.duration_minutes} minutes\n"
-                        if session.notes:
-                            activity_text += f"    Notes: {session.notes[:50]}...\n"
-                        activity_text += "\n"
-                    
-                    self.activity_text.setText(activity_text)
-                else:
-                    self.activity_text.setText("No study sessions recorded yet.")
-                
-            finally:
-                db_manager.close_session(session)
+                self.total_time_label.setText(f"{hours}h {minutes}m")
+            else:
+                self.total_time_label.setText("No study time")
+            
+            # Recent activity
+            recent_sessions = session.query(StudySession).filter(
+                StudySession.user_id == self.current_user.id
+            ).order_by(StudySession.session_date.desc()).limit(5).all()
+            
+            activity_text = ""
+            for session in recent_sessions:
+                activity_text += f"Session on {session.session_date.strftime('%Y-%m-%d')}: {session.duration_minutes} minutes\n"
+            
+            self.activity_text.setText(activity_text or "No recent activity")
                 
         except Exception as e:
             logger.error(f"Error loading user statistics: {e}")
             self.activity_text.setText("Error loading statistics")
+        finally:
+            if session:
+                db_manager.close_session(session)
     
     def save_profile(self):
         """Save profile changes"""

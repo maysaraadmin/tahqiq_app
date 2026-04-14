@@ -152,28 +152,22 @@ class AuthorController(BaseController):
         return self.execute_in_transaction(add_author_transaction)
 
     def get_all_authors(self, limit=None, offset=0):
+        """Get all authors with pagination support"""
         if limit is None:
             limit = config.DEFAULT_QUERY_LIMIT
         if limit > config.MAX_QUERY_LIMIT:
             limit = config.MAX_QUERY_LIMIT
             
         def get_authors_transaction(session):
-            # Use more efficient query with only needed fields
-            authors = session.query(
-                Author.id, 
-                Author.name, 
-                Author.birth_year, 
-                Author.death_year
-            ).order_by(Author.name).offset(offset).limit(limit).all()
-            
-            # Convert to dictionaries efficiently
+            query = session.query(Author).offset(offset).limit(limit)
+            authors = query.all()
             return [
                 {
                     'id': author.id,
                     'name': author.name,
                     'birth_year': author.birth_year,
                     'death_year': author.death_year,
-                    'bio': None  # Skip bio for list view to improve performance
+                    'bio': author.bio
                 }
                 for author in authors
             ]
@@ -182,18 +176,18 @@ class AuthorController(BaseController):
             return self.execute_in_transaction(get_authors_transaction)
         except Exception as e:
             logger.error(f"Failed to get authors: {e}")
-            raise e
+            raise
     
-    def get_author_count(self):
-        """Get total count of authors for pagination"""
-        def count_authors_transaction(session):
+    def get_authors_count(self):
+        """Get total count of authors"""
+        def get_authors_count_transaction(session):
             return session.query(Author).count()
         
         try:
-            return self.execute_in_transaction(count_authors_transaction)
+            return self.execute_in_transaction(get_authors_count_transaction)
         except Exception as e:
-            logger.error(f"Failed to get author count: {e}")
-            raise e
+            logger.error(f"Failed to get authors count: {e}")
+            raise
 
     def delete_author(self, author_id, cascade_delete=False):
         # Validate author_id

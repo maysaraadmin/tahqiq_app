@@ -1030,29 +1030,43 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):
         """Handle window close event with proper cleanup"""
-        try:
-            # Cancel any running worker
-            if self._current_worker and hasattr(self._current_worker, 'is_running') and self._current_worker.is_running():
-                logger.info("Cancelling running worker...")
-                self._current_worker._is_running = False
-            
-            # Stop and cleanup thread
-            if self._current_thread:
-                if self._current_thread.isRunning():
-                    logger.info("Stopping background thread...")
-                    self._current_thread.quit()
-                    self._current_thread.wait(3000)  # Wait up to 3 seconds
-                self._current_thread = None
-            
-            # Clear worker reference
-            self._current_worker = None
-            
-            logger.info("MainWindow cleanup completed")
-            
-        except Exception as e:
-            logger.error(f"Error during MainWindow cleanup: {e}")
+        logger.info("Starting MainWindow cleanup")
         
-        # Accept the close event
+        # Cancel any ongoing operations
+        if self._current_worker:
+            self._current_worker.cancel()
+            self._current_worker.deleteLater()
+            self._current_worker = None
+        
+        if self._current_thread:
+            self._current_thread.quit()
+            self._current_thread.wait(5000)  # Wait max 5 seconds
+            self._current_thread.deleteLater()
+            self._current_thread = None
+        
+        # Close database connections
+        try:
+            from database.db_manager import DatabaseManager
+            db_manager = DatabaseManager()
+            db_manager.close_all_connections()
+            logger.info("Database connections closed")
+        except Exception as e:
+            logger.error(f"Error closing database connections: {e}")
+        
+        # Clean up controllers
+        try:
+            if hasattr(self, 'author_controller'):
+                del self.author_controller
+            if hasattr(self, 'book_controller'):
+                del self.book_controller
+            if hasattr(self, 'manuscript_controller'):
+                del self.manuscript_controller
+        except Exception as e:
+            logger.error(f"Error cleaning up controllers: {e}")
+        
+        logger.info("MainWindow cleanup completed")
+        
+        # Accept the event
         event.accept()
     
     def check_authentication(self):

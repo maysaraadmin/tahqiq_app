@@ -8,6 +8,7 @@ from controllers.book_controller import BookController
 from controllers.author_controller import AuthorController
 from controllers.isnad_controller import IsnadController
 import os
+import re
 import logging
 
 logger = logging.getLogger(__name__)
@@ -273,7 +274,7 @@ class IsnadDialog(QDialog):
                         break
 
     def upload_book_file(self):
-        """Upload book file"""
+        """Upload book file with security validation"""
         file_path, _ = QFileDialog.getOpenFileName(
             self,
             "Select Book File",
@@ -285,20 +286,47 @@ class IsnadDialog(QDialog):
             return
         
         try:
+            # Security: Validate file path
+            if not os.path.exists(file_path):
+                QMessageBox.warning(self, "Error", "File does not exist")
+                return
+            
+            # Security: Check file size (max 50MB)
+            file_size = os.path.getsize(file_path)
+            max_size = 50 * 1024 * 1024  # 50MB
+            if file_size > max_size:
+                QMessageBox.warning(self, "Error", f"File too large. Maximum size is 50MB")
+                return
+            
+            # Security: Validate file extension
+            allowed_extensions = ['.pdf', '.docx', '.doc', '.txt']
+            file_ext = os.path.splitext(file_path)[1].lower()
+            if file_ext not in allowed_extensions:
+                QMessageBox.warning(self, "Error", f"File type not allowed. Allowed types: {', '.join(allowed_extensions)}")
+                return
+            
+            # Security: Sanitize filename
+            filename = os.path.basename(file_path)
+            # Remove dangerous characters
+            safe_filename = re.sub(r'[<>:"/\\|?*]', '_', filename)
+            if safe_filename != filename:
+                logger.warning(f"Sanitized filename from {filename} to {safe_filename}")
+            
             # Store the file path
             self.uploaded_file_path = file_path
-            filename = os.path.basename(file_path)
             
             # Update UI
-            self.file_label.setText(f"File: {filename}")
+            self.file_label.setText(f"File: {safe_filename}")
             self.file_label.setStyleSheet("QLabel { color: green; }")
             
-            # If title is empty, use filename
+            # If title is empty, use sanitized filename
             if not self.title_edit.text().strip():
-                title = os.path.splitext(filename)[0]
+                title = os.path.splitext(safe_filename)[0]
+                # Clean title for display
+                title = re.sub(r'[_\-.]+', ' ', title).strip()
                 self.title_edit.setText(title)
             
-            logger.info(f"Selected book file: {filename}")
+            logger.info(f"Selected book file: {safe_filename} ({file_size} bytes)")
             self.check_save_conditions()
             
         except Exception as e:

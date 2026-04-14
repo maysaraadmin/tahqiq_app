@@ -1,6 +1,7 @@
 from controllers.base_controller import BaseController
 from database.models import BookIsnad, IsnadChain, Book
 from database.db_manager import DatabaseManager
+from utils.error_handler import handle_exceptions, DatabaseError, FileOperationError
 from datetime import datetime
 import os
 import shutil
@@ -9,11 +10,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 class IsnadController(BaseController):
-    def __init__(self):
-        super().__init__()
-        self.upload_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'uploads', 'isnad_books')
-        os.makedirs(self.upload_dir, exist_ok=True)
-
+    @handle_exceptions(
+        default_return=None,
+        error_message="Failed to create isnad",
+        show_user_message=False
+    )
     def create_isnad(self, book_id, file_path, isnad_chain):
         """Create new book isnad with chain"""
         def create_isnad_transaction(session):
@@ -56,12 +57,13 @@ class IsnadController(BaseController):
             logger.info(f"Created isnad for book {book_id} with {len(isnad_chain)} chain members")
             return isnad.id
         
-        try:
-            return self.execute_in_transaction(create_isnad_transaction)
-        except Exception as e:
-            logger.error(f"Failed to create isnad: {e}")
-            raise e
+        return self.execute_in_transaction(create_isnad_transaction)
 
+    @handle_exceptions(
+        default_return=[],
+        error_message="Failed to get book isnads",
+        show_user_message=False
+    )
     def get_book_isnads(self, book_id):
         """Get all isnads for a book"""
         def get_isnads_transaction(session):

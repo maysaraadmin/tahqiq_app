@@ -34,7 +34,12 @@ class AuthUtils:
             return False
         
         try:
-            salt, hash_value = stored_hash.split('$')
+            # Split only on the first $ to handle passwords containing $
+            parts = stored_hash.split('$', 1)
+            if len(parts) != 2:
+                return False
+            
+            salt, hash_value = parts
             
             # Hash the provided password with the same salt
             password_salt = f"{password}{salt}"
