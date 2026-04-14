@@ -3,6 +3,8 @@ import logging
 from pathlib import Path
 import re
 
+logger = logging.getLogger(__name__)
+
 class Config:
     """Application configuration with environment variable support"""
     
