@@ -29,7 +29,14 @@ class Config:
         
         # Year validation settings
         self.MIN_YEAR = self._validate_non_negative_int(os.getenv('TAHQIQ_MIN_YEAR', '0'), 'MIN_YEAR', 0)
-        self.MAX_YEAR = self._validate_positive_int(os.getenv('TAHQIQ_MAX_YEAR', '3000'), 'MAX_YEAR', 10000)
+        self.MAX_YEAR = self._validate_positive_int(os.getenv('TAHQIQ_MAX_YEAR', '3000'), 'MAX_YEAR', 9999)
+        
+        # File upload settings
+        self.MAX_FILE_SIZE_MB = self._validate_positive_int(os.getenv('TAHQIQ_MAX_FILE_SIZE_MB', '50'), 'MAX_FILE_SIZE_MB', 1000)
+        self.MAX_FILE_SIZE_BYTES = self.MAX_FILE_SIZE_MB * 1024 * 1024
+        
+        # Thread timeout settings
+        self.THREAD_TIMEOUT_MS = self._validate_positive_int(os.getenv('TAHQIQ_THREAD_TIMEOUT_MS', '5000'), 'THREAD_TIMEOUT_MS', 30000)
         
         # Database query limits
         self.DEFAULT_QUERY_LIMIT = self._validate_positive_int(os.getenv('TAHQIQ_DEFAULT_QUERY_LIMIT', '100'), 'DEFAULT_QUERY_LIMIT', 1000)
@@ -122,28 +129,41 @@ class Config:
         
         return filename
     
-    def _validate_positive_int(self, value, name, max_value=None):
-        """Validate positive integer configuration value"""
+    def _validate_positive_int(self, value, name, default=None):
+        """Validate and convert to positive integer"""
         try:
             int_value = int(value)
             if int_value <= 0:
+                if default is not None:
+                    logging.warning(f"Invalid {name} (must be positive), using default: {default}")
+                    return default
                 raise ValueError(f"{name} must be a positive integer")
-            if max_value and int_value > max_value:
-                raise ValueError(f"{name} cannot exceed {max_value}")
             return int_value
         except (ValueError, TypeError):
+            if default is not None:
+                logging.warning(f"Invalid {name}, using default: {default}")
+                return default
             raise ValueError(f"{name} must be a valid integer")
     
-    def _validate_non_negative_int(self, value, name, max_value=None):
-        """Validate non-negative integer configuration value"""
+    def _validate_non_negative_int(self, value, name, default=None, max_value=None):
+        """Validate and convert to non-negative integer"""
         try:
             int_value = int(value)
             if int_value < 0:
+                if default is not None:
+                    logger.warning(f"Invalid {name} (must be non-negative), using default: {default}")
+                    return default
                 raise ValueError(f"{name} must be a non-negative integer")
             if max_value and int_value > max_value:
+                if default is not None:
+                    logger.warning(f"Invalid {name} (exceeds {max_value}), using default: {default}")
+                    return default
                 raise ValueError(f"{name} cannot exceed {max_value}")
             return int_value
         except (ValueError, TypeError):
+            if default is not None:
+                logger.warning(f"Invalid {name}, using default: {default}")
+                return default
             raise ValueError(f"{name} must be a valid integer")
     
     def _validate_all(self):

@@ -103,8 +103,9 @@ class SignupDialog(QDialog):
     
     def setup_validators(self):
         """Setup input validators"""
-        # Username validator (alphanumeric and underscore only)
-        username_regex = QRegularExpression(r"[a-zA-Z0-9_]+")
+        # Username validator - use same logic as AuthUtils
+        # Allow letters, numbers, and underscores, 3-50 characters
+        username_regex = QRegularExpression(r"[a-zA-Z0-9_]{3,50}")
         username_validator = QRegularExpressionValidator(username_regex, self)
         self.username_edit.setValidator(username_validator)
     

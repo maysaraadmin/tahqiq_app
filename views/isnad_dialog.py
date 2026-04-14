@@ -7,6 +7,7 @@ from PyQt6.QtCore import Qt, pyqtSignal
 from controllers.book_controller import BookController
 from controllers.author_controller import AuthorController
 from controllers.isnad_controller import IsnadController
+from config import config
 import os
 import re
 import logging
@@ -183,11 +184,6 @@ class IsnadDialog(QDialog):
         cancel_btn.clicked.connect(self.reject)
         cancel_btn.setStyleSheet("QPushButton { background-color: #f44336; color: white; padding: 15px; font-size: 14px; min-width: 100px; }")
         
-        # Add debug label
-        self.debug_label = QLabel("Save button: DISABLED")
-        self.debug_label.setStyleSheet("QLabel { color: red; font-weight: bold; padding: 5px; }")
-        
-        button_layout.addWidget(self.debug_label)
         button_layout.addStretch()
         button_layout.addWidget(cancel_btn)
         button_layout.addWidget(self.save_btn)
@@ -291,11 +287,11 @@ class IsnadDialog(QDialog):
                 QMessageBox.warning(self, "Error", "File does not exist")
                 return
             
-            # Security: Check file size (max 50MB)
+            # Security: Check file size
             file_size = os.path.getsize(file_path)
-            max_size = 50 * 1024 * 1024  # 50MB
+            max_size = config.MAX_FILE_SIZE_BYTES
             if file_size > max_size:
-                QMessageBox.warning(self, "Error", f"File too large. Maximum size is 50MB")
+                QMessageBox.warning(self, "Error", f"File too large. Maximum size is {config.MAX_FILE_SIZE_MB}MB")
                 return
             
             # Security: Validate file extension
@@ -441,23 +437,11 @@ class IsnadDialog(QDialog):
         
         self.save_btn.setEnabled(has_book and has_isnad)
         
-        # Update debug label
-        if has_book and has_isnad:
-            self.debug_label.setText("Save button: ENABLED")
-            self.debug_label.setStyleSheet("QLabel { color: green; font-weight: bold; padding: 5px; }")
-        else:
-            status = []
-            if not has_book:
-                status.append("No book/file")
-            if not has_isnad:
-                status.append("No isnad")
-            self.debug_label.setText(f"Save button: DISABLED ({', '.join(status)})")
-            self.debug_label.setStyleSheet("QLabel { color: red; font-weight: bold; padding: 5px; }")
-        
-        # Debug info
-        logger.info(f"Save button check - has_book: {has_book}, has_isnad: {has_isnad}")
-        logger.info(f"Selected book: {has_selected_book}, New book: {has_new_book}")
-        logger.info(f"Chain length: {len(self.isnad_chain)}")
+        # Debug info (only in development)
+        if config.LOG_LEVEL == 'DEBUG':
+            logger.info(f"Save button check - has_book: {has_book}, has_isnad: {has_isnad}")
+            logger.info(f"Selected book: {has_selected_book}, New book: {has_new_book}")
+            logger.info(f"Chain length: {len(self.isnad_chain)}")
 
     def save_isnad(self):
         """Save isnad"""

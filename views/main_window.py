@@ -15,6 +15,7 @@ from controllers.book_controller import BookController
 from controllers.manuscript_controller import ManuscriptController
 from controllers.auth_controller import auth_controller
 from utils.async_worker import LoadDataWorker, DatabaseOperationWorker
+from config import config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -392,11 +393,10 @@ class MainWindow(QMainWindow):
 
     def add_author(self):
         dialog = AuthorDialog(self)
-        if dialog.exec():
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             name = dialog.name_edit.text().strip()
             if not name:
                 logger.warning("POPUP_WARNING: Name is required")
-                self.show_warning("Name is required")
                 return
             
             birth = dialog.birth_edit.text().strip()
@@ -448,7 +448,7 @@ class MainWindow(QMainWindow):
             # Open edit dialog
             from views.author_edit_dialog import AuthorEditDialog
             dialog = AuthorEditDialog(author_data, self)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 data = dialog.get_data()
                 self.author_controller.update_author(author_id, **data)
                 self.load_authors_table()
@@ -610,7 +610,7 @@ class MainWindow(QMainWindow):
                 return
             
             dialog = BookDialog(authors, self)
-            if dialog.exec():
+            if dialog.exec() == QDialog.DialogCode.Accepted:
                 title = dialog.title_edit.text().strip()
                 author_id = dialog.author_combo.currentData()
                 desc = dialog.desc_edit.toPlainText().strip()
@@ -1040,7 +1040,7 @@ class MainWindow(QMainWindow):
         
         if self._current_thread:
             self._current_thread.quit()
-            self._current_thread.wait(5000)  # Wait max 5 seconds
+            self._current_thread.wait(config.THREAD_TIMEOUT_MS)  # Wait for configured timeout
             self._current_thread.deleteLater()
             self._current_thread = None
         

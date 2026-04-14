@@ -2,7 +2,12 @@ from sqlalchemy import Column, Integer, String, Text, ForeignKey, Table, UniqueC
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 import logging
-from .constants import *
+from .constants import (
+    MIN_YEAR, MAX_YEAR,
+    MAX_AUTHOR_NAME_LENGTH, MAX_BOOK_TITLE_LENGTH, MAX_LIBRARY_NAME_LENGTH,
+    MAX_SHELF_NUMBER_LENGTH, MAX_COPYIST_LENGTH,
+    AUTHOR_NAME_PATTERN, BOOK_TITLE_PATTERN, LIBRARY_NAME_PATTERN, SHELF_NUMBER_PATTERN
+)
 
 logger = logging.getLogger(__name__)
 

@@ -98,3 +98,7 @@ class DatabaseManager:
         if self._engine:
             self._engine.dispose()
             logger.info("Database connections closed")
+    
+    def close_all_connections(self):
+        """Close all database connections (alias for close_all)"""
+        self.close_all()
