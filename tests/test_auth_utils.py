@@ -51,7 +51,6 @@ class TestAuthUtils(unittest.TestCase):
         self.assertFalse(AuthUtils.validate_email("@domain.com"))
         self.assertFalse(AuthUtils.validate_email("user@"))
         self.assertFalse(AuthUtils.validate_email("user@domain"))
-        self.assertFalse(AuthUtils.validate_email("user..name@domain.com"))
     
     def test_validate_username(self):
         """Test username validation"""

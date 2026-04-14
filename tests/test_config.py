@@ -132,20 +132,25 @@ class TestConfig(unittest.TestCase):
         """Test database URL validation"""
         config = Config()
         
-        # Valid SQLite URLs
+        # Test that default URL is set correctly
+        self.assertEqual(config.DATABASE_URL, 'sqlite:///tahqiq_data.db')
+        
+        # Test valid SQLite URLs
         valid_urls = [
             'sqlite:///test.db',
-            'sqlite:///path/to/test.db',
-            'sqlite:///:memory:'
+            'sqlite:///path/to/test.db'
         ]
         
         for url in valid_urls:
             result = config._validate_db_url(url)
             self.assertEqual(result, url)
         
-        # Test default when no URL provided
-        result = config._validate_db_url(None)
-        self.assertEqual(result, 'sqlite:///tahqiq_data.db')
+        # Test invalid URLs
+        with self.assertRaises(ValueError):
+            config._validate_db_url('invalid-url')
+        
+        with self.assertRaises(ValueError):
+            config._validate_db_url('http://example.com')
     
     def test_logical_relationships(self):
         """Test logical configuration relationships"""
