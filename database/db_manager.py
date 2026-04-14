@@ -80,6 +80,20 @@ class DatabaseManager:
         if session:
             session.close()
 
+    def execute_in_transaction(self, operation):
+        """Execute a database operation within a transaction"""
+        session = self.get_session()
+        try:
+            result = operation(session)
+            session.commit()
+            return result
+        except Exception as e:
+            session.rollback()
+            logger.error(f"Transaction failed: {e}")
+            raise
+        finally:
+            self.close_session(session)
+
     def close_all(self):
         if self._engine:
             self._engine.dispose()

@@ -46,9 +46,15 @@ class LoadDataWorker(AsyncWorker):
         """Execute the specified method"""
         method = getattr(self.controller, self.method_name)
         if method:
-            return method(*self.args, **self.kwargs)
+            result = method(*self.args, **self.kwargs)
+            self.result = result
+            return result
         else:
             raise AttributeError(f"Method {self.method_name} not found")
+    
+    def start_work(self):
+        """Start the work - called when thread starts"""
+        self.run()
 
 class DatabaseOperationWorker(AsyncWorker):
     """Worker for database operations"""
