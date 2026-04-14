@@ -34,7 +34,6 @@ class Book(Base):
     __table_args__ = (
         UniqueConstraint('title', 'author_id', name='unique_book_title_author'),
         CheckConstraint(f'length(title) >= 2', name='check_title_length'),
-        CheckConstraint(f"verification_status IN {VERIFICATION_STATUSES}", name='check_verification_status'),
         Index('idx_book_title', 'title'),
         Index('idx_book_author', 'author_id'),
         Index('idx_book_title_author', 'title', 'author_id'),
@@ -57,8 +56,8 @@ class Book(Base):
 class Manuscript(Base):
     __tablename__ = 'manuscripts'
     __table_args__ = (
-        CheckConstraint(f'length(library_name) >= {MIN_YEAR} OR library_name IS NULL', name='check_library_name'),
-        CheckConstraint(f'length(copyist) >= {MIN_YEAR} OR copyist IS NULL', name='check_copyist'),
+        CheckConstraint('length(library_name) >= 2 OR library_name IS NULL', name='check_library_name'),
+        CheckConstraint('length(copyist) >= 2 OR copyist IS NULL', name='check_copyist'),
         Index('idx_manuscript_book', 'book_id'),
         Index('idx_manuscript_library', 'library_name'),
         Index('idx_manuscript_shelf', 'shelf_number'),
@@ -79,7 +78,7 @@ class SheikhRelation(Base):
     __table_args__ = (
         UniqueConstraint('student_id', 'sheikh_id', name='unique_student_sheikh_relation'),
         CheckConstraint('student_id != sheikh_id', name='check_different_authors'),
-        CheckConstraint(f'length(relation_type) >= {MIN_YEAR} OR relation_type IS NULL OR relation_type = ""', name='check_relation_type'),
+        CheckConstraint('length(relation_type) >= 2 OR relation_type IS NULL OR relation_type = ""', name='check_relation_type'),
         Index('idx_sheikh_relation_student', 'student_id'),
         Index('idx_sheikh_relation_sheikh', 'sheikh_id'),
         Index('idx_sheikh_relation_type', 'relation_type'),
@@ -96,14 +95,15 @@ class SheikhRelation(Base):
 class StudySession(Base):
     __tablename__ = 'study_sessions'
     __table_args__ = (
-        CheckConstraint('session_date <= datetime(\'now\')', name='check_session_date'),
         CheckConstraint('duration_minutes > 0', name='check_duration'),
         Index('idx_study_session_book', 'book_id'),
         Index('idx_study_session_date', 'session_date'),
+        Index('idx_study_session_user', 'user_id'),
     )
     
     id = Column(Integer, primary_key=True)
     book_id = Column(Integer, ForeignKey('books.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     session_date = Column(DateTime, default=datetime.utcnow)
     duration_minutes = Column(Integer, default=60)
     pages_studied = Column(Integer)
@@ -113,3 +113,27 @@ class StudySession(Base):
     next_steps = Column(Text)
 
     book = relationship('Book', back_populates='study_sessions')
+    user = relationship('User', back_populates='study_sessions')
+
+class User(Base):
+    __tablename__ = 'users'
+    __table_args__ = (
+        UniqueConstraint('username', name='unique_username'),
+        UniqueConstraint('email', name='unique_email'),
+        CheckConstraint('length(username) >= 3', name='check_username_length'),
+        CheckConstraint('length(password_hash) >= 60', name='check_password_hash_length'),
+        Index('idx_user_username', 'username'),
+        Index('idx_user_email', 'email'),
+    )
+    
+    id = Column(Integer, primary_key=True)
+    username = Column(String(MAX_AUTHOR_NAME_LENGTH), nullable=False, unique=True)
+    email = Column(String(255), nullable=False, unique=True)
+    password_hash = Column(String(255), nullable=False)
+    full_name = Column(String(MAX_AUTHOR_NAME_LENGTH))
+    created_at = Column(DateTime, default=datetime.utcnow)
+    last_login = Column(DateTime)
+    is_active = Column(Boolean, default=True)
+    
+    # Relationships
+    study_sessions = relationship('StudySession', back_populates='user')
