@@ -158,11 +158,7 @@ class AuthorController(BaseController):
         
         return result
 
-    @handle_exceptions(
-        default_return=[],
-        error_message="Failed to get authors",
-        show_user_message=False
-    )
+    @handle_exceptions(default_message="Failed to get authors")
     def get_all_authors(self, limit=None, offset=0):
         """Get all authors with pagination support and caching"""
         if limit is None:

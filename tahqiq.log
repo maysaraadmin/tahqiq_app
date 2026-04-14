@@ -1540,3 +1540,20 @@ ImportError: cannot import name 'IsnadDialog' from 'views.isnad_dialog' (D:\tahq
 2026-04-14 17:54:25,568 - database.db_manager - INFO - Database connections closed
 2026-04-14 17:54:25,573 - config - INFO - Database connections closed
 2026-04-14 17:54:25,573 - config - INFO - Application shutdown complete
+2026-04-14 18:37:53,233 - config - INFO - Starting Tahqiq App v1.0.0
+2026-04-14 18:37:53,816 - config - INFO - Application styles loaded successfully
+2026-04-14 18:38:09,724 - utils.auth_utils - INFO - User maysara logged in
+2026-04-14 18:38:09,731 - controllers.auth_controller - INFO - User logged in: maysara
+2026-04-14 18:38:12,255 - views.main_window - INFO - User maysara logged in successfully
+2026-04-14 18:38:12,561 - utils.cache_manager - INFO - Created cache 'authors' with size 100, TTL 300s
+2026-04-14 18:38:13,143 - config - INFO - Application started successfully
+2026-04-14 18:38:13,177 - views.main_window - INFO - Loaded 3 authors asynchronously
+2026-04-14 18:38:17,756 - views.isnad_dialog - ERROR - Failed to load books: setEnabled(self, a0: bool): argument 1 has unexpected type 'str'
+2026-04-14 18:39:25,361 - views.main_window - INFO - Starting MainWindow cleanup
+2026-04-14 18:39:25,432 - database.db_manager - INFO - Database connections closed
+2026-04-14 18:39:25,433 - views.main_window - INFO - Database connections closed
+2026-04-14 18:39:25,434 - views.main_window - INFO - MainWindow cleanup completed
+2026-04-14 18:39:25,566 - config - INFO - Application exited with code: 0
+2026-04-14 18:39:25,581 - database.db_manager - INFO - Database connections closed
+2026-04-14 18:39:25,595 - config - INFO - Database connections closed
+2026-04-14 18:39:25,597 - config - INFO - Application shutdown complete

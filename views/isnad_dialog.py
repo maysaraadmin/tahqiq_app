@@ -435,7 +435,7 @@ class IsnadDialog(QDialog):
         has_book = has_selected_book or has_new_book
         has_isnad = len(self.isnad_chain) > 0
         
-        self.save_btn.setEnabled(has_book and has_isnad)
+        self.save_btn.setEnabled(bool(has_book and has_isnad))
         
         # Debug info (only in development)
         if config.LOG_LEVEL == 'DEBUG':
